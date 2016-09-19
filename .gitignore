@@ -1,0 +1,27 @@
+syntax: glob
+*~
+*.db
+*.old
+*.bak
+*.tmp
+root.pdf
+*.dvi
+*.ps
+*.toc
+*.out
+*.log
+*.blg
+*.aux
+*.bbl
+*.tex.backup
+*.mat
+*.gz
+paper.pdf
+asda.pdf
+cocoa_proof.pdf
+cocoa/CDCA_NIPS.pdf
+simpleCase.pdf
+thetaCase.pdf
+accelerated_cocoa/nips2015.pdf
+accelerated_cocoa/paper.log
+
