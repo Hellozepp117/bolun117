@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-02-13 18:58:09">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>13A7D782-E291-4B68-87A1-8DAD9D688856</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="108" left="48" bottom="546" right="816" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<VisibleArea>
+			<Left>-18.7473072583</Left>
+			<Right>19.9485878131</Right>
+			<Top>12.4872399795</Top>
+			<Bottom>-9.27278589625</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>i_non_outlier</Identifier>
+			<XCoordinate>PI_X_Coord( i_non_outlier )</XCoordinate>
+			<YCoordinate>PI_Y_Coord( i_non_outlier )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Color>PE_Solution_Color( i_non_outlier )</Color>
+			<Size>PD_Solution_Node_Size( i_non_outlier )</Size>
+			<Shape>Circle</Shape>
+		</Node>
+		<Node>
+			<Identifier>i_outlier</Identifier>
+			<XCoordinate>PI_X_Coord( i_outlier )</XCoordinate>
+			<YCoordinate>PI_Y_Coord( i_outlier )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Color>PE_Solution_Color( i_outlier )</Color>
+			<Size>PD_Solution_Node_Size( i_outlier )</Size>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Arc>
+			<Identifier>SD_Outlier_Arcs( i_outlier, i_non_outlier )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+		<Arc>
+			<Identifier>SD_Outlier_Arcs( i_outlier, i_outlier )</Identifier>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<TextPosition>Right</TextPosition>
+			<Shape>Straight</Shape>
+			<FirstSegment>Horizontal</FirstSegment>
+			<ArcsAsArrows>false</ArcsAsArrows>
+			<ClickWhere>EntireArc</ClickWhere>
+		</Arc>
+	</PageObject>
+	<PageObject Type="Scalar">
+		<Location top="6" left="750" bottom="36" right="906" />
+		<TabOrder>2</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<Layout>Text-Value</Layout>
+		<SeparatorSign>=</SeparatorSign>
+		<ExplicitIdentifier>
+			<Identifier>PI_Node_Size</Identifier>
+			<NumberFormat Width="4" Decimals="0" Scientific="IfTooSmallorLarge" Alignment="Center" ShowDefaults="true" />
+		</ExplicitIdentifier>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>PI_X_Coord</Symbol>
+			<Symbol>PI_Y_Coord</Symbol>
+			<Symbol>PI_Node_Size</Symbol>
+			<Symbol>SD_Outlier_Arcs</Symbol>
+			<Symbol>PE_Solution_Color</Symbol>
+			<Symbol>PD_Solution_Node_Size</Symbol>
+			<Symbol>i_outlier</Symbol>
+			<Symbol>i_non_outlier</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

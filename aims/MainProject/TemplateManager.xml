@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<TemplateManager>
+	<Page Name="All Data Pages" PageGUID="EACA8C73-AC80-4F3D-8B77-B600FEEF4E5E" />
+	<Page Name="[Data Page] PD_Delta" PageGUID="C81A8687-AFA1-4DB3-ACC5-B4E444BED1E7" />
+	<Page Name="Page 1" PageGUID="CE47AF4A-A595-4D3A-819C-1C8F57873D50" />
+	<Page Name="Input Scatter Plot" PageGUID="41B3D3D0-C93B-44D9-9198-DB3DF2857132" />
+	<Page Name="Output Scatter Plot" PageGUID="58B1EDBE-F6CD-47B7-ABEA-0D9C0CE469FE" />
+	<Page Name="[Data Page] PI_Point" PageGUID="4C21E806-FC86-48E2-9071-9E3375CC376E" />
+	<Page Name="Objective Function Plots" PageGUID="A2189CA2-8BF8-4119-B1F3-906D76CFF774" />
+</TemplateManager>
