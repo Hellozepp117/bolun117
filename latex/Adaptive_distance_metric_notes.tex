@@ -13,6 +13,8 @@
 \usepackage{enumerate}
 \usepackage{subfigure}
 
+\usepackage[colorinlistoftodos,bordercolor=orange,backgroundcolor=orange!20,linecolor=orange,textsize=scriptsize]{todonotes}
+
 
 \newcommand{\be}{\begin{enumerate}}
 \newcommand{\ee}{\end{enumerate}}
@@ -257,6 +259,10 @@ Model \eqref{model:1} can be expressed as a huge mixed-integer linear programmin
     & \lambda_i \geq 0 & & \qquad \forall i \in \mc{N}
 \end{alignat}
 \end{subequations}
+\todo[inline]{
+Are we missing $a$ in   \eqref{eq:big_milp_distance_def_constr}
+}
+
 
 Model \eqref{model:milp_with_outlier_detection} assumes a linear reward for positive separation and a fixed (constant) penalty $\rho$ for each outlier.  
 Outliers are handled through the binary $z_{i}$ decision variables.
@@ -267,6 +273,31 @@ Constraints \eqref{eq:mccormick_1}-\eqref{eq:mccormick_3} are the so-called McCo
 
 TODO: Modify to incorporate assumption that $0 \leq d_{ij} \leq 1$ for all $i$ and $j$.
 
+
+
+\subsection{New Idea}
+
+put here the model from above using only one  $\lambda$
+
+
+\begin{subequations} \label{model:milp_with_outlier_detection_adssasdsa}
+\begin{alignat}{4}
+\max_{\lambda,\v{B},\v{d},\v{w},\v{y}}~~& f(\vlambda) = \sum_{i \in \mc{N}} f_i(\lambda_i) = \sum_{i \in \mc{N}} (\lambda_i - \rho z_i) & & \\
+\st~~& \sum_{j \in \mc{C}_i} w_{ij} + \lambda_i \leq d_{ik} + M_i z_i  && \qquad \forall i \in \mc{N}, k \in \mc{N}\backslash\mc{C}_i \\
+    & \lambda_i \leq 1 - z_i && \qquad \forall i \in \mc{N} \label{eq:outlier_separation_logic_adssasdsa} \\
+    & w_{ij} \leq d_{ij} && \qquad \forall i \in \mc{N}, i \in \mc{C}_i \label{eq:mccormick_1_adssasdsa} \\
+    & w_{ij} \leq y_{ij} && \qquad \forall i \in \mc{N}, i \in \mc{C}_i \label{eq:mccormick_2_adssasdsa} \\
+    & w_{ij} \geq d_{ij} + y_{ij} - 1 && \qquad \forall i \in \mc{N}, i \in \mc{C}_i \label{eq:mccormick_3_adssasdsa} \\
+    & \sum_{j \in \mc{C}_i} y_{ij} = 1 && \qquad \forall i \in \mc{N} \\
+    & d_{ij} = \sum_{k=1}^p \delta_{ijk}^2 b_{kk} + 2 \sum_{k=1}^{p-1} \sum_{\ell=k+1}^p  \delta_{ijk} \delta_{ij\ell} b_{k\ell} && \qquad \forall i,j \in \mc{N} \label{eq:big_milp_distance_def_constr_adssasdsa} \\
+    & b_{k\ell} \in \Re && \qquad \forall k=1,\dots,p, \ell=k,\dots,p \\
+    & d_{ij} \geq 0 && \qquad \forall i,j \in \mc{N} \\
+    & w_{ij} \geq 0 && \qquad \forall i \in \mc{N}, i \in \mc{C}_i \\
+    & y_{ij} \in \{0,1\} && \qquad \forall i \in \mc{N}, i \in \mc{C}_i \\
+    & z_{i} \in \{0,1\} && \qquad \forall i \in \mc{N} \\
+    & \lambda_i \geq 0 & & \qquad \forall i \in \mc{N}
+\end{alignat}
+\end{subequations}
 
 \newpage
 \section{Nomenclature}
