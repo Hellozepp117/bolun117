@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<UserColors LastKnownInternalId="48">
+	<UserColor Name="default background" RGB="#f0f0f0" IsSystemBackground="true" UUID="4C29CF98-3E51-4BAA-8563-90FCE3E3DF3B" InternalID="1" />
+	<UserColor Name="default foreground" RGB="#000000" UUID="701D5E4D-A50B-4FD8-B7AD-7ED61961A523" InternalID="2" />
+	<UserColor Name="default selection" RGB="#000080" UUID="D4F48705-BFDF-4DF8-8E1F-D38EFF981024" InternalID="3" />
+	<UserColor Name="black" RGB="#000000" UUID="9043B6BC-F2E6-4015-A940-74CD05E6AD57" InternalID="4" />
+	<UserColor Name="white" RGB="#ffffff" UUID="33BB2465-9D09-4035-9765-4D4D12BABAAE" InternalID="5" />
+	<UserColor Name="red" RGB="#ff0000" UUID="8C1FFC91-A781-4272-831D-2D86F23592E4" InternalID="6" />
+	<UserColor Name="green" RGB="#00ff00" UUID="ABB4A8BD-7798-41D3-BA43-C629DFC98735" InternalID="7" />
+	<UserColor Name="blue" RGB="#0000ff" UUID="257CED91-8909-41AC-BED6-911268D7BBCE" InternalID="8" />
+	<UserColor Name="yellow" RGB="#ffff00" UUID="6557880F-CCE8-4670-958C-5DDF32842E87" InternalID="9" />
+	<UserColor Name="magenta" RGB="#ff00ff" UUID="490FB697-56FA-496E-B396-D141DA8918B4" InternalID="10" />
+	<UserColor Name="cyan" RGB="#00ffff" UUID="E185A605-0CD0-44C0-913D-FDDB4E18CFE5" InternalID="11" />
+	<UserColor Name="navy blue" RGB="#000080" UUID="8387D389-3F4A-4D87-9199-53B0EDCD0359" InternalID="12" />
+	<UserColor Name="light grey" RGB="#c0c0c0" UUID="486FBD8D-1F7C-467B-9130-D05049EA3E34" InternalID="13" />
+	<UserColor Name="grey" RGB="#808080" UUID="9E91AFF7-0C42-4624-9450-66E75C74B1AB" InternalID="14" />
+	<UserColor Name="dark grey" RGB="#404040" UUID="BDFE7E86-A7C8-4FA3-BEA3-FA3B7D1374B7" InternalID="15" />
+	<UserColor Name="pink" RGB="#ff80c0" UUID="CF9B60AC-65E5-43E2-B0F9-0E6DF9272F42" InternalID="18" />
+	<UserColor Name="dark green" RGB="#008000" UUID="863C6DD1-BDB4-47AB-9EA1-0271D2BC3611" InternalID="22" />
+	<UserColor Name="orange" RGB="#ff8000" UUID="68982529-5978-4C2A-9DED-259E3CDC375D" InternalID="25" />
+	<UserColor Name="royal blue" RGB="#8000ff" UUID="13A361EB-BCA5-4ED4-BD01-BA8BD730C0FF" InternalID="27" />
+	<UserColor Name="yukon yellow" RGB="#ffff80" UUID="C107CC50-7814-4FEA-A501-61F8BBE19048" InternalID="28" />
+	<UserColor Name="icelandic brown" RGB="#808000" UUID="D8A64CD2-BF05-455E-8814-8BE38AAF8F31" InternalID="29" />
+	<UserColor Name="quebec pink" RGB="#ff8080" UUID="D45D529D-16E5-4509-8B23-F5F32F1EE3A0" InternalID="30" />
+	<UserColor Name="pygmy pink" RGB="#ff0080" UUID="65B61B51-8C45-4F29-A143-2EE4A7D4BDE5" InternalID="32" />
+	<UserColor Name="carolina blue" RGB="#75d1f0" UUID="3ED8AF2C-2975-446C-8133-12CD27404545" InternalID="37" />
+	<UserColor Name="pygmy maroon" RGB="#800000" UUID="613B8C6D-6723-4923-AFB3-04F66CF8F015" InternalID="34" />
+	<UserColor Name="mexican purple" RGB="#800080" UUID="FF128C37-BA40-4F16-A8A8-1FDF35A09FBB" InternalID="38" />
+	<UserColor Name="dark cyan" RGB="#0080ff" UUID="27EB9916-47FF-4FBC-906A-0251BD168D66" InternalID="41" />
+	<UserColor Name="hawaiian grey" RGB="#c0c0c0" UUID="D5D3D572-2152-4E67-8CEC-35029F42FF18" InternalID="42" />
+	<UserColor Name="pygmy yellow" RGB="#ffff00" UUID="75BA3148-0773-4BC3-9783-E27DE8651686" InternalID="43" />
+	<UserColor Name="yemeni blue" RGB="#8080ff" UUID="A121BF47-4F8D-4792-8A47-DB94FD90A235" InternalID="44" />
+	<UserColor Name="venezuelan brown" RGB="#a9661d" UUID="2A080F26-E7B0-412B-A91F-B39F5DF52915" InternalID="46" />
+	<UserColor Name="ugandan pink" RGB="#f097c1" UUID="7D9B5347-240E-491D-A231-5AE73D9BE392" InternalID="47" />
+</UserColors>

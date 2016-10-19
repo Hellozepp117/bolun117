@@ -1,0 +1,22 @@
+Warning: The variable "VB_Is_Outlier" is not initialized (default values are used).
+Warning: The parameter "PI_Point" is not initialized (default values are used).
+Warning: The domain set "SI_Dimensions" is not initialized (default values are used).
+Warning: The element parameter "PE_Class" is not initialized (default values are used).
+Warning at line 3 in user-defined function section "Proc_Generate_Random_Instance_Annulus_2D".
+The parameter "PI_Num_Classes" is not initialized (default values are used).
+Execution error at line 3 in user-defined function section "Proc_Generate_Random_Instance_Annulus_2D".
+Going from 1 to 0 cannot be achieved with increment 1.
+Execution error at line 7 in user-defined function section "Proc_Save_Instance".
+The file "data\text_instances\Clustering_instance_P300_C2_D2.txt" cannot be opened: No such file or directory.
+Warning at line 1 in user-defined function section "Solve_Feasibility_LP".
+The parameter "PI_EPSILON" is not initialized (default values are used).
+Warning at line 1 in user-defined function section "Solve_Feasibility_LP".
+After zero iterations CPLEX 12.6.3 concluded that MP_Feasibility_LP is infeasible.
+Warning at line 1 in user-defined function section "Solve_Feasibility_LP".
+After zero iterations CPLEX 12.6.3 concluded that MP_Feasibility_LP is infeasible.
+Warning at line 1 in user-defined function section "Solve_Feasibility_LP".
+After zero iterations CPLEX 12.6.3 concluded that MP_Feasibility_LP is infeasible.
+Warning at line 1 in user-defined function section "Solve_Feasibility_LP".
+After zero iterations CPLEX 12.6.3 concluded that MP_Feasibility_LP is infeasible.
+Warning at line 1 in user-defined function section "Solve_Feasibility_LP".
+After zero iterations CPLEX 12.6.3 concluded that MP_Feasibility_LP is infeasible.
