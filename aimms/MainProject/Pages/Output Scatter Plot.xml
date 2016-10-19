@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-02-13 18:58:09">
+<Page Version="4000" TimeStamp="2016-09-16 02:30:14">
 	<PageEditSize Type="Inherited" />
 	<ProjectUUID>13A7D782-E291-4B68-87A1-8DAD9D688856</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
@@ -14,10 +14,10 @@
 		<VerticalScrollbar>true</VerticalScrollbar>
 		<ScrollControl>NavigationButtons</ScrollControl>
 		<VisibleArea>
-			<Left>-18.7473072583</Left>
-			<Right>19.9485878131</Right>
-			<Top>12.4872399795</Top>
-			<Bottom>-9.27278589625</Bottom>
+			<Left>-0.129394820552</Left>
+			<Right>1.17509957926</Right>
+			<Top>0.933509566717</Top>
+			<Bottom>0.19994772916</Bottom>
 		</VisibleArea>
 		<Node>
 			<Identifier>i_non_outlier</Identifier>
@@ -38,7 +38,7 @@
 			<NumberFormat Width="6" Decimals="2" />
 			<MaximumSize>8</MaximumSize>
 			<TextPosition>Right</TextPosition>
-			<TextShowWhat>Nothing</TextShowWhat>
+			<TextShowWhat>ElementName</TextShowWhat>
 			<Color>PE_Solution_Color( i_outlier )</Color>
 			<Size>PD_Solution_Node_Size( i_outlier )</Size>
 			<Shape>Rectangle</Shape>

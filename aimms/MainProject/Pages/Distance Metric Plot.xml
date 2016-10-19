@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-10-08 23:31:58">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>13A7D782-E291-4B68-87A1-8DAD9D688856</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Network Object">
+		<Location top="48" left="90" bottom="450" right="852" />
+		<TabOrder>1</TabOrder>
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<HorizontalScrollbar>true</HorizontalScrollbar>
+		<VerticalScrollbar>true</VerticalScrollbar>
+		<ScrollControl>NavigationButtons</ScrollControl>
+		<VisibleArea>
+			<Left>-2.95620618557</Left>
+			<Right>2.96610309278</Right>
+			<Top>1.536</Top>
+			<Bottom>-1.536</Bottom>
+		</VisibleArea>
+		<Node>
+			<Identifier>i_plot</Identifier>
+			<XCoordinate>PI_Unit_Circle_Plot_Point( i_plot, 'd1' )</XCoordinate>
+			<YCoordinate>PI_Unit_Circle_Plot_Point( i_plot, 'd2' )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>2</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Shape>Rectangle</Shape>
+		</Node>
+		<Node>
+			<Identifier>i_plot</Identifier>
+			<XCoordinate>PD_Dist_Metric_Plot_Point( i_plot, 'd1' )</XCoordinate>
+			<YCoordinate>PD_Dist_Metric_Plot_Point( i_plot, 'd2' )</YCoordinate>
+			<NumberFormat Width="6" Decimals="2" />
+			<MaximumSize>8</MaximumSize>
+			<ScaleFactor>5</ScaleFactor>
+			<TextPosition>Right</TextPosition>
+			<TextShowWhat>Nothing</TextShowWhat>
+			<Shape>Rectangle</Shape>
+		</Node>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>PI_Unit_Circle_Plot_Point</Symbol>
+			<Symbol>PD_Dist_Metric_Plot_Point</Symbol>
+			<Symbol>i_plot</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

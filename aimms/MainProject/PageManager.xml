@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 <PageManager>
+	<Page Name="Iterative_LP_Loop plot" PageGUID="FF0189C9-8CBA-408F-B610-FF4B2183F604" />
 	<Page Name="Page 1" PageGUID="CE47AF4A-A595-4D3A-819C-1C8F57873D50" />
 	<Page Name="Input Scatter Plot" PageGUID="41B3D3D0-C93B-44D9-9198-DB3DF2857132" />
+	<Page Name="Copy Input Scatter Plot" PageGUID="1DA46744-FD29-4FE7-A265-DF7A8F91D00B" />
 	<Page Name="Output Scatter Plot" PageGUID="58B1EDBE-F6CD-47B7-ABEA-0D9C0CE469FE" />
 	<Page Name="Objective Function Plots" PageGUID="A2189CA2-8BF8-4119-B1F3-906D76CFF774" />
+	<Page Name="Distance Metric Plot" PageGUID="21BDC776-41CB-46B1-BE7D-A6214E326C8E" />
 	<Page Name="All Data Pages" PageGUID="EACA8C73-AC80-4F3D-8B77-B600FEEF4E5E">
 		<Page Name="[Data Page] PD_Delta" PageGUID="C81A8687-AFA1-4DB3-ACC5-B4E444BED1E7" />
 		<Page Name="[Data Page] PI_Point" PageGUID="4C21E806-FC86-48E2-9071-9E3375CC376E" />
+		<Page Name="[Data Page] VC_Min_Dist" PageGUID="AE5B3D71-35EF-4C40-A54D-DD1271343458" />
 	</Page>
 </PageManager>

@@ -8,7 +8,10 @@
 
 \usepackage{algorithmic}
 \usepackage{algorithm}
-\usepackage[usenames,dvipsnames]{color}
+%\usepackage[usenames,dvipsnames]{color}
+
+\usepackage{todonotes}
+
 \usepackage{fullpage,graphicx,amssymb,amsmath}
 \usepackage{enumerate}
 \usepackage{subfigure}
@@ -339,11 +342,13 @@ Outliers are handled through the binary $z_{i}$ decision variables.
 If $z_{i} = 1$, then constraint \eqref{eq:outlier_separation_logic} ensures that the separation $\lambda_i$ is 0 and hence ignored; otherwise (if $z_{i} = 0$), this constraint is effectively ignored. 
 Constraints \eqref{eq:mccormick_1}-\eqref{eq:mccormick_3} are the so-called McCormick envelopes needed to linearize the bilinear equation $w_{ij} = d_{ij} y_{ij}$.
 
+\todo[inline]{Modify to incorporate assumption that $0 \leq d_{ij} \leq 1$ for all $i$ and $j$.}
 
+ 
 
-TODO: Modify to incorporate assumption that $0 \leq d_{ij} \leq 1$ for all $i$ and $j$.
-
-
+\subsection{Similar to previous but we will have just one lambda}
+\label{sec:mimax_oneLamnda}
+\todo[inline]{FInish this soon and compare with previous approach}
 
 \newpage
 \section{Generalized disjunctive programming (GDP) formulations}
@@ -401,6 +406,45 @@ $\v{B}$ & $\frac{p(p-1)}{2}$ \\
 Note that we may always assume that the data (input vectors) $v_{i}$ have been normalized to reside in the unit hypercube as follows: $v_{ij} \leftarrow (v_{ij} - m)/(M-m)$ where $m=\min\{v_{ij} : i \in \mc{N}, j=1,\dots,D \}$ and $M=\max\{v_{ij} : i \in \mc{N}, j=1,\dots,D \}$.
 \end{proposition}
 
+
+
+\newpage 
+\part{Progress Reports}
+
+
+
+\subsection{2016-10-21}
+\begin{itemize}
+\item Loading instance works
+
+\item Solving  \eqref{model:epsilon_lp_1} works now
+
+\item Model \eqref{model:milp_with_outlier_detection}
+works
+
+
+show some pictures here
+
+
+\item I did this and that
+\end{itemize}
+{\bf problems and questions:}
+\begin{itemize}
+\item queston 1
+\item question 2
+
+\end{itemize}
+{\bf suggestions:}
+\begin{itemize}
+\item section \ref{sec:mimax_oneLamnda}
+\end{itemize}
+
+\newpage
+\part{Tasks to do }
+
+\begin{itemize}
+\item put here the ideas from excel
+\end{itemize}
 
 
 \end{document}
