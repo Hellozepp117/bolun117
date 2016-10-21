@@ -40,6 +40,8 @@
 %\newcommand{\Var}{\mathbb{V}\text{a}\mathbb{R}} % Value-at-risk
 %\newcommand{\Var}{\mathbb{V}@\mathbb{R}} % Value-at-risk
 
+
+\usepackage{url}
 \newcommand{\cone}{{\rm cone}} % Cone
 \newcommand{\conv}{{\rm conv}} % Convex hull
 \newcommand{\clconv}{{\rm clconv}} % Closed convex hull
@@ -447,6 +449,39 @@ $\v{B}$ & $\frac{p(p-1)}{2}$ \\
 Note that we may always assume that the data (input vectors) $v_{i}$ have been normalized to reside in the unit hypercube as follows: $v_{ij} \leftarrow (v_{ij} - m)/(M-m)$ where $m=\min\{v_{ij} : i \in \mc{N}, j=1,\dots,D \}$ and $M=\max\{v_{ij} : i \in \mc{N}, j=1,\dots,D \}$.
 \end{proposition}
 
+
+\newpage
+\section{Gershgorin Circle Theorem}
+
+Reference \url{https://en.wikipedia.org/wiki/Gershgorin_circle_theorem}
+
+Why do we care about this theorem? It provides a sufficient condition to ensure that a square matrix is positive semi-definite.
+
+Let $\v{A}$ be a symmetric $n \times n$ matrix (hence, all eigenvalues are real).
+Let $R_{i}=\sum _{j\neq {i}} \left|a_{ij}\right|$ be the sum of the absolute values of the non-diagonal entries in the $i$-th row. Let $D(a_{ii},R_{i})$ be the closed circle (or disc) centered at $a_{ii}$ with radius $R_{i}$. Such a disc is called a Gershgorin disc.
+
+\begin{theorem}[Gershgorin Circle Theorem]
+Every eigenvalue of $\v{A}$ lies within at least one of the Gershgorin discs $D(a_{ii},R_{i})$.
+\end{theorem}
+
+Let $\lambda^{\min}(\v{A})$ be the smallest eigenvalue of $\v{A}$ and let $\lambda_G^{\min}(\v{A}) = \min_{i=1,\ldots,n} \{a_{ii} - R_i\}$.
+\begin{corollary}
+If $\lambda_G^{\min}(\v{A}) \geq 0$, then $\v{A}$ is positive semi-definite. 
+\end{corollary}
+\proof Gershgorin's circle theorem asserts that $\lambda_G^{\min}(\v{A})$ is a lower bound on the minimum eigenvalue of $\v{A}$, i.e., $\lambda^{\min}(\v{A}) \geq \lambda_G^{\min}(\v{A})$.  One definition of a psd matrix is that all of its eigenvalues are non-negative. \qed
+
+In our problem, we may require the matrix $\v{B}$ to be positive semi-definite.  Gershgorin's theorem tells us that this can be partially accomplished using linear programming techniques.  (I say ``partially'' because Gershgorin's theorem is not a necessary condition, thus it enforcing $\lambda_G^{\min}(\v{A}) \geq 0$ is actually a restriction, i.e., it may forbid some eligible psd matrices.  Nevertheless, it's an interesting starting point.)  To accomplish this with our matrix $\v{B}$, let $R_{k}(\v{B})=\sum _{\ell \neq k} \left|b_{k\ell}\right|$ and note that the condition $\lambda_G^{\min}(\v{B}) \geq 0$ implies that $\min_{k=1,\ldots,p} \{b_{kk} - R_k(\v{B})\} \geq 0$, which is equivalent to $b_{kk} - \sum _{\ell \neq k} \left|b_{k\ell}\right| \geq 0$ for all $k=1,\ldots,p$.  After introducing auxiliary non-negative decision variables $b^+_{k\ell}$ to model $|b_{k\ell}|$ for all $k \neq \ell$, the latter can be converted into a set of linear constraint as follows:
+\begin{subequations} \label{model:gershgorin_restriction}
+\begin{alignat}{4}
+& b_{kk} - \sum _{\ell \neq k} b^+_{k\ell} \geq 0 && \qquad \forall k=1,\ldots,p \\
+& b^+_{k\ell} \geq b_{k\ell} && \qquad \forall k=1,\ldots,p, \ell=1,\ldots,p~(k \neq \ell) \\
+& b^+_{k\ell} \geq -b_{k\ell} && \qquad \forall k=1,\ldots,p, \ell=1,\ldots,p~(k \neq \ell) \\
+& b^+_{k\ell} \geq 0 && \qquad \forall k=1,\ldots,p, \ell=1,\ldots,p~(k \neq \ell)
+\end{alignat}
+\end{subequations}
+
+\todo[inline]{In the AIMMS code, we do not store the full $\v{B}$ matrix, but instead work only with the upper diagonal. Thus, it does not make sense to sum over all elements in row $k$ as written in $\sum _{\ell \neq k} b^+_{k\ell}$. Task: Write a similar version of constraints~\ref{model:gershgorin_restriction} in Latex. Implement these additional variables and constraints in AIMMS.  Also, include a binary parameter, say, PI-Require-PSD (use underscores) such that these new variables and constraints are only active if PI-Require-PSD = 1, i.e., you should put a conditional statement ``$|$ ~ PI-Require-PSD'' in the ``index domain'' of these new variables and constraints.
+}
 
 
 \newpage 
