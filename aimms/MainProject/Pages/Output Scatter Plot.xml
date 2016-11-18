@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-09-16 02:30:14">
+<Page Version="4000" TimeStamp="2016-11-04 08:03:17">
 	<PageEditSize Type="Inherited" />
 	<ProjectUUID>13A7D782-E291-4B68-87A1-8DAD9D688856</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
@@ -14,10 +14,10 @@
 		<VerticalScrollbar>true</VerticalScrollbar>
 		<ScrollControl>NavigationButtons</ScrollControl>
 		<VisibleArea>
-			<Left>-0.129394820552</Left>
-			<Right>1.17509957926</Right>
-			<Top>0.933509566717</Top>
-			<Bottom>0.19994772916</Bottom>
+			<Left>0.30125881315</Left>
+			<Right>1.40922664417</Right>
+			<Top>0.753643114921</Top>
+			<Bottom>0.130594891645</Bottom>
 		</VisibleArea>
 		<Node>
 			<Identifier>i_non_outlier</Identifier>
@@ -40,7 +40,7 @@
 			<TextPosition>Right</TextPosition>
 			<TextShowWhat>ElementName</TextShowWhat>
 			<Color>PE_Solution_Color( i_outlier )</Color>
-			<Size>PD_Solution_Node_Size( i_outlier )</Size>
+			<Size>PD_LP_Solution_Node_Size( i_outlier )</Size>
 			<Shape>Rectangle</Shape>
 		</Node>
 		<Arc>
@@ -87,6 +87,7 @@
 			<Symbol>PD_Solution_Node_Size</Symbol>
 			<Symbol>i_outlier</Symbol>
 			<Symbol>i_non_outlier</Symbol>
+			<Symbol>PD_LP_Solution_Node_Size</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
