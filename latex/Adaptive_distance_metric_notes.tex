@@ -82,6 +82,60 @@
 
 \maketitle
 
+
+
+\section{Meeting Notes 11/18/2016}
+
+
+\begin{itemize}
+\item After we remove outliers and learn the good distance measure, we need to instert outl. back into the dataset. Few approaches
+\begin{enumerate}
+\item sort the data by $R_i = \frac{ \mbox{min distance to different class} }{ \mbox{min distance to my class} }$
+we will sort outliers from largest to smallest.
+we start inserting from largest one to smaller and stop when we cannot improve.
+After each insertion RECOMPUTE $R_i$'s
+\item Solve optimization procedure, MIP to decide which outliers to include with constraint that $B$ cannot change a lot (or another variant when I can change $B$)
+\item create a plot $R_i(i)$ as $i$ and from the plot see where you should stop
+\end{enumerate}
+\end{itemize}
+
+\todo[inline]{New HW's for next week}
+\begin{itemize}
+\item try to formulate the MIP which can be used to insert outliers :)
+\item after you check it with me, implement it in AMPL
+
+
+\item also implement the $R_i$ procedure, 
+showing plot of $R_i(i)$.
+Also we need to compare the results.
+
+\end{itemize}
+
+
+\todo[inline]{Older Hw}
+\begin{itemize}
+\item the motivation example why we need to remove outliers before learning distance measure
+
+\item redo the plots which has been updated
+
+\item show how the choice of $\epsilon$ is affecting the results
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Introduction and motivation}
 
 Clustering (also known as unsupervised classification) and Classification (commonly understood to be supervised, i.e., based on training data) are common ways of performing data analysis to perform a range of functions like anomaly detection and diagnosis, data segmentation and model development/refinement. Consequently, there is a large body of research on these topics (see for example [1] and references therein for a survey of currently used methods) offering different solutions ranging from K-means, spectral methods and other more complex methods for Clustering, as well as Support Vector Machines, Artificial Neural Networks (ANN), their non-linear Kernel-based variants and others for Classification.
