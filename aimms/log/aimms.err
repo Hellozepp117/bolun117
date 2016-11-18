@@ -1,3 +1,172 @@
+Warning: The element parameter "PE_Class" is not initialized (default values are used).
+Warning: The variable "VC_Min_Dist" is not initialized (default values are used).
+Warning: The variable "VC_Distance" is not initialized (default values are used).
+Semantic error at line 3 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve", column 9.
+The index "i_epsilon" cannot appear on the left-hand side of an assignment statement.
 Warning: The parameter "PI_Point" is not initialized (default values are used).
 Warning: The domain set "SI_Dimensions" is not initialized (default values are used).
-Warning: The element parameter "PE_Class" is not initialized (default values are used).
+Semantic error at line 5878, column 1.
+The range of index "i" cannot be changed from domain set "SI_Points" to set "SI_Points_Outliers".
+Semantic error at line 5882, column 1.
+The range of index "i" cannot be changed from domain set "SI_Points" to set "SI_Points_Outliers".
+Semantic error at line 5 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_2", column 29.
+The set "SD_LP_Outlier_Points" is not a subset of or element in set "SI_Points_Outliers".
+Semantic error at line 5903, column 1.
+The range of index "i" cannot be changed from domain set "SI_Points" to set "SI_Points_Outliers".
+Semantic error at line 5907, column 1.
+The range of index "i" cannot be changed from domain set "SI_Points" to set "SI_Points_Outliers".
+Semantic error at line 5 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_2", column 29.
+The set "SD_LP_Outlier_Points" is not a subset of or element in set "SI_Points_Outliers".
+Semantic error at line 5928, column 1.
+The range of index "i" cannot be changed from domain set "SI_Points" to set "SI_Points_Outliers".
+Semantic error at line 5932, column 1.
+The range of index "i" cannot be changed from domain set "SI_Points" to set "SI_Points_Outliers".
+Semantic error at line 5 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_2", column 29.
+The set "SD_LP_Outlier_Points" is not a subset of or element in set "SI_Points_Outliers".
+Semantic error at line 5953, column 1.
+The range of index "i" cannot be changed from domain set "SI_Points" to set "SI_Points_Outliers".
+Semantic error at line 5957, column 1.
+The range of index "i" cannot be changed from domain set "SI_Points" to set "SI_Points_Outliers".
+Semantic error at line 5 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_2", column 29.
+The set "SD_LP_Outlier_Points" is not a subset of or element in set "SI_Points_Outliers".
+Semantic error at line 5978, column 1.
+The range of index "i" cannot be changed from domain set "SI_Points" to set "SI_Points_Outliers".
+Semantic error at line 5982, column 1.
+The range of index "i" cannot be changed from domain set "SI_Points" to set "SI_Points_Outliers".
+Semantic error at line 5 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_2", column 29.
+The set "SD_LP_Outlier_Points" is not a subset of or element in set "SI_Points_Outliers".
+Semantic error at line 5 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_2", column 29.
+The set "SD_LP_Outlier_Points" is not a subset of or element in set "SI_Points_Outliers".
+Semantic error at line 5 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_2", column 51.
+The set "SD_LP_Outlier_Points" is not a subset of or element in set "SI_Points_Outliers".
+Generation error at line 2 in user-defined function section "Solve_Max_Epsilon_LP".
+The objective of MP_Max_Epsilon_LP has not been specified.
+Generation error at line 2 in user-defined function section "Solve_Max_Epsilon_LP".
+The LP mathematical program "MP_Max_Epsilon_LP" does not contain any elements.
+Execution error while evaluating the definition of parameter "PD_L2_Separation".
+Operation inf - inf is not defined.
+Generation error at line 2 in user-defined function section "Solve_Max_Epsilon_LP".
+The objective of MP_Max_Epsilon_LP has not been specified.
+Domain violation at line 14658, column 19.
+The number of arguments in the domain set "SI_Points" is not correct.
+Domain violation at line 14674, column 19.
+The number of arguments in the domain set "SI_Points" is not correct.
+Domain violation at line 14709, column 19.
+The number of arguments in the domain set "SI_Points" is not correct.
+Domain violation at line 15082, column 19.
+The number of arguments in the domain set "SI_Points" is not correct.
+Semantic error.
+The internal procedure "Proc_Read_Instance_From_Text_File_copy" has already been declared as a user-defined function.  Please use another name.
+Semantic error at line 2 in user-defined function section "Proc_Read_Instance_From_Text_File_copy_test", column 16.
+The identifier "Cl" has not been declared.
+Semantic error.
+The undeclared "i_O" is not an index.
+Semantic error at line 23822, column 1.
+The identifier "i_O" has not been declared.
+Semantic error at line 24369, column 69.
+The undeclared "i_O" is not an index.
+Semantic error at line 24370, column 1.
+The identifier "i_O" has not been declared.
+Domain violation at line 26291, column 27.
+The first root set on the left (set "Integers") does not match with the first root set on the right (domain set "SI_Points").
+Domain violation at line 26843, column 27.
+The first root set on the left (set "Integers") does not match with the first root set on the right (domain set "SI_Points").
+Domain violation at line 27526, column 27.
+The first root set on the left (set "Integers") does not match with the first root set on the right (domain set "SI_Points").
+Domain violation at line 27532, column 27.
+The first root set on the left (set "Integers") does not match with the first root set on the right (domain set "SI_Points").
+Semantic error at line 27620, column 7.
+The keyword "integer" is not an index.
+Syntax error at line 27621, column 1.
+The symbol "Integer" is not expected.
+Domain violation at line 27623, column 27.
+The first root set on the left (set "Integers") does not match with the first root set on the right (domain set "SI_Points").
+Semantic error at line 28168, column 69.
+The keyword "integer" is not an index.
+Syntax error at line 28169, column 1.
+The symbol "Integer" is not expected.
+Domain violation at line 28175, column 27.
+The first root set on the left (set "Integers") does not match with the first root set on the right (domain set "SI_Points").
+Semantic error at line 28860, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 29411, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 2 in user-defined function section "MainTermination", column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 2 in user-defined function section "MainTermination", column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30095, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30100, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30188, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30188.
+The mandatory attribute "subset of" of indexed set "SI_LP_Outlier_Points" has not been specified.
+Semantic error at line 30188, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30191, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30195, column 1.
+The mandatory attribute "subset of" of indexed set "SI_LP_Outlier_Points" has not been specified.
+Semantic error at line 30195, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30282, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30282.
+The mandatory attribute "subset of" of indexed set "SI_LP_Outlier_Points" has not been specified.
+Semantic error at line 30282, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30285, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30289, column 1.
+The mandatory attribute "subset of" of indexed set "SI_LP_Outlier_Points" has not been specified.
+Semantic error at line 30289, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30376, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30376.
+The mandatory attribute "subset of" of indexed set "SI_LP_Outlier_Points" has not been specified.
+Semantic error at line 30376, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30379, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30383, column 1.
+The mandatory attribute "subset of" of indexed set "SI_LP_Outlier_Points" has not been specified.
+Semantic error at line 30383, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30470, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Semantic error at line 30470.
+The mandatory attribute "subset of" of indexed set "SI_LP_Outlier_Points" has not been specified.
+Semantic error at line 30470, column 1.
+The mandatory attribute "subset of" is missing from indexed set "SI_LP_Outlier_Points".
+Syntax error at line 31892, column 6.
+The symbol "{" is not expected.
+Syntax error at line 31897, column 6.
+The symbol "{" is not expected.
+Syntax error at line 2 in user-defined function section "test", column 15.
+The symbol "then" is not expected.
+Warning at line 5 in user-defined function section "test".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Domain violation at line 3 in user-defined function section "test", column 64.
+There is a mismatch in the root sets domain set "SI_Points" and set "Integers".
+Domain violation at line 3 in user-defined function section "test", column 69.
+There is a mismatch in the root sets domain set "SI_Points" and set "Integers".
+Domain violation at line 3 in user-defined function section "test", column 69.
+There is a mismatch in the root sets domain set "SI_Points" and set "Integers".
+Semantic error at line 4 in user-defined function section "test", column 17.
+The index "i_o" cannot appear on the left-hand side of an assignment statement.
+Syntax error at line 4 in user-defined function section "test", column 1.
+The symbol "for" is not expected.
+Domain violation at line 9 in user-defined function section "test", column 12.
+The scope of index "i" has not been specified.
+Syntax error at line 9 in user-defined function section "test", column 13.
+The symbol "then" is not expected.
+Semantic error at line 9 in user-defined function section "test", column 30.
+Only elements or sets can be added to or subtracted from sets.
+Syntax error at line 11 in user-defined function section "test", column 42.
+The symbol "then" is not expected.
+Syntax error at line 15 in user-defined function section "test", column 9.
+The symbol "endif" is not expected.

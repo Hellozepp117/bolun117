@@ -61,6 +61,9 @@ Model Main_Adaptive_Distance_Metric_Selection {
             Set SI_Points {
                 Index: i, j, k;
             }
+            Set SI_Points_Outliers {
+                Index: iii, jjj, kkk;
+            }
             Set SI_Classes {
                 Index: c;
             }
@@ -100,6 +103,13 @@ Model Main_Adaptive_Distance_Metric_Selection {
     }
     Section REFINED_DATA {
         DeclarationSection Refined_Set_Declarations {
+            Set SD_Neighbors_and_Non {
+                SubsetOf: (SI_Points,SI_Points);
+                Definition: {
+                    
+                    { (i,j) | i <> j }
+                }
+            }
             Set SD_Neighbors {
                 SubsetOf: (SI_Points,SI_Points);
                 Definition: {
@@ -183,6 +193,9 @@ Model Main_Adaptive_Distance_Metric_Selection {
     Section MATH_PROGRAMS {
         Section COMMON {
             DeclarationSection Common_Variables {
+                Variable VC_Lambda_Robust {
+                    Range: free;
+                }
                 Variable VC_Lambda {
                     IndexDomain: i;
                     Range: nonnegative;
@@ -379,6 +392,74 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 }
             }
         }
+        Section MILP_Section4_Robust {
+            DeclarationSection MILP_Robust_Problem {
+                Variable VC_MILP_Robust_OBJ {
+                    Range: free;
+                    Definition: VC_Lambda_Robust-PD_Robust_Rho *sum[i , VC_Z(i)];
+                }
+                MathematicalProgram MILP_Robust_Problem_solve {
+                    Objective: VC_MILP_Robust_OBJ;
+                    Direction: maximize;
+                    Constraints: SD_MILP_Robust_Problem_Constraints;
+                    Variables: SD_MILP_Robust_Problem_Variables;
+                    Type: Automatic;
+                }
+                Set SD_MILP_Robust_Problem_Variables {
+                    SubsetOf: AllVariables;
+                    Definition: AllVariables * (COMMON + MILP_Section4_Robust + MILP_Section4);
+                }
+                Set SD_MILP_Robust_Problem_Constraints {
+                    SubsetOf: AllConstraints;
+                    Definition: AllConstraints * (COMMON + MILP_Section4_Robust);
+                }
+            }
+            DeclarationSection MILP_Robust_Constraints {
+                Constraint CL_Robust_VC_Y {
+                    IndexDomain: i;
+                    Definition: 1 = sum[ j | (i,j) in SD_Neighbors , VC_Y(i,j) ];
+                }
+                Constraint CL_Robust_lambda_condition {
+                    IndexDomain: i;
+                    Definition: {
+                        VC_Lambda(i) <= 1 - VC_Z(i);
+                    }
+                }
+                Constraint CL_MILP_Robust_Max_Min_Dist_To_Nearest_Non_Neighbor {
+                    IndexDomain: (i,k) | (i,k) in SD_Non_Neighbors;
+                    Definition: {
+                        
+                        sum[ j | (i,j) in SD_Neighbors , VC_W(i,j) ] + VC_Lambda_Robust <= VC_Distance(i,k) + PI_MAX_DISTANCE * VC_Z(i);
+                    }
+                }
+                Constraint CL_Robust_McCormick_envolopes_1 {
+                    IndexDomain: (i,j) | (i,j) in SD_Neighbors;
+                    Definition: {
+                        VC_W(i,j) <= VC_Distance(i,j);
+                    }
+                }
+                Constraint CL_Robust_McCormick_envolopes_2 {
+                    IndexDomain: (i,j) | (i,j) in SD_Neighbors;
+                    Definition: {
+                        VC_W(i,j) <= VC_Y(i,j);
+                    }
+                }
+                Constraint CL_Robust_McCormick_envolopes_3 {
+                    IndexDomain: (i,j) | (i,j) in SD_Neighbors;
+                    Definition: {
+                        VC_W(i,j) >= VC_Distance(i,j) + VC_Y(i,j) - 1;
+                    }
+                }
+            }
+            DeclarationSection MILP_Robust_Variables;
+            DeclarationSection MILP_Robust_Parameters {
+                Parameter PD_Robust_Rho {
+                    Text: "Penalty Parameter";
+                    Default: 0;
+                    Definition: 0.1;
+                }
+            }
+        }
         Section FEASIBILITY_LP {
             DeclarationSection Feasibility_LP_Variables {
                 Variable VC_Objval_Max_Dist_To_Nearest_Non_Neighbor {
@@ -454,10 +535,125 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
     }
     Section HEURISTICS {
-        Procedure Solve_MILP_Problem {
+        Procedure test2 {
+            Body: {
+                SI_LP_Outlier_Points := SD_LP_Outlier_Points;
+                SI_Points:=SI_Points-SI_LP_Outlier_Points;
+                Solve MP_Feasibility_LP;
+            }
+        }
+        Procedure test {
+            Body: {
+                if (FileSelect(filename : PSI_TEXTFILE_NAME, directory : "data/", extension : "*.txt", title : "Load text input file")) then
+                
+                	read from file PSI_TEXTFILE_NAME;
+                
+                endif;
+                SI_LP_Outlier_Points := SD_LP_Outlier_Points;
+                SI_Points:=SI_Points-SI_LP_Outlier_Points;
+                for i_o do
+                	if SI_LP_Outlier_Points(i_o)= then
+                		!SI_LP_Outlier_Points(i_o):= SI_LP_Outlier_Points+(i | PO_Is_LP_Outlier(i));
+                		!i_o:=i_o+ 1;
+                	endif
+                endfor
+            }
+        }
+        Procedure Proc_Read_Instance_From_Text_File_copy_test {
+            Body: {
+                if (FileSelect(filename : PSI_TEXTFILE_NAME, directory : "data/", extension : "*.txt", title : "Load text input file")) then
+                
+                	read from file PSI_TEXTFILE_NAME;
+                
+                endif;
+                SI_Points:= SI_Points-SI_Points;
+                
+                read from file PSI_TEXTFILE_NAME;
+                SI_Points:= SI_Points-SI_Points;
+            }
+        }
+        Procedure Proc_Read_Instance_From_Text_File_copy {
+            Body: {
+                if (FileSelect(filename : PSI_TEXTFILE_NAME, directory : "data/", extension : "*.txt", title : "Load text input file")) then
+                
+                	read from file PSI_TEXTFILE_NAME;
+                
+                endif;
+            }
+        }
+        Procedure Copy_Proc_Iterative_LP_Loop {
+            Body: {
+                !!! ASSIGNMENT
+                SI_Points:= SI_Points-SD_LP_Outlier_Points;
+                Solve_Max_Epsilon_LP;
+                PO_Max_Epsilon := VC_Epsilon;
+                
+                for i_epsilon do
+                
+                	PI_EPSILON := ( ord( i_epsilon ) / PI_Num_Epsilons ) * PO_Max_Epsilon;	
+                	PI_Store_EPSILON(i_epsilon):= PI_EPSILON;
+                	Solve MP_Feasibility_LP;
+                	PO_Store_Q_coeff(i_epsilon,d1,d2):=PO_Q_Coeff(d1,d2);
+                	PO_Store_Num_outlier(i_epsilon):=0;
+                	for i do
+                		if (PO_Min_Dist_Achieved(i) = 0) then
+                			PO_Store_Num_outlier(i_epsilon):= PO_Store_Num_outlier(i_epsilon)+1;
+                		endif
+                	endfor
+                	!!! TODO: 
+                	!!! Store the number of outliers. Hint: Create a new parameter that uses PO_Is_LP_Outlier
+                	!!! Store the distance metric
+                
+                endfor;
+                
+                !!! TODO: Create a 2D "epsilon vs. number of outliers" 
+                !!! That is, plot with epsilon on the x axis and "number of outliers" on the y axis.  
+                !!! What do you expect this plot to look like?
+            }
+        }
+        Procedure Proc_Iterative_LP_Solve_Remove_resolve_Restore {
+            Body: {
+                	SI_Points:= SI_Points-SD_Outlier_Points;
+            }
+        }
+        Procedure Proc_Iterative_LP_Solve_Remove_resolve_2 {
             Body: {
                 
-                solve MILP_Problem_solve;
+                
+                
+                	SI_Points:= SI_Points-SD_LP_Outlier_Points;
+                	PI_EPSILON := 0.5 * PO_Max_Epsilon;
+                	Solve MP_Feasibility_LP;
+                	!Solve_Max_Epsilon_LP;
+                	PO_Store_Q_coeff(2,d1,d2):=PO_Q_Coeff(d1,d2);
+                
+                	!!! TODO: 
+                	!!! Store the number of outliers. Hint: Create a new parameter that uses PO_Is_LP_Outlier
+                	!!! Store the distance metric
+            }
+        }
+        Procedure Proc_Iterative_LP_Solve_Remove_resolve_1 {
+            Body: {
+                
+                
+                Solve_Max_Epsilon_LP;
+                PO_Max_Epsilon := VC_Epsilon;
+                	PI_EPSILON := PO_Max_Epsilon;	
+                	PI_Store_EPSILON(1):= PI_EPSILON;
+                	Solve MP_Feasibility_LP;
+                	PO_Store_Q_coeff(1,d1,d2):=PO_Q_Coeff(d1,d2);
+            }
+        }
+        Procedure Solve_MILP_Robust_Problem {
+            Body: {
+                solve MILP_Robust_Problem_solve where
+                 time_limit = 10;
+            }
+        }
+        Procedure Solve_MILP_Problem {
+            Body: {
+                solve MILP_Problem_solve where
+                 time_limit = 10;
             }
         }
         Procedure Solve_Max_Epsilon_LP {
@@ -473,6 +669,8 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 !VC_Min_Dist(i).nonvar := 1;
                 !VC_Q_Coeff(d,d) := 1;
                 !VC_Q_Coeff(d,d).nonvar := 1;
+                
+                PI_EPSILON:=0.000001;
                 
                 Solve MP_Feasibility_LP;
                 
@@ -546,7 +744,8 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Range: free;
                 Definition: {
                     
-                    VC_Min_Dist(i) - min[ j | (i,j) in SD_Neighbors , VC_Distance(i, j) ]
+                    !VC_Min_Dist(i) - min[ j | (i,j) in SD_Neighbors , VC_Distance(i, j) ]
+                    min[ j | (i,j) in  SD_Neighbors_and_Non, sum[ d , PD_Delta(i,j,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i,j,d1) * PD_Delta(i,j,d2) * VC_Q_Coeff(d1,d2) ] ]- min[ j | (i,j) in SD_Neighbors , sum[ d , PD_Delta(i,j,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i,j,d1) * PD_Delta(i,j,d2) * VC_Q_Coeff(d1,d2) ] ]
                 }
                 Comment: "Ideally, this parameter should be 0. If this quantity is negative, the point i is an outlier.";
             }
@@ -634,6 +833,84 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 vary the penalty constant from small to large to see how the distance metrics perform
                 User inputs the range of the penalty parameter, e.g.,
                 -1 to -10 by 1"
+            }
+        }
+        Section GAUSSIAN_2D {
+            Procedure Proc_Generate_Random_Instance_Gaussian_2D {
+                Body: {
+                    !PI_NUM_POINTS := 200;
+                    !PI_Num_Classes_Annulus2d := 4;
+                    SI_Classes := ElementRange(
+                    	From    :  1,
+                    	To      :  PI_Num_Classes,
+                    	Incr    :  1,
+                    	Prefix  :  'c',
+                    	Fill    :  1);
+                    SI_Dimensions := {'d1','d2'};
+                    SI_Points := ElementRange(1,PI_NUM_POINTS);  ! {1 .. PI_NUM_POINTS};
+                    
+                    !PI_Outlier_Probability := 0.0;
+                    P_Radius_Noise := PI_Noise;
+                    
+                    P_miu_Gaussian:=1;
+                    P_sigma_Gaussian:=0.3;
+                    
+                    !for i do
+                    !	PE_Class(i) := Element(SI_Classes, ceil(Uniform(0,1)*Card(SI_Classes))); ! Generate random class
+                    !	P_Angle := radians(360*Uniform(0,1)); ! Generate random 2D angle
+                    !	P_Radius_Gaussian:=normal(0,10);
+                    !	PI_Point(i, 'd1') := P_Radius_Gaussian*cos(P_Angle);
+                    !	PI_Point(i, 'd2') := P_Radius_Gaussian*sin(P_Angle);
+                    !endfor;
+                    for i do
+                    	PE_Class(i) := Element(SI_Classes, ceil(Uniform(0,1)*Card(SI_Classes))); ! Generate random class
+                    	P_Angle := radians(360*Uniform(0,1)); ! Generate random 2D angle
+                    	P_Radius := P_miu_Gaussian;
+                    	P_Radius_Gaussian:=normal(0,P_sigma_Gaussian);
+                    	PI_Point(i, 'd1') := cos(radians(ord(PE_Class(i))*360/PI_Num_Classes)) + P_Radius_Gaussian;
+                    	P_Radius_Gaussian:=normal(0,P_sigma_Gaussian);
+                    	PI_Point(i, 'd2') := sin(radians(ord(PE_Class(i))*360/PI_Num_Classes)) + P_Radius_Gaussian;
+                    	if ( PI_Outlier_Probability > 0 ) then
+                    		if ( Uniform(0,1) < PI_Outlier_Probability ) then
+                    			PE_Class(i) := Element(SI_Classes, ceil(Uniform(0,1)*Card(SI_Classes)));
+                    		endif;
+                    	endif;
+                    endfor;
+                }
+                Parameter P_sigma_Gaussian;
+                Parameter P_miu_Gaussian;
+                Parameter P_Radius_Gaussian;
+                Parameter PI_Num_Points_Annulus2d;
+                Parameter PI_Num_Classes_Annulus2d {
+                    Range: integer;
+                }
+                Parameter P_Angle;
+                Parameter P_Radius {
+                    Range: nonnegative;
+                }
+                Parameter P_Radius_Noise {
+                    Range: nonnegative;
+                }
+            }
+            Procedure Copy_Proc_Generate_New_Points {
+                Body: {
+                    
+                    !for i_new do
+                    !	PE_Class(i) := Element(SI_Classes, ceil(Uniform(0,1)*Card(SI_Classes))); ! Generate random class
+                    !	P_Angle := radians(360*Uniform(0,1)); ! Generate random 2D angle
+                    !	P_Radius := ord(PE_Class(i)) - P_Radius_Noise/2 + P_Radius_Noise*Uniform(0,1);
+                    !	PI_Point(i, 'd1') := P_Radius*cos(P_Angle);
+                    !	PI_Point(i, 'd2') := P_Radius*sin(P_Angle);
+                    !	if ( PI_Outlier_Probability > 0 ) then
+                    !		if ( Uniform(0,1) < PI_Outlier_Probability ) then
+                    !			PE_Class(i) := Element(SI_Classes, ceil(Uniform(0,1)*Card(SI_Classes)));
+                    !		endif;
+                    !	endif;
+                    !endfor;
+                    !
+                    !SI_Points := SI_Points + SI_New_Points;
+                    !
+                }
             }
         }
         Section ANNULUS_2D {
@@ -1080,6 +1357,21 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
         }
         DeclarationSection Plotting_Declarations_with_Solution {
+            Parameter PI_LP_Outlier_Points;
+            Set SI_LP_Outlier_Points {
+                SubsetOf: SI_Points;
+                Index: i_o;
+            }
+            Parameter PD_LP_Solution_Node_Size {
+                IndexDomain: i;
+                Definition: {
+                    if ( not PO_Is_LP_Outlier(i) ) then
+                    	PI_Node_Size
+                    else
+                    	PI_Outlier_Node_Size
+                    endif;
+                }
+            }
             Set SD_Outlier_Points {
                 SubsetOf: SI_Points;
                 Index: i_outlier;
@@ -1088,12 +1380,28 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     { i | PO_Is_Outlier(i) }
                 }
             }
+            Set SD_LP_Outlier_Points {
+                SubsetOf: SI_Points;
+                Index: i_LP_outlier;
+                Definition: {
+                    
+                    { i | PO_Is_LP_Outlier(i) }
+                }
+            }
             Set SD_Non_Outlier_Points {
                 SubsetOf: SI_Points;
                 Index: i_non_outlier;
                 Definition: {
                     
                     SI_Points - SD_Outlier_Points
+                }
+            }
+            Set SD_LP_Non_Outlier_Points {
+                SubsetOf: SI_Points;
+                Index: i_LP_non_outlier;
+                Definition: {
+                    
+                    SI_Points - SD_LP_Outlier_Points
                 }
             }
             Set SD_Outlier_Arcs {
@@ -1138,6 +1446,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     	0
                     endif;
                 }
+                Comment: "to do change PD_L2 to a distance metrix";
             }
             Parameter PI_Outlier_Node_Size {
                 Range: integer;
