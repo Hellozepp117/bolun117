@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-08-30 21:42:05">
+<Page Version="4000" TimeStamp="2016-11-10 18:12:31">
 	<PageEditSize Type="Inherited" />
 	<ProjectUUID>13A7D782-E291-4B68-87A1-8DAD9D688856</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
@@ -296,11 +296,11 @@
 			<Symbol>Proc_Generate_Random_Instance_Diamonds_2D</Symbol>
 			<Symbol>Proc_Generate_Random_Instance_Sinusoids_2D</Symbol>
 			<Symbol>Proc_Generate_Random_Instance_2D</Symbol>
-			<Symbol>Proc_Normalize_Data</Symbol>
 			<Symbol>PE_Color</Symbol>
 			<Symbol>PI_X_Coord</Symbol>
 			<Symbol>PI_Y_Coord</Symbol>
 			<Symbol>PI_Node_Size</Symbol>
+			<Symbol>Proc_Normalize_Data</Symbol>
 			<Symbol>i</Symbol>
 		</Model>
 	</UsedReferences>
