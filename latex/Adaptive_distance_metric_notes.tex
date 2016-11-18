@@ -450,11 +450,11 @@ Note that we may always assume that the data (input vectors) $v_{i}$ have been n
 
 
 \newpage 
-\part{Progress Reports}
+\section{Progress Reports 2016-10-21}
 
 
 
-\subsection{2016-10-21}
+
 \begin{itemize}
 \item Loading instance works
 
@@ -471,20 +471,186 @@ works. I did it in the aimms code "MILP SECTION4" Part.
 
 \end{itemize}
 
-\newpage
-\part{Tasks to do }
+{\bf Tasks to do }
 
 \begin{itemize}
-\item 1. Create new dataset -> e.g. 2 - Guassian with diffrent mu and Sigma
+\item 1. Create new dataset - e.g.  - Guassian with diffrent mu and Sigma
 \item 2. ammend the code to add new point in a.g. Scatter Point
 \item 3. Implement Optimization of Distance Metrix                 ACCOMPLISHED
 \item 4. Add the robust version for section 4. (have just one lambda) both Latex and AIMS (PROCESSING)
 \item 5. Create a performance profiles -- example 100 datasets and comapre 3-4 distance measures 
-\item 6. add new codes for replacing "a delta"  -> to  "a |delta| "           ACCOMPLISHED
+\item 6. add new codes for replacing "a delta"  - to  "a |delta| "           ACCOMPLISHED
 \item 7. add button to load instance          ACCOMPLISHED
 \item 8. For Infesible problem we solved during the meeting why it was not infeasible                  ACCOMPLISHED
 
 \end{itemize}
 
+\newpage
+\section{Progress Reports 2016-11-04}
+
+
+
+
+\begin{itemize}
+\item 1. Create new dataset - e.g.  - Guassian with diffrent mu and Sigma (ACCOMPLISHED)
+
+\item 2. Add the robust version for section 4. (have just one lambda) in AIMMS (ACCOMPLISHED)
+
+\item 3. Find out how to export figure to EPS from AIMMS (PROCESSING)
+
+\item 4. Change a copy of output scatter plot to use the learnt distance measure (ACCOMPLISHED)
+
+
+\end{itemize}
+{\bf problems and questions:}
+\begin{itemize}
+\item 1. What should I do next? Higher dimension or something else?
+
+\item 2. Still dont know how to draw a circle on a node in AIMMS.
+
+\item 3. I covered the last file u updated by mistake, so I cant see the new theory. Would u please send it to me again? I will merge all of the files in one tex, thx.
+
+
+\end{itemize}
+
+
+\newpage
+\section{Progress Reports 2016-11-11}
+
+\subsection{Shatter outliers and see $\epsilon$ and Distance Matrices in LP approach}
+
+First run the model in \eqref{model:epsilon_lp_1} in Aimms. 
+We do these in Annulus Example 10.1 with 150 points, 2 classes, Probability of outliers = 0.05 and Noise = 0.5.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.7]{Example_10_1_Origin.PNG}
+%\vspace{-0.25in}
+\caption{Example 10.1}
+\label{fig:Example_10_1_Origin}
+\end{center}
+\end{figure}
+
+After running the model in \eqref{model:epsilon_lp_1} in Aimms, we get a maximized $\epsilon$ =  0.001113532065 with outliers. 
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.7]{Example_10_1_outliers_1.PNG}
+%\vspace{-0.25in}
+\caption{Example 10.1 Outliers}
+\label{fig:Example_10_1_outliers_1}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.7]{Example_10_1_DistanceMatrix_1.PNG}
+%\vspace{-0.25in}
+\caption{Example 10.1 DistanceMatrix}
+\label{fig:Example_10_1_DistanceMatrix_1}
+\end{center}
+\end{figure}
+
+
+\newpage
+Now we delete the outliers and do\eqref{model:epsilon_lp_1} in Aimms again. we get a maximized $\epsilon$ =  0.01597093404 with outliers again. This $\epsilon$ is much larger than $\epsilon$ =  0.001113532065 in Example 10.1.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.7]{Example_10_2_outliers_1.PNG}
+%\vspace{-0.25in}
+\caption{Example 10.2 Outliers}
+\label{fig:Example_10_2_outliers_1}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.7]{Example_10_2_DistanceMatrix_1.PNG}
+%\vspace{-0.25in}
+\caption{Example 10.2 DistanceMatrix}
+\label{fig:Example_10_2_DistanceMatrix_1}
+\end{center}
+\end{figure}
+
+
+\newpage
+If we keep running the iterations, we get new outliers with new $\epsilon$ s and different Distance Matrix. In some cases, there will be always outliers after each iteration. Fortunately, In this case, we have only 3 iterations to get no outliers. In iteration 3, $\epsilon$ = 0.01597460757.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.7]{Example_10_3_outliers_1.PNG}
+%\vspace{-0.25in}
+\caption{Example 10.3 Outliers}
+\label{fig:Example_10_3_outliers_1}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.7]{Example_10_3_DistanceMatrix_1.PNG}
+%\vspace{-0.25in}
+\caption{Example 10.3 DistanceMatrix}
+\label{fig:Example_10_3_DistanceMatrix_1}
+\end{center}
+\end{figure}
+
+
+\newpage
+\subsection{Put back outliers to new model}
+We put back outliers to new model to see if they are still outliers.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.7]{Example_10_3_OutliersBack_1.PNG}
+%\vspace{-0.25in}
+\caption{Example 10.3 Outliers Back}
+\label{fig:Example_10_3_OutliersBack_1}
+\end{center}
+\end{figure}
+
+Compaired to outliers in previous iterations, the previous outliers are still outliers with new Distance Matrices in iteration = 3.
+
+{\bf problems and questions:}
+\begin{itemize}
+\item 1. If a case is "unfortunate" one(keeps popping out outliers in each iteration), how do we choose the value of $\epsilon$ to get a solution?
+
+\item 2. I just show some case that "outliers are still outliers",but how do we guarantee others follow the same rule ?
+
+\end{itemize}
+\newpage
+
+\section{Progress Reports 2016-11-18}
+
+
+
+
+\begin{itemize}
+\item 1. Fix the BUG of mistakes in showing the outliers (ACCOMPLISHED)
+
+\item 2. Fix the mistake of formula using in AIMMS (ACCOMPLISHED)
+
+\item 3. Do Iterations to refill the NonOutliers into the original dataset (Processing)
+
+
+\end{itemize}
+{\bf problems and questions:}
+\begin{itemize}
+\item 1. AIMMS CODE: How to clone a brand new set from a sub set of "a Set" without any effect when "a Set" changes? Stuck here. 
+
+
+
+
+
+
+\end{itemize}
+
+
+\newpage
+
 
 \end{document}
+
+
+
+\section{Nomenclature}
