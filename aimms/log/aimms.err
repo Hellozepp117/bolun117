@@ -210,3 +210,31 @@ Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remo
 Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
 Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
 The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 42 to 41.
+Warning at line 7 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 47 to 46.
+Warning at line 7 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 28 to 27.
+Warning at line 7 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 20 to 19.
+Syntax error at line 6 in user-defined function section "Proc_Iterative_LP_Loop", column 17.
+The symbol "do" is not expected.
+Syntax error at line 42203, column 1.
+The symbol "PI_Num_Epsilons" is not expected.
+Syntax error at line 42578, column 1.
+The symbol "PI_Num_Epsilons" is not expected.
+Warning at line 6 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Semantic error at line 8 in user-defined function section "Proc_Iterative_LP_Loop", column 25.
+The function Ord expects an expression of data type element on its first argument.
+Semantic error at line 8 in user-defined function section "Proc_Iterative_LP_Loop", column 25.
+The function Ord expects an expression of data type element on its first argument.
+Execution error at line 43522 (while evaluating the definition of set "SD_Epsilon_Indices").
+Going from 1 to 0 cannot be achieved with increment 1.
+Semantic error at line 8 in user-defined function section "Proc_Iterative_LP_Loop", column 25.
+The function Ord expects an expression of data type element on its first argument.
+Semantic error.
+The undeclared "count" is not an index.
+Semantic error.
+The parameter "countnum" is not an index.

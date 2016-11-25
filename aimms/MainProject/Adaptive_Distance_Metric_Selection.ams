@@ -89,7 +89,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
         DeclarationSection Input_Parameter_Declarations {
             Parameter PI_Store_EPSILON {
-                IndexDomain: i_epsilon;
+                IndexDomain: i_Ri;
             }
             Parameter PI_EPSILON;
             Parameter PI_Num_Points;
@@ -564,16 +564,16 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Solve_Max_Epsilon_LP;
                 PO_Max_Epsilon := VC_Epsilon;
                 
-                for i_epsilon do
+                for i_Ri do
                 
-                	PI_EPSILON := ( ord( i_epsilon ) / PI_Num_Epsilons ) * PO_Max_Epsilon;	
-                	PI_Store_EPSILON(i_epsilon):= PI_EPSILON;
+                	PI_EPSILON := ( ord( i_Ri ) / PI_Num_Epsilons ) * PO_Max_Epsilon;	
+                	PI_Store_EPSILON(i_Ri):= PI_EPSILON;
                 	Solve MP_Feasibility_LP;
-                	PO_Store_Q_coeff(i_epsilon,d1,d2):=PO_Q_Coeff(d1,d2);
-                	PO_Store_Num_outlier(i_epsilon):=0;
+                	PO_Store_Q_coeff(i_Ri,d1,d2):=PO_Q_Coeff(d1,d2);
+                	PO_Store_Num_outlier(i_Ri):=0;
                 	for i do
                 		if (PO_Min_Dist_Achieved(i) = 0) then
-                			PO_Store_Num_outlier(i_epsilon):= PO_Store_Num_outlier(i_epsilon)+1;
+                			PO_Store_Num_outlier(i_Ri):= PO_Store_Num_outlier(i_Ri)+1;
                 		endif
                 	endfor
                 	!!! TODO: 
@@ -607,7 +607,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 
                 	SI_Points_Outliers := SI_Points_Outliers + SD_LP_Outlier_Points;
                 	SI_points_Active:= SI_Points_Active-SD_LP_Outlier_Points;
-                	PI_EPSILON := 0.5 * PO_Max_Epsilon;
+                	PI_EPSILON := 0 * PO_Max_Epsilon;
                 	Solve MP_Feasibility_LP;
                 	!Solve_Max_Epsilon_LP;
                 	PO_Store_Q_coeff(2,d1,d2):=PO_Q_Coeff(d1,d2);
@@ -651,6 +651,18 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 	endfor;
                 endfor;
                 solve MP_Feasibility_LP;
+            }
+        }
+        Procedure Procedure_1 {
+            Body: {
+                
+                SI_points_Active := SI_points;
+                Solve_Max_Epsilon_LP;
+                PO_Max_Epsilon := VC_Epsilon;
+                
+                	PI_EPSILON := (  5 / PI_Num_Epsilons ) * PO_Max_Epsilon;	
+                	PI_Store_EPSILON(i_Ri):= PI_EPSILON;
+                	Solve MP_Feasibility_LP;
             }
         }
         Procedure Proc_delete_outliers {
@@ -701,20 +713,20 @@ Model Main_Adaptive_Distance_Metric_Selection {
         Procedure Proc_Iterative_LP_Loop {
             Body: {
                 !!! ASSIGNMENT
-                
+                SI_Points_Active:=SI_Points;
                 Solve_Max_Epsilon_LP;
                 PO_Max_Epsilon := VC_Epsilon;
+                PI_Num_Epsilons_1:=PI_Num_Epsilons +1;
+                for i_Ri do
                 
-                for i_epsilon do
-                
-                	PI_EPSILON := ( ord( i_epsilon ) / PI_Num_Epsilons ) * PO_Max_Epsilon;	
-                	PI_Store_EPSILON(i_epsilon):= PI_EPSILON;
+                	PI_EPSILON := (( ord( i_Ri )-1 )/ PI_Num_Epsilons ) * PO_Max_Epsilon;	
+                	PI_Store_EPSILON(i_Ri):= PI_EPSILON;
                 	Solve MP_Feasibility_LP;
-                	PO_Store_Q_coeff(i_epsilon,d1,d2):=PO_Q_Coeff(d1,d2);
-                	PO_Store_Num_outlier(i_epsilon):=0;
+                	PO_Store_Q_coeff(i_Ri,d1,d2):=PO_Q_Coeff(d1,d2);
+                	PO_Store_Num_outlier(i_Ri):=0;
                 	for i do
                 		if (PO_Min_Dist_Achieved(i) = 0) then
-                			PO_Store_Num_outlier(i_epsilon):= PO_Store_Num_outlier(i_epsilon)+1;
+                			PO_Store_Num_outlier(i_Ri):= PO_Store_Num_outlier(i_Ri)+1;
                 		endif
                 	endfor
                 	!!! TODO: 
@@ -737,16 +749,29 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
         Set SD_Epsilon_Indices {
             SubsetOf: Integers;
-            Index: i_epsilon;
+            Index: i_Ri;
             Definition: {
-                {1 .. PI_Num_Epsilons}
+                {1 .. PI_Num_Epsilons+1}
+            }
+        }
+        Set SD_Ri_Indices {
+            SubsetOf: Integers;
+            Definition: {
+                {1 .. PI_Num_Epsilons+1}
             }
         }
         Parameter PI_Num_Epsilons {
             Range: integer;
             InitialData: 5;
         }
+        Parameter PI_Num_Epsilons_1 {
+            Range: integer;
+        }
         DeclarationSection Output_Declarations {
+            Parameter countnum;
+            Parameter PO_R_store_ {
+                IndexDomain: i_out;
+            }
             Parameter temp;
             Parameter PO_R {
                 IndexDomain: i_out;
@@ -759,10 +784,10 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 }
             }
             Parameter PO_Store_Q_coeff {
-                IndexDomain: (i_epsilon,d1,d2);
+                IndexDomain: (i_Ri,d1,d2);
             }
             Parameter PO_Store_Num_outlier {
-                IndexDomain: i_epsilon;
+                IndexDomain: i_Ri;
             }
             Parameter PI_TOLERANCE {
                 Range: nonnegative;
