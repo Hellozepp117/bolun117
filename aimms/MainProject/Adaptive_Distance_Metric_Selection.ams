@@ -61,8 +61,13 @@ Model Main_Adaptive_Distance_Metric_Selection {
             Set SI_Points {
                 Index: i, j, k;
             }
+            Set SI_Points_Active {
+                SubsetOf: SI_Points;
+                Index: i_a, j_a, k_a;
+            }
             Set SI_Points_Outliers {
-                Index: iii, jjj, kkk;
+                SubsetOf: SI_Points;
+                Index: i_out, j_out, k_out;
             }
             Set SI_Classes {
                 Index: c;
@@ -197,24 +202,24 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     Range: free;
                 }
                 Variable VC_Lambda {
-                    IndexDomain: i;
+                    IndexDomain: i_a;
                     Range: nonnegative;
                 }
                 Variable VC_Distance {
-                    IndexDomain: (i,j) | i <> j;
-                    Text: "Distance between point \'i\' and point \'j\'";
+                    IndexDomain: (i_a,j_a) | i_a <> j_a;
+                    Text: "Distance between point \'i_a\' and point \'j_a\'";
                     Range: [0, PI_MAX_DISTANCE];
                     Definition: {
-                        sum[ d , PD_Delta(i,j,d)^2 * VC_Q_Coeff(d,d) ]
+                        sum[ d , PD_Delta(i_a,j_a,d)^2 * VC_Q_Coeff(d,d) ]
                         +
-                        2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i,j,d1) * PD_Delta(i,j,d2) * VC_Q_Coeff(d1,d2) ]
+                        2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_a,j_a,d1) * PD_Delta(i_a,j_a,d2) * VC_Q_Coeff(d1,d2) ]
                         
                         !range [0, PI_MAX_DISTANCE]
                     }
                     Comment: "[0, PI_MAX_DISTANCE]";
                 }
                 Variable VC_Min_Dist {
-                    IndexDomain: i;
+                    IndexDomain: i_a;
                     Range: nonnegative;
                 }
                 Variable VC_Q_Coeff {
@@ -227,12 +232,12 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     }
                 }
                 Variable VC_Separation {
-                    IndexDomain: i;
-                    Text: "Separation between the nearest neighbor of point \'i\' and its nearest non-neighbor";
+                    IndexDomain: i_a;
+                    Text: "Separation between the nearest neighbor of point \'i_a\' and its nearest non-neighbor";
                     Range: nonnegative;
                 }
                 Variable VC_Violation {
-                    IndexDomain: i;
+                    IndexDomain: i_a;
                     Range: nonnegative;
                 }
             }
@@ -466,23 +471,23 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     Range: free;
                     Definition: {
                         
-                        sum[ i, VC_Min_Dist(i) ]
+                        sum[ i_a, VC_Min_Dist(i_a) ]
                     }
                 }
             }
             DeclarationSection Feasiblity_LP_Constraints {
                 Constraint CL_Min_Dist_LEQ_All_Neighbors {
-                    IndexDomain: (i,j) | (i,j) in SD_Neighbors;
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors;
                     Definition: {
                         
-                        VC_Min_Dist(i) <= VC_Distance(i,j)
+                        VC_Min_Dist(i_a) <= VC_Distance(i_a,j_a)
                     }
                 }
                 Constraint CL_Max_Min_Dist_To_Nearest_Non_Neighbor {
-                    IndexDomain: (i,k) | (i,k) in SD_Non_Neighbors;
+                    IndexDomain: (i_a,k_a) | (i_a,k_a) in SD_Non_Neighbors;
                     Definition: {
                         
-                        VC_Min_Dist(i) + PI_EPSILON <= VC_Distance(i,k)
+                        VC_Min_Dist(i_a) + PI_EPSILON <= VC_Distance(i_a,k_a)
                     }
                 }
             }
@@ -510,10 +515,10 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     Range: free;
                 }
                 Constraint CL_Max_Epsilon_Dist_To_Nearest_Non_Neighbor {
-                    IndexDomain: (i,k) | (i,k) in SD_Non_Neighbors;
+                    IndexDomain: (i_a,k_a) | (i_a,k_a) in SD_Non_Neighbors;
                     Definition: {
                         
-                        VC_Epsilon <= VC_Distance(i,k)
+                        VC_Epsilon <= VC_Distance(i_a,k_a)
                     }
                 }
                 MathematicalProgram MP_Max_Epsilon_LP {
@@ -535,43 +540,6 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
     }
     Section HEURISTICS {
-        Procedure test2 {
-            Body: {
-                SI_LP_Outlier_Points := SD_LP_Outlier_Points;
-                SI_Points:=SI_Points-SI_LP_Outlier_Points;
-                Solve MP_Feasibility_LP;
-            }
-        }
-        Procedure test {
-            Body: {
-                if (FileSelect(filename : PSI_TEXTFILE_NAME, directory : "data/", extension : "*.txt", title : "Load text input file")) then
-                
-                	read from file PSI_TEXTFILE_NAME;
-                
-                endif;
-                SI_LP_Outlier_Points := SD_LP_Outlier_Points;
-                SI_Points:=SI_Points-SI_LP_Outlier_Points;
-                for i_o do
-                	if SI_LP_Outlier_Points(i_o)= then
-                		!SI_LP_Outlier_Points(i_o):= SI_LP_Outlier_Points+(i | PO_Is_LP_Outlier(i));
-                		!i_o:=i_o+ 1;
-                	endif
-                endfor
-            }
-        }
-        Procedure Proc_Read_Instance_From_Text_File_copy_test {
-            Body: {
-                if (FileSelect(filename : PSI_TEXTFILE_NAME, directory : "data/", extension : "*.txt", title : "Load text input file")) then
-                
-                	read from file PSI_TEXTFILE_NAME;
-                
-                endif;
-                SI_Points:= SI_Points-SI_Points;
-                
-                read from file PSI_TEXTFILE_NAME;
-                SI_Points:= SI_Points-SI_Points;
-            }
-        }
         Procedure Proc_Read_Instance_From_Text_File_copy {
             Body: {
                 if (FileSelect(filename : PSI_TEXTFILE_NAME, directory : "data/", extension : "*.txt", title : "Load text input file")) then
@@ -611,17 +579,26 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 !!! What do you expect this plot to look like?
             }
         }
-        Procedure Proc_Iterative_LP_Solve_Remove_resolve_Restore {
+        Procedure Proc_Iterative_LP_Solve_Remove_resolve_1 {
             Body: {
-                	SI_Points:= SI_Points-SD_Outlier_Points;
+                
+                SI_points_Active := SI_points;
+                Solve_Max_Epsilon_LP;
+                PO_Max_Epsilon := VC_Epsilon;
+                	PI_EPSILON := PO_Max_Epsilon;	
+                	PI_Store_EPSILON(1):= PI_EPSILON;
+                
+                
+                	!Solve MP_Feasibility_LP;
+                	PO_Store_Q_coeff(1,d1,d2):=PO_Q_Coeff(d1,d2);
             }
         }
         Procedure Proc_Iterative_LP_Solve_Remove_resolve_2 {
             Body: {
                 
                 
-                
-                	SI_Points:= SI_Points-SD_LP_Outlier_Points;
+                	SI_Points_Outliers := SI_Points_Outliers + SD_LP_Outlier_Points;
+                	SI_points_Active:= SI_Points_Active-SD_LP_Outlier_Points;
                 	PI_EPSILON := 0.5 * PO_Max_Epsilon;
                 	Solve MP_Feasibility_LP;
                 	!Solve_Max_Epsilon_LP;
@@ -632,16 +609,29 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 	!!! Store the distance metric
             }
         }
-        Procedure Proc_Iterative_LP_Solve_Remove_resolve_1 {
+        Procedure Proc_Iterative_LP_Solve_Remove_resolve_3 {
             Body: {
                 
-                
-                Solve_Max_Epsilon_LP;
-                PO_Max_Epsilon := VC_Epsilon;
-                	PI_EPSILON := PO_Max_Epsilon;	
-                	PI_Store_EPSILON(1):= PI_EPSILON;
-                	Solve MP_Feasibility_LP;
-                	PO_Store_Q_coeff(1,d1,d2):=PO_Q_Coeff(d1,d2);
+                for i_out do
+                	SI_Points_Active := SI_Points_Active + i_out;
+                	solve MP_Feasibility_LP;
+                	if PO_Is_LP_Outlier(i_out) = 0 then
+                		SI_Points_Outliers := SI_Points_Outliers - i_out;
+                		SI_Points_Active := SI_Points - SI_Points_Outliers;
+                	else SI_Points_Active := SI_Points_Active - i_out;
+                	endif
+                endfor;
+                solve MP_Feasibility_LP;
+            }
+        }
+        Procedure Proc_delete_outliers {
+            Body: {
+                SI_points_Active:= SI_points - SI_Points_Outliers;
+            }
+        }
+        Procedure Proc_put_back_outliers {
+            Body: {
+                SI_Points_Active:= SI_Points;
             }
         }
         Procedure Solve_MILP_Robust_Problem {
@@ -740,21 +730,21 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
             Parameter PO_Max_Epsilon;
             Parameter PO_LP_Separation {
-                IndexDomain: i;
+                IndexDomain: i_a;
                 Range: free;
                 Definition: {
                     
                     !VC_Min_Dist(i) - min[ j | (i,j) in SD_Neighbors , VC_Distance(i, j) ]
-                    min[ j | (i,j) in  SD_Neighbors_and_Non, sum[ d , PD_Delta(i,j,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i,j,d1) * PD_Delta(i,j,d2) * VC_Q_Coeff(d1,d2) ] ]- min[ j | (i,j) in SD_Neighbors , sum[ d , PD_Delta(i,j,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i,j,d1) * PD_Delta(i,j,d2) * VC_Q_Coeff(d1,d2) ] ]
+                    min[ j_a | (i_a,j_a) in  SD_Neighbors_and_Non, sum[ d , PD_Delta(i_a,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_a,j_a,d1) * PD_Delta(i_a,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]- min[ j_a | (i_a,j_a) in SD_Neighbors , sum[ d , PD_Delta(i_a,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_a,j_a,d1) * PD_Delta(i_a,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
                 }
                 Comment: "Ideally, this parameter should be 0. If this quantity is negative, the point i is an outlier.";
             }
             Parameter PO_Min_Dist_Achieved {
-                IndexDomain: i;
+                IndexDomain: i_a;
                 Range: binary;
                 Definition: {
                     
-                    if ( PO_LP_Separation(i) + PI_TOLERANCE >= 0 ) then
+                    if ( PO_LP_Separation(i_a) + PI_TOLERANCE >= 0 ) then
                     	1
                     else
                     	0
@@ -762,11 +752,11 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 }
             }
             Parameter PO_Is_LP_Outlier {
-                IndexDomain: i;
+                IndexDomain: i_a;
                 Range: binary;
                 Definition: {
                     
-                    1-PO_Min_Dist_Achieved(i)
+                    1-PO_Min_Dist_Achieved(i_a)
                 }
             }
             Parameter PO_Q_Coeff {
@@ -1357,11 +1347,6 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
         }
         DeclarationSection Plotting_Declarations_with_Solution {
-            Parameter PI_LP_Outlier_Points;
-            Set SI_LP_Outlier_Points {
-                SubsetOf: SI_Points;
-                Index: i_o;
-            }
             Parameter PD_LP_Solution_Node_Size {
                 IndexDomain: i;
                 Definition: {
@@ -1385,7 +1370,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Index: i_LP_outlier;
                 Definition: {
                     
-                    { i | PO_Is_LP_Outlier(i) }
+                    { i_a | PO_Is_LP_Outlier(i_a) }
                 }
             }
             Set SD_Non_Outlier_Points {
@@ -1401,7 +1386,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Index: i_LP_non_outlier;
                 Definition: {
                     
-                    SI_Points - SD_LP_Outlier_Points
+                    SI_Points_Active - SD_LP_Outlier_Points
                 }
             }
             Set SD_Outlier_Arcs {
