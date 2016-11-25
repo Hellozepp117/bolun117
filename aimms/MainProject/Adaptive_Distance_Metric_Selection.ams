@@ -69,6 +69,14 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 SubsetOf: SI_Points;
                 Index: i_out, j_out, k_out;
             }
+            Set SI_Points_Outliers_1 {
+                SubsetOf: SI_Points_Outliers;
+                Index: i_out_1, j_out_1, k_out_1;
+            }
+            Set SI_Points_Outliers_2 {
+                SubsetOf: SI_Points_Outliers;
+                Index: i_out_2, j_out_2, k_out_2;
+            }
             Set SI_Classes {
                 Index: c;
             }
@@ -624,6 +632,27 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 solve MP_Feasibility_LP;
             }
         }
+        Procedure Proc_Iterative_LP_Solve_Remove_resolve_Ri {
+            Body: {
+                SI_Points_Outliers_1:=SI_Points_Outliers;
+                for i_out do
+                	temp:=0;	
+                	SI_Points_Active := SI_Points_Active + argmax(i_out_1, PO_R(i_out_1)) ;
+                	SI_Points_Outliers_2 := argmax(i_out_1, PO_R(i_out_1));
+                	solve MP_Feasibility_LP;
+                	for i_out_2 do
+                	if PO_Is_LP_Outlier(i_out_2) = 0 then
+                		SI_Points_Outliers := SI_Points_Outliers - argmax(i_out_1, PO_R(i_out_1));
+                		SI_Points_Active := SI_Points - SI_Points_Outliers;
+                	else 
+                	SI_Points_Active := SI_Points_Active - argmax(i_out_1, PO_R(i_out_1));
+                	SI_Points_Outliers_1 := SI_Points_Outliers_1 - argmax(i_out_1, PO_R(i_out_1));
+                	endif;
+                	endfor;
+                endfor;
+                solve MP_Feasibility_LP;
+            }
+        }
         Procedure Proc_delete_outliers {
             Body: {
                 SI_points_Active:= SI_points - SI_Points_Outliers;
@@ -718,6 +747,17 @@ Model Main_Adaptive_Distance_Metric_Selection {
             InitialData: 5;
         }
         DeclarationSection Output_Declarations {
+            Parameter temp;
+            Parameter PO_R {
+                IndexDomain: i_out;
+                Range: nonnegative;
+                Definition: {
+                    !min[ j | (i,j) in SD_Non_Neighbors , VC_Distance(i, j) ] / min[ j | (i,j) in SD_Neighbors , VC_Distance(i, j) ] 
+                     min[ j_a | (i_out,j_a) in SD_Neighbors , sum[ d , PD_Delta(i_out,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_out,j_a,d1) * PD_Delta(i_out,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
+                     /
+                     min[ j_a | (i_out,j_a) in SD_Non_Neighbors , sum[ d , PD_Delta(i_out,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_out,j_a,d1) * PD_Delta(i_out,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
+                }
+            }
             Parameter PO_Store_Q_coeff {
                 IndexDomain: (i_epsilon,d1,d2);
             }
