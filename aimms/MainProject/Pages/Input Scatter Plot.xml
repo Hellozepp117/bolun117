@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-11-04 08:03:17">
+<Page Version="4000" TimeStamp="2016-12-02 12:44:12">
 	<PageEditSize Type="Inherited" />
 	<ProjectUUID>13A7D782-E291-4B68-87A1-8DAD9D688856</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
@@ -14,10 +14,10 @@
 		<VerticalScrollbar>true</VerticalScrollbar>
 		<ScrollControl>NavigationButtons</ScrollControl>
 		<VisibleArea>
-			<Left>-0.546374868373</Left>
-			<Right>1.50663050537</Right>
-			<Top>1.15994676103</Top>
-			<Bottom>0.00547159065246</Bottom>
+			<Left>-1.66555543014</Left>
+			<Right>2.62581106713</Right>
+			<Top>1.74243038819</Top>
+			<Bottom>-0.670751833077</Bottom>
 		</VisibleArea>
 		<Node>
 			<Identifier>i</Identifier>
@@ -182,11 +182,6 @@
 				<Procedure>Proc_Generate_Random_Instance_Gaussian_2D</Procedure>
 				<AbortOnError>true</AbortOnError>
 			</Action>
-			<Action Type="Run">
-				<RunWhat>SpecificProcecure</RunWhat>
-				<Procedure>Proc_Normalize_Data</Procedure>
-				<AbortOnError>true</AbortOnError>
-			</Action>
 		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Button">
@@ -242,6 +237,13 @@
 		<BackgroundColor RGB="#ffff00" />
 		<ForegroundColor RGB="#400000" />
 		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<ActionSequence>
+			<Action Type="Run">
+				<RunWhat>SpecificProcecure</RunWhat>
+				<Procedure>gen</Procedure>
+				<AbortOnError>true</AbortOnError>
+			</Action>
+		</ActionSequence>
 	</PageObject>
 	<PageObject Type="Button">
 		<Location top="30" left="588" bottom="54" right="702" />
@@ -354,6 +356,7 @@
 			<Symbol>PI_Node_Size</Symbol>
 			<Symbol>Proc_Normalize_Data</Symbol>
 			<Symbol>i</Symbol>
+			<Symbol>gen</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>

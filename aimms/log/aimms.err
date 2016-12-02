@@ -3,3 +3,81 @@ Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used
 Warning: The parameter "PI_Point" is not initialized (default values are used).
 Warning: The domain set "SI_Dimensions" is not initialized (default values are used).
 Warning: The element parameter "PE_Class" is not initialized (default values are used).
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Semantic error at line 14 in user-defined function section "gen", column 21.
+The expression 200 of data type numeric cannot be used for indexing.
+Semantic error at line 18 in user-defined function section "gen", column 27.
+The expression 200 of data type numeric cannot be used for indexing.
+Semantic error at line 18 in user-defined function section "gen", column 27.
+The expression 200 of data type numeric cannot be used for indexing.
+Domain violation at line 5 in user-defined function section "Copy_Proc_Generate_New_Points", column 34.
+The scope of index "i" has not been specified.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Domain violation at line 14 in user-defined function section "gen", column 23.
+The set "SI_New_Points" does not denote a subset of the domain set "SI_Points".
+Domain violation at line 5 in user-defined function section "Copy_Proc_Generate_New_Points", column 34.
+The scope of index "i" has not been specified.
+Domain violation at line 14 in user-defined function section "gen", column 23.
+The set "SI_New_Points" does not denote a subset of the domain set "SI_Points".
+Domain violation at line 5 in user-defined function section "Copy_Proc_Generate_New_Points", column 34.
+The scope of index "i" has not been specified.
+Domain violation at line 14 in user-defined function section "gen", column 23.
+The set "SI_New_Points" does not denote a subset of the domain set "SI_Points".
+Domain violation at line 5 in user-defined function section "Copy_Proc_Generate_New_Points", column 34.
+The scope of index "i" has not been specified.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Domain violation at line 14 in user-defined function section "gen", column 23.
+The set "SI_New_Points" does not denote a subset of the domain set "SI_Points".
+Domain violation at line 14 in user-defined function section "gen", column 23.
+The set "SI_New_Points" does not denote a subset of the domain set "SI_Points".
+Domain violation at line 14 in user-defined function section "gen", column 23.
+The set "SI_New_Points" does not denote a subset of the domain set "SI_Points".
+Domain violation at line 14 in user-defined function section "gen", column 23.
+The set "SI_New_Points" does not denote a subset of the domain set "SI_Points".
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Execution error at line 13 in user-defined function section "gen".
+The element '1' is not in the domain set "SI_Points".
+Semantic error at line 13 in user-defined function section "gen", column 18.
+The number of arguments of intrinsic function "ElementRange" should be in the range { 2 .. 6 } instead of 1.
+Semantic error at line 13 in user-defined function section "gen", column 16.
+The expression 1 of data type numeric cannot be used for indexing.
+Syntax error at line 13 in user-defined function section "gen", column 14.
+The symbol "<" is not expected.
+Semantic error at line 13 in user-defined function section "gen", column 23.
+The number of arguments of intrinsic function "ElementRange" should be in the range { 2 .. 6 } instead of 1.
+Warning at line 14 in user-defined function section "gen".
+The element '1' is not in the domain set "SI_Points".
+Warning at line 18 in user-defined function section "gen".
+The element '1' is not in the domain set "SI_Points".
+Warning at line 18 in user-defined function section "gen".
+The element '1' is not in the domain set "SI_Points".
+Warning at line 20 in user-defined function section "gen".
+The element '1' is not in the domain set "SI_Points".
+Warning at line 20 in user-defined function section "gen".
+The element '1' is not in the domain set "SI_Points".
+Execution error while evaluating the assignment statement for "PI_Point" on line 18 in user-defined function section "gen".
+Division by zero error with 360 / 0.
+Execution error while evaluating the assignment statement for "PI_Point" on line 18 in user-defined function section "gen".
+Division by zero error with 720 / 0.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Execution error while evaluating the assignment statement for "PI_Point" on line 18 in user-defined function section "gen".
+Division by zero error with 360 / 0.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Execution error while evaluating the assignment statement for "PI_Point" on line 18 in user-defined function section "gen".
+Division by zero error with 720 / 0.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Execution error while evaluating the assignment statement for "PI_Point" on line 18 in user-defined function section "gen".
+Division by zero error with 720 / 0.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Execution error while evaluating the assignment statement for "PI_Point" on line 18 in user-defined function section "gen".
+Division by zero error with 360 / 0.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.

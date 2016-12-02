@@ -84,6 +84,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Index: d, d1, d2;
             }
             Set SI_New_Points {
+                SubsetOf: SI_Points;
                 Index: i_new;
             }
         }
@@ -93,6 +94,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
             Parameter PI_EPSILON;
             Parameter PI_Num_Points;
+            Parameter PI_Num_New_Points;
             Parameter PI_Num_Classes {
                 Range: integer;
             }
@@ -904,6 +906,25 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
         }
         Section GAUSSIAN_2D {
+            Procedure delete_newpoints {
+                Body: {
+                    SI_Points := SI_Points - SI_New_Points;
+                }
+            }
+            Parameter P_sigma_Gaussian;
+            Parameter P_miu_Gaussian;
+            Parameter P_Radius_Gaussian;
+            Parameter PI_Num_Points_Annulus2d;
+            Parameter PI_Num_Classes_Annulus2d {
+                Range: integer;
+            }
+            Parameter P_Angle;
+            Parameter P_Radius {
+                Range: nonnegative;
+            }
+            Parameter P_Radius_Noise {
+                Range: nonnegative;
+            }
             Procedure Proc_Generate_Random_Instance_Gaussian_2D {
                 Body: {
                     !PI_NUM_POINTS := 200;
@@ -945,39 +966,34 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     	endif;
                     endfor;
                 }
-                Parameter P_sigma_Gaussian;
-                Parameter P_miu_Gaussian;
-                Parameter P_Radius_Gaussian;
-                Parameter PI_Num_Points_Annulus2d;
-                Parameter PI_Num_Classes_Annulus2d {
-                    Range: integer;
-                }
-                Parameter P_Angle;
-                Parameter P_Radius {
-                    Range: nonnegative;
-                }
-                Parameter P_Radius_Noise {
-                    Range: nonnegative;
-                }
             }
-            Procedure Copy_Proc_Generate_New_Points {
+            Procedure gen {
                 Body: {
+                    P_Radius_Noise := PI_Noise;
                     
-                    !for i_new do
+                    P_miu_Gaussian:=1;
+                    P_sigma_Gaussian:=0.3;
+                    
+                    !for i do
                     !	PE_Class(i) := Element(SI_Classes, ceil(Uniform(0,1)*Card(SI_Classes))); ! Generate random class
                     !	P_Angle := radians(360*Uniform(0,1)); ! Generate random 2D angle
-                    !	P_Radius := ord(PE_Class(i)) - P_Radius_Noise/2 + P_Radius_Noise*Uniform(0,1);
-                    !	PI_Point(i, 'd1') := P_Radius*cos(P_Angle);
-                    !	PI_Point(i, 'd2') := P_Radius*sin(P_Angle);
-                    !	if ( PI_Outlier_Probability > 0 ) then
-                    !		if ( Uniform(0,1) < PI_Outlier_Probability ) then
-                    !			PE_Class(i) := Element(SI_Classes, ceil(Uniform(0,1)*Card(SI_Classes)));
-                    !		endif;
-                    !	endif;
+                    !	P_Radius_Gaussian:=normal(0,10);
+                    !	PI_Point(i, 'd1') := P_Radius_Gaussian*cos(P_Angle);
+                    !	PI_Point(i, 'd2') := P_Radius_Gaussian*sin(P_Angle);
                     !endfor;
-                    !
-                    !SI_Points := SI_Points + SI_New_Points;
-                    !
+                    
+                    	PE_Class('001') := Element(SI_Classes, ceil(Uniform(0,1)*Card(SI_Classes))); ! Generate random class
+                    	P_Angle := radians(360*Uniform(0,1)); ! Generate random 2D angle
+                    	P_Radius := P_miu_Gaussian;
+                    	P_Radius_Gaussian:=normal(0,P_sigma_Gaussian);
+                    	PI_Point('001', 'd1') := cos(radians(ord(PE_Class('001'))*360/PI_Num_Classes)) + P_Radius_Gaussian;
+                    	P_Radius_Gaussian:=normal(0,P_sigma_Gaussian);
+                    	PI_Point('001', 'd2') := sin(radians(ord(PE_Class('001'))*360/PI_Num_Classes)) + P_Radius_Gaussian;
+                    	if ( PI_Outlier_Probability > 0 ) then
+                    		if ( Uniform(0,1) < PI_Outlier_Probability ) then
+                    			PE_Class('001') := Element(SI_Classes, ceil(Uniform(0,1)*Card(SI_Classes)));
+                    		endif;
+                    	endif;
                 }
             }
         }
