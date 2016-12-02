@@ -7,11 +7,13 @@
 	<Page Name="Output Scatter Plot(solution)" PageGUID="F19E2E23-0879-47B1-A31D-A5A462923FEC" />
 	<Page Name="Objective Function Plots" PageGUID="A2189CA2-8BF8-4119-B1F3-906D76CFF774" />
 	<Page Name="Distance Metric Plot" PageGUID="21BDC776-41CB-46B1-BE7D-A6214E326C8E" />
+	<Page Name="Ri Plot" PageGUID="5C0ABE78-78D8-462F-9245-D77A56314AFA" />
 	<Page Name="All Data Pages" PageGUID="EACA8C73-AC80-4F3D-8B77-B600FEEF4E5E">
 		<Page Name="Page 2" PageGUID="3D56EA37-289E-45EB-8670-7C680B504B40" />
 		<Page Name="[Data Page] PD_Delta" PageGUID="C81A8687-AFA1-4DB3-ACC5-B4E444BED1E7" />
 		<Page Name="[Data Page] PI_Point" PageGUID="4C21E806-FC86-48E2-9071-9E3375CC376E" />
 		<Page Name="[Data Page] VC_Min_Dist" PageGUID="AE5B3D71-35EF-4C40-A54D-DD1271343458" />
+		<Page Name="[Data Page] PO_R_store_" PageGUID="361B37E1-465C-4861-9CC6-38897987C1C4" />
 	</Page>
 	<Page Name="2" PageGUID="0423F5EC-989A-4E17-BA6D-83A74B4A6C54" />
 </PageManager>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Page Version="4000" TimeStamp="2016-12-02 08:38:56">
+	<PageEditSize Type="Inherited" />
+	<ProjectUUID>13A7D782-E291-4B68-87A1-8DAD9D688856</ProjectUUID>
+	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
+	<Background Inherited="true" />
+	<PageObject Type="Curve">
+		<Location top="90" left="240" bottom="606" right="1044" />
+		<Font GUID="00000000-0000-0000-0000-000000000001" Name="Main Font" />
+		<Border Style="InShadow" Width="2" MarginTop="5" MarginRight="5" MarginBottom="5" MarginLeft="5" />
+		<BackgroundColor RGB="#ffffff" />
+		<ColorScheme Number="0" />
+		<Title>true</Title>
+		<Legend>true</Legend>
+		<Y-Labels>true</Y-Labels>
+		<X-Labels>true</X-Labels>
+		<StatusLine>true</StatusLine>
+		<ExplicitIdentifier>
+			<Identifier>PO_R_store_( i_out, i_num_o )</Identifier>
+		</ExplicitIdentifier>
+		<DrawLines>true</DrawLines>
+		<MarkPoints>true</MarkPoints>
+	</PageObject>
+	<UsedReferences>
+		<Model>
+			<Symbol>PO_R_store_</Symbol>
+			<Symbol>i_out</Symbol>
+			<Symbol>i_num_o</Symbol>
+		</Model>
+	</UsedReferences>
+</Page>

@@ -548,6 +548,11 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
     }
     Section HEURISTICS {
+        Procedure Procedure_2 {
+            Body: {
+                SI_Points_Outliers_1:=SI_Points-SI_Points_Active;
+            }
+        }
         Procedure Proc_Read_Instance_From_Text_File_copy {
             Body: {
                 if (FileSelect(filename : PSI_TEXTFILE_NAME, directory : "data/", extension : "*.txt", title : "Load text input file")) then
@@ -607,7 +612,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 
                 	SI_Points_Outliers := SI_Points_Outliers + SD_LP_Outlier_Points;
                 	SI_points_Active:= SI_Points_Active-SD_LP_Outlier_Points;
-                	PI_EPSILON := 0 * PO_Max_Epsilon;
+                	PI_EPSILON := 0.5 * PO_Max_Epsilon;
                 	Solve MP_Feasibility_LP;
                 	!Solve_Max_Epsilon_LP;
                 	PO_Store_Q_coeff(2,d1,d2):=PO_Q_Coeff(d1,d2);
@@ -619,38 +624,44 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
         Procedure Proc_Iterative_LP_Solve_Remove_resolve_3 {
             Body: {
-                
+                PI_Countnum_o:=0;
+                for i_out do
+                PI_Countnum_o:=PI_Countnum_o+1;
+                endfor;
                 for i_out do
                 	SI_Points_Active := SI_Points_Active + i_out;
-                	solve MP_Feasibility_LP;
                 	if PO_Is_LP_Outlier(i_out) = 0 then
                 		SI_Points_Outliers := SI_Points_Outliers - i_out;
                 		SI_Points_Active := SI_Points - SI_Points_Outliers;
                 	else SI_Points_Active := SI_Points_Active - i_out;
-                	endif
+                	endif;
+                	solve MP_Feasibility_LP;
                 endfor;
-                solve MP_Feasibility_LP;
             }
         }
         Procedure Proc_Iterative_LP_Solve_Remove_resolve_Ri {
             Body: {
-                SI_Points_Outliers_1:=SI_Points_Outliers;
-                for i_out do
-                	temp:=0;	
+                SI_Points_Outliers_1:=SI_Points-SI_Points_Active;
+                PI_Countnum_o:=0;
+                for i_out_1 do
+                PI_Countnum_o:=PI_Countnum_o+1;
+                endfor;
+                for i_num_o do	
+                	for i_out_1 do
+                		PO_R_store_(i_out_1,i_num_o):=PO_R(i_out_1)
+                	endfor;
                 	SI_Points_Active := SI_Points_Active + argmax(i_out_1, PO_R(i_out_1)) ;
                 	SI_Points_Outliers_2 := argmax(i_out_1, PO_R(i_out_1));
-                	solve MP_Feasibility_LP;
                 	for i_out_2 do
-                	if PO_Is_LP_Outlier(i_out_2) = 0 then
-                		SI_Points_Outliers := SI_Points_Outliers - argmax(i_out_1, PO_R(i_out_1));
-                		SI_Points_Active := SI_Points - SI_Points_Outliers;
-                	else 
-                	SI_Points_Active := SI_Points_Active - argmax(i_out_1, PO_R(i_out_1));
-                	SI_Points_Outliers_1 := SI_Points_Outliers_1 - argmax(i_out_1, PO_R(i_out_1));
-                	endif;
+                		if PO_Is_LP_Outlier(i_out_2) = 0 then
+                			SI_Points_Outliers_1 := SI_Points_Outliers_1 - i_out_2;
+                		else 
+                			SI_Points_Active := SI_Points_Active - i_out_2;
+                			SI_Points_Outliers_1 := SI_Points_Outliers_1 - i_out_2;
+                		endif;
                 	endfor;
+                	solve MP_Feasibility_LP;
                 endfor;
-                solve MP_Feasibility_LP;
             }
         }
         Procedure Procedure_1 {
@@ -672,6 +683,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
         Procedure Proc_put_back_outliers {
             Body: {
+                
                 SI_Points_Active:= SI_Points;
             }
         }
@@ -756,8 +768,9 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
         Set SD_Ri_Indices {
             SubsetOf: Integers;
+            Index: i_num_o;
             Definition: {
-                {1 .. PI_Num_Epsilons+1}
+                {1 .. PI_Countnum_o}
             }
         }
         Parameter PI_Num_Epsilons {
@@ -768,9 +781,9 @@ Model Main_Adaptive_Distance_Metric_Selection {
             Range: integer;
         }
         DeclarationSection Output_Declarations {
-            Parameter countnum;
+            Parameter PI_Countnum_o;
             Parameter PO_R_store_ {
-                IndexDomain: i_out;
+                IndexDomain: (i_out,i_num_o);
             }
             Parameter temp;
             Parameter PO_R {
