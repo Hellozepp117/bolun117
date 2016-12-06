@@ -464,6 +464,28 @@ For the selection of outliers
 we have Fixed $B$
 and $z_i$ is defined ONLY for outliers
 
+\newpage
+
+
+\subsection{Max-Min Approach: Maximize the non-outliers in data}
+
+After running iterations of Model \eqref{model:epsilon_lp_1} and model \eqref{model:big_lp_1}, a set of outliers $\mc{O}$ can be generated. Given $\v{B}$, a new model to re-include non-outliers in $\mc{O}$ can be expressed as a mixed-integer linear programming problem:
+\begin{subequations} \label{model:milp_with_outlier_inclusion}
+\begin{alignat}{4}
+\max_{\lambda, \v{y}, \v{z}}~~& f(\vlambda) = \sum_{i \in \mc{N}} f_i(\lambda_i) = \sum_{i \in \mc{N}} (\lambda_i - \rho z_i) & & \\
+\st~~& \sum_{j \in \mc{C}_i} d_{ij}y_{ij} + \lambda_i \leq d_{ik} + M_i z_i  && \qquad \forall i \in \mc{N},j \in \mc{C}_i, k \in \mc{N}\backslash\mc{C}_i \\
+    & \lambda_i \leq 1 - z_i && \qquad \forall i \in \mc{N}  \\
+       & z_i = 0 && \qquad \forall i \in \mc{N}\backslash\mc{O}  \\
+    & \sum_{j \in \mc{C}_i} y_{ij} = 1 && \qquad \forall i \in \mc{N} \\
+    & d_{ij} = \sum_{k=1}^p \delta_{ijk}^2 b_{kk} + 2 \sum_{k=1}^{p-1} \sum_{\ell=k+1}^p  \delta_{ijk} \delta_{ij\ell} b_{k\ell} && \qquad \forall i,j \in \mc{N}  \\
+    & b_{k\ell} \in \Re && \qquad \forall k=1,\dots,p, \ell=k,\dots,p \\
+    & y_{ij} \in \{0,1\} && \qquad \forall i \in \mc{N}, i \in \mc{C}_i \\
+    & z_{i} \in \{0,1\} && \qquad \forall i \in \mc{O} \\
+    & \lambda_i \geq 0 & & \qquad \forall i \in \mc{N}
+\end{alignat}
+\end{subequations}
+
+
 
 
 
