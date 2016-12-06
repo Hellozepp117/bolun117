@@ -434,13 +434,35 @@ Constraints \eqref{eq:mccormick_1}-\eqref{eq:mccormick_3} are the so-called McCo
 
 \subsection{Similar to previous but we will have just one lambda}
 \label{sec:mimax_oneLamnda}
-\todo[inline]{FInish this soon and compare with previous approach}
 
 
 
 
+\begin{subequations} \label{model:milp_with_outlier_detectionOneLamda}
+\begin{alignat}{4}
+\max_{\lambda,\v{B},\v{d},\v{w},\v{y}}~~& f(\vlambda) = \sum_{i \in \mc{N}} f_i(\lambda_i) =
+\lambda - \rho \sum_{i \in \mc{N}}   z_i  & & \\
+\st~~& \sum_{j \in \mc{C}_i} w_{ij} + \lambda_i \leq d_{ik} + M_i z_i  && \qquad \forall i \in \mc{N}, k \in \mc{N}\backslash\mc{C}_i \\
+    & \lambda_i \leq 1 - z_i && \qquad \forall i \in \mc{N}   \\
+    & w_{ij} \leq d_{ij} && \qquad \forall i \in \mc{N}, i \in \mc{C}_i   \\
+    & w_{ij} \leq y_{ij} && \qquad \forall i \in \mc{N}, i \in \mc{C}_i   \\
+    & w_{ij} \geq d_{ij} + y_{ij} - 1 && \qquad \forall i \in \mc{N}, i \in \mc{C}_i   \\
+    & \sum_{j \in \mc{C}_i} y_{ij} = 1 && \qquad \forall i \in \mc{N} \\
+    & d_{ij} = \sum_{k=1}^p \delta_{ijk}^2 b_{kk} + 2 \sum_{k=1}^{p-1} \sum_{\ell=k+1}^p  \delta_{ijk} \delta_{ij\ell} b_{k\ell} && \qquad \forall i,j \in \mc{N}  \\
+    & b_{k\ell} \in \Re && \qquad \forall k=1,\dots,p, \ell=k,\dots,p \\
+    & d_{ij} \geq 0 && \qquad \forall i,j \in \mc{N} \\
+    & w_{ij} \geq 0 && \qquad \forall i \in \mc{N}, i \in \mc{C}_i \\
+    & y_{ij} \in \{0,1\} && \qquad \forall i \in \mc{N}, i \in \mc{C}_i \\
+    & z_{i} \in \{0,1\} && \qquad \forall i \in \mc{N} \\
+    & \lambda_i \geq 0 & & \qquad \forall i \in \mc{N}
+\end{alignat}
+\end{subequations}
 
 
+
+For the selection of outliers
+we have Fixed $B$
+and $z_i$ is defined ONLY for outliers
 
 
 
