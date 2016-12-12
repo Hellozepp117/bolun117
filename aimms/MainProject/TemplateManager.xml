@@ -2,7 +2,6 @@
 <TemplateManager>
 	<Page Name="All Data Pages" PageGUID="EACA8C73-AC80-4F3D-8B77-B600FEEF4E5E" />
 	<Page Name="[Data Page] PD_Delta" PageGUID="C81A8687-AFA1-4DB3-ACC5-B4E444BED1E7" />
-	<Page Name="Page 1" PageGUID="CE47AF4A-A595-4D3A-819C-1C8F57873D50" />
 	<Page Name="Input Scatter Plot" PageGUID="41B3D3D0-C93B-44D9-9198-DB3DF2857132" />
 	<Page Name="Output Scatter Plot" PageGUID="58B1EDBE-F6CD-47B7-ABEA-0D9C0CE469FE" />
 	<Page Name="Output Scatter Plot(solution)" PageGUID="F19E2E23-0879-47B1-A31D-A5A462923FEC" />
@@ -15,4 +14,5 @@
 	<Page Name="2" PageGUID="0423F5EC-989A-4E17-BA6D-83A74B4A6C54" />
 	<Page Name="Ri Plot" PageGUID="5C0ABE78-78D8-462F-9245-D77A56314AFA" />
 	<Page Name="[Data Page] PO_R_store_" PageGUID="361B37E1-465C-4861-9CC6-38897987C1C4" />
+	<Page Name="Comparations_with_methods" PageGUID="B5F67F37-2A2B-43DB-8505-4C821495EE9A" />
 </TemplateManager>

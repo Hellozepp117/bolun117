@@ -1,5 +1,692 @@
 Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
 Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Domain violation at line 2805, column 17.
+The scope of index "i_a" has not been specified.
+Domain violation at line 2940, column 17.
+The scope of index "i_a" has not been specified.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Domain violation at line 5792, column 11.
+The scope of index "i" has not been specified.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Domain violation at line 7064, column 40.
+The number of arguments in the parameter "PD_Distance" is not correct.
+Domain violation at line 7071, column 19.
+The scope of index "i_a" has not been specified.
+Domain violation at line 7216, column 40.
+The number of arguments in the parameter "PD_Distance" is not correct.
+Domain violation at line 7227, column 19.
+The scope of index "i_a" has not been specified.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Domain violation at line 8473, column 40.
+The number of arguments in the parameter "PD_Distance" is not correct.
+Domain violation at line 8625, column 92.
+The scope of index "i" has not been specified.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Syntax error at line 3 in user-defined function section "Solve_MILP6_3_Problem", column 7.
+The symbol "Solve_MILP6_3_Problem" is not expected.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
 Warning: The parameter "PI_Point" is not initialized (default values are used).
 Warning: The domain set "SI_Dimensions" is not initialized (default values are used).
 Warning: The element parameter "PE_Class" is not initialized (default values are used).
+Warning: The variable "VC_Q_Coeff" is not initialized (default values are used).
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(001) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(002) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(003) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(004) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(005) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(006) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(007) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(008) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(009) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(010) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(011) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(012) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(013) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(014) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(015) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(016) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(017) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(018) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(019) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(020) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(021) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(022) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(023) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(024) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(025) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(026) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(027) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(028) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(029) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(030) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(031) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(032) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(033) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(034) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(035) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(036) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(037) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(038) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(039) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(040) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(041) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(042) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(043) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(044) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(045) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(046) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(047) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(048) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(049) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(050) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(051) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(052) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(053) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(054) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(055) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(056) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(057) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(058) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(059) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(060) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(061) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(062) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(063) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(064) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(065) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(066) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(067) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(068) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(069) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(070) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(071) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(072) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(073) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(074) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(075) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(076) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(077) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(078) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(079) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(080) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(081) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(082) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(083) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(084) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(085) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(086) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(087) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(088) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(089) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(090) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(091) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(092) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(093) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(094) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(095) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(096) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(097) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(098) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(099) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(100) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(101) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(102) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(103) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(104) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(105) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(106) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(107) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(108) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(109) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(110) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(111) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(112) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(113) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(114) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(115) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(116) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(117) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(118) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(119) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(120) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(121) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(122) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(123) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(124) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(125) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(126) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(127) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(128) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(129) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(130) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(131) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(132) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(133) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(134) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(135) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(136) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(137) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(138) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(139) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(140) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(141) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(142) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(143) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(144) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(145) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(146) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(147) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(148) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(149) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(150) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(151) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(152) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(153) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(154) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(155) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(156) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(157) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(158) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(159) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(160) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(161) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(162) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(163) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(164) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(165) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(166) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(167) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(168) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(169) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(170) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(171) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(172) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(173) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(174) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(175) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(176) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(177) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(178) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(179) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(180) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(181) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(182) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(183) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(184) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(185) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(186) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(187) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(188) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(189) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(190) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(191) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(192) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(193) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(194) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(195) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(196) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(197) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(198) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(199) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Generation error at line 1, column 1.
+The empty row CL_VC_Y_1(200) .. 0 = -1 is infeasible, as tolerance the option "Bound_Tolerance" is used with value 1e-008.
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The columns "VC_Y_1(164,011)" and "VC_Y_1(164,150)" are equal in the generated mathematical program "MILP6_3_Problem_solve". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The rows "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,008)" and "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,153)" are equal in the generated mathematical program "MILP6_3_Problem_solve".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 36 to 35.
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The columns "VC_Y_1(164,011)" and "VC_Y_1(164,150)" are equal in the generated mathematical program "MILP6_3_Problem_solve". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The rows "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,008)" and "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,153)" are equal in the generated mathematical program "MILP6_3_Problem_solve".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The columns "VC_Y_1(164,011)" and "VC_Y_1(164,150)" are equal in the generated mathematical program "MILP6_3_Problem_solve". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The rows "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,008)" and "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,153)" are equal in the generated mathematical program "MILP6_3_Problem_solve".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The columns "VC_Y_1(164,011)" and "VC_Y_1(164,150)" are equal in the generated mathematical program "MILP6_3_Problem_solve". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The rows "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,008)" and "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,153)" are equal in the generated mathematical program "MILP6_3_Problem_solve".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The columns "VC_Y_1(164,011)" and "VC_Y_1(164,150)" are equal in the generated mathematical program "MILP6_3_Problem_solve". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The rows "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,008)" and "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,153)" are equal in the generated mathematical program "MILP6_3_Problem_solve".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The columns "VC_Y_1(164,011)" and "VC_Y_1(164,150)" are equal in the generated mathematical program "MILP6_3_Problem_solve". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The rows "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,008)" and "CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor(029,153)" are equal in the generated mathematical program "MILP6_3_Problem_solve".  This may lead to non-unique shadow prices.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_row".
+Syntax error at line 18649, column 42.
+The symbol "," is not expected.
+Syntax error at line 18790, column 42.
+The symbol "," is not expected.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Syntax error at line 20060, column 43.
+The symbol "&" is not expected.
+Syntax error at line 20201, column 43.
+The symbol "&" is not expected.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Syntax error at line 21471, column 49.
+The symbol "in" is not expected.
+Syntax error at line 21612, column 49.
+The symbol "in" is not expected.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Semantic error at line 22885, column 8.
+The domain set "SI_Points_Outliers" does not match the range of the index index "i_a" used in the index domain of variable "VC_Z_1".
+Semantic error at line 23040, column 8.
+The domain set "SI_Points_Outliers" does not match the range of the index index "i_a" used in the index domain of variable "VC_Z_1".
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Semantic error at line 24301, column 8.
+The domain set "SI_Points_Outliers" does not match the range of the index index "i_a" used in the index domain of variable "VC_Z_1".
+Semantic error at line 24324, column 8.
+The domain set "SI_Points_Outliers" does not match the range of the index index "i_a" used in the index domain of variable "VC_Z_1".
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+The columns "VC_Y_1(164,011)" and "VC_Y_1(164,150)" are equal in the generated mathematical program "MILP6_3_Problem_solve". This may lead to non-unique solutions.  For more information regarding potential causes and consequences, see the help associated with the option "Warning_duplicate_column".
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 6 in user-defined function section "Proc_Comparations_with_methods".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Semantic error at line 3 in user-defined function section "Proc_Comparations_with_methods", column 18.
+The expression "1" of data type string cannot be used for indexing.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Semantic error at line 3 in user-defined function section "Proc_Comparations_with_methods", column 18.
+The expression "001" of data type string cannot be used for indexing.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 19 to 18.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 16 to 15.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 19 to 18.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 16 to 15.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Semantic error at line 44902, column 16.
+The identifier "o" has not been declared.
+Semantic error at line 45062, column 16.
+The identifier "o" has not been declared.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+After zero iterations CPLEX 12.6.3 concluded that an integer solution to MILP6_3_Problem_solve does not exist.
+Warning at line 3 in user-defined function section "Solve_MILP6_3_Problem".
+After zero iterations CPLEX 12.6.3 concluded that an integer solution to MILP6_3_Problem_solve does not exist.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 4 in user-defined function section "Solve_MILP6_3_Problem".
+After zero iterations CPLEX 12.6.3 concluded that an integer solution to MILP6_3_Problem_solve does not exist.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_Fixed".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 19 to 18.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 16 to 15.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 19 to 18.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 16 to 15.
+Execution error at line 6 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri" (while evaluating the definition of set "SD_Count_Indices").
+Going from 1 to 0 cannot be achieved with increment 1.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 19 to 18.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 16 to 15.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 19 to 18.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 16 to 15.
+Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.

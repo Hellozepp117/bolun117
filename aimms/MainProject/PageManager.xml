@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <PageManager>
 	<Page Name="Iterative_LP_Loop plot" PageGUID="FF0189C9-8CBA-408F-B610-FF4B2183F604" />
-	<Page Name="Page 1" PageGUID="CE47AF4A-A595-4D3A-819C-1C8F57873D50" />
+	<Page Name="Comparations_with_methods" PageGUID="B5F67F37-2A2B-43DB-8505-4C821495EE9A" />
 	<Page Name="Input Scatter Plot" PageGUID="41B3D3D0-C93B-44D9-9198-DB3DF2857132" />
 	<Page Name="Output Scatter Plot" PageGUID="58B1EDBE-F6CD-47B7-ABEA-0D9C0CE469FE" />
 	<Page Name="Output Scatter Plot(solution)" PageGUID="F19E2E23-0879-47B1-A31D-A5A462923FEC" />

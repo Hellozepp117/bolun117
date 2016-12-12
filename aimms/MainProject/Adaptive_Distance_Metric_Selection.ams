@@ -65,6 +65,10 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 SubsetOf: SI_Points;
                 Index: i_a, j_a, k_a;
             }
+            Set SI_Points_Active_NonOutliers {
+                SubsetOf: SI_Points_Active;
+                Index: i_a_n, j_a_n, k_a_n;
+            }
             Set SI_Points_Outliers {
                 SubsetOf: SI_Points;
                 Index: i_out, j_out, k_out;
@@ -206,6 +210,97 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
     }
     Section MATH_PROGRAMS {
+        Section MILP_Section6_3 {
+            DeclarationSection MILP6_3_Problem {
+                Variable VC_MILP6_3_OBJ {
+                    Range: free;
+                    Definition: sum[i_a, VC_Lambda_1(i_a)-PD_Rho_1 * VC_Z_1(i_a)];
+                }
+                MathematicalProgram MILP6_3_Problem_solve {
+                    Objective: VC_MILP6_3_OBJ;
+                    Direction: maximize;
+                    Constraints: SD_MILP6_3_Problem_Constraints;
+                    Variables: SD_MILP6_3_Problem_Variables;
+                    Type: Automatic;
+                }
+                Set SD_MILP6_3_Problem_Variables {
+                    SubsetOf: AllVariables;
+                    Definition: AllVariables * ( MILP_Section6_3);
+                }
+                Set SD_MILP6_3_Problem_Constraints {
+                    SubsetOf: AllConstraints;
+                    Definition: AllConstraints * (MILP_Section6_3);
+                }
+            }
+            DeclarationSection MILP6_3_Constraints {
+                Constraint CL_VC_Y_1 {
+                    IndexDomain: i_a;
+                    Definition: 1 = sum[ j_a | (i_a,j_a) in SD_Neighbors , VC_Y_1(i_a,j_a) ];
+                }
+                Constraint CL_lambda_condition_1 {
+                    IndexDomain: i_a;
+                    Definition: {
+                        VC_Lambda_1(i_a) <= 1 - VC_Z_1(i_a);
+                    }
+                }
+                Constraint CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor {
+                    IndexDomain: (i_a,k_a) | (i_a,k_a) in SD_Non_Neighbors;
+                    Definition: {
+                        
+                        sum[ j_a | (i_a,j_a) in SD_Neighbors , PD_Distance(i_a,j_a)*VC_Y_1(i_a,j_a)  ] + VC_Lambda(i_a) <= PD_Distance(i_a,k_a) + PI_MAX_DISTANCE * [VC_Z_1(i_a)+VC_Z_1(k_a)];
+                    }
+                }
+                Constraint CL_Y_condition {
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors;
+                    Definition: {
+                        
+                        VC_Y_1(i_a,j_a) + VC_Z_1(j_a) <=1 ;
+                    }
+                }
+                Constraint CL_Z_condition {
+                    IndexDomain: i_a_n;
+                    Definition: {
+                        
+                        VC_Z_1(i_a_n) =0 ;
+                    }
+                }
+            }
+            DeclarationSection MILP6_3_Variables {
+                Variable VC_Lambda_1 {
+                    IndexDomain: i_a;
+                    Range: nonnegative;
+                }
+                Variable VC_Y_1 {
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors;
+                    Text: "Weight of dij";
+                    Range: binary;
+                }
+                Variable VC_Z_1 {
+                    IndexDomain: i_a;
+                    Text: "Define if point i is an Outlier";
+                    Range: binary;
+                }
+            }
+            DeclarationSection MILP6_3_Parameters {
+                Parameter PD_Q_Coeff {
+                    IndexDomain: (d1,d2);
+                }
+                Parameter PD_Distance {
+                    IndexDomain: (i_a,j_a) | i_a <> j_a;
+                    Range: [0, PI_MAX_DISTANCE];
+                    Definition: {
+                        sum[ d , PD_Delta(i_a,j_a,d)^2 * VC_Q_Coeff(d,d) ]
+                        +
+                        2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_a,j_a,d1) * PD_Delta(i_a,j_a,d2) * PD_Q_Coeff(d1,d2) ]
+                    }
+                }
+                Parameter PD_Rho_1 {
+                    Text: "Penalty Parameter";
+                    Default: 0;
+                    Definition: 2;
+                }
+            }
+        }
         Section COMMON {
             DeclarationSection Common_Variables {
                 Variable VC_Lambda_Robust {
@@ -550,143 +645,231 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
     }
     Section HEURISTICS {
-        Procedure Procedure_2 {
-            Body: {
-                SI_Points_Outliers_1:=SI_Points-SI_Points_Active;
+        Section Temp_Procedure {
+            Procedure Proc_Read_Instance_From_Text_File_copy {
+                Body: {
+                    if (FileSelect(filename : PSI_TEXTFILE_NAME, directory : "data/", extension : "*.txt", title : "Load text input file")) then
+                    
+                    	read from file PSI_TEXTFILE_NAME;
+                    
+                    endif;
+                }
+            }
+            Procedure Copy_Proc_Iterative_LP_Loop {
+                Body: {
+                    !!! ASSIGNMENT
+                    SI_Points:= SI_Points-SD_LP_Outlier_Points;
+                    Solve_Max_Epsilon_LP;
+                    PO_Max_Epsilon := VC_Epsilon;
+                    
+                    for i_Ri do
+                    
+                    	PI_EPSILON := ( ord( i_Ri ) / PI_Num_Epsilons ) * PO_Max_Epsilon;	
+                    	PI_Store_EPSILON(i_Ri):= PI_EPSILON;
+                    	Solve MP_Feasibility_LP;
+                    	PO_Store_Q_coeff(i_Ri,d1,d2):=PO_Q_Coeff(d1,d2);
+                    	PO_Store_Num_outlier(i_Ri):=0;
+                    	for i do
+                    		if (PO_Min_Dist_Achieved(i) = 0) then
+                    			PO_Store_Num_outlier(i_Ri):= PO_Store_Num_outlier(i_Ri)+1;
+                    		endif
+                    	endfor
+                    	!!! TODO: 
+                    	!!! Store the number of outliers. Hint: Create a new parameter that uses PO_Is_LP_Outlier
+                    	!!! Store the distance metric
+                    
+                    endfor;
+                    
+                    !!! TODO: Create a 2D "epsilon vs. number of outliers" 
+                    !!! That is, plot with epsilon on the x axis and "number of outliers" on the y axis.  
+                    !!! What do you expect this plot to look like?
+                }
+            }
+            Procedure Proc_Iterative_LP_Solve_Remove_resolve_1 {
+                Body: {
+                    
+                    SI_points_Active := SI_points;
+                    Solve_Max_Epsilon_LP;
+                    PO_Max_Epsilon := VC_Epsilon;
+                    	PI_EPSILON := PO_Max_Epsilon;	
+                    	PI_Store_EPSILON(1):= PI_EPSILON;
+                    
+                    
+                    	!Solve MP_Feasibility_LP;
+                    	PO_Store_Q_coeff(1,d1,d2):=PO_Q_Coeff(d1,d2);
+                }
+            }
+            Procedure Proc_Iterative_LP_Solve_Remove_resolve_2 {
+                Body: {
+                    
+                    
+                    	SI_Points_Outliers := SI_Points_Outliers + SD_LP_Outlier_Points;
+                    	SI_points_Active:= SI_Points_Active-SD_LP_Outlier_Points;
+                    	PI_EPSILON := PI_Epsilon_div_MAXEpsilon * PO_Max_Epsilon;
+                    	Solve MP_Feasibility_LP;
+                    	!Solve_Max_Epsilon_LP;
+                    	PO_Store_Q_coeff(2,d1,d2):=PO_Q_Coeff(d1,d2);
+                    
+                    	!!! TODO: 
+                    	!!! Store the number of outliers. Hint: Create a new parameter that uses PO_Is_LP_Outlier
+                    	!!! Store the distance metric
+                }
+            }
+            Procedure Proc_Iterative_LP_Solve_Remove_resolve_3_1 {
+                Body: {
+                    PI_Countnum_o:=0;
+                    for i_out do
+                    PI_Countnum_o:=PI_Countnum_o+1;
+                    endfor;
+                    for i_out do
+                    	SI_Points_Active := SI_Points_Active + i_out;
+                    	if PO_Is_LP_Outlier(i_out) = 0 then
+                    		SI_Points_Outliers := SI_Points_Outliers - i_out;
+                    		SI_Points_Active := SI_Points - SI_Points_Outliers;
+                    	else SI_Points_Active := SI_Points_Active - i_out;
+                    	endif;
+                    	solve MP_Feasibility_LP;
+                    endfor;
+                }
+            }
+            Procedure Proc_Iterative_LP_Solve_Remove_resolve_3 {
+                Body: {
+                    PI_Countnum_o:=0;
+                    for i_out do
+                    PI_Countnum_o:=PI_Countnum_o+1;
+                    endfor;
+                    for i_out do
+                    	SI_Points_Active := SI_Points_Active + i_out;
+                    	if PO_Is_LP_Outlier(i_out) = 0 then
+                    		SI_Points_Outliers := SI_Points_Outliers - i_out;
+                    		SI_Points_Active := SI_Points - SI_Points_Outliers;
+                    	else SI_Points_Active := SI_Points_Active - i_out;
+                    	endif;
+                    endfor;
+                    	solve MP_Feasibility_LP;
+                }
+            }
+            Procedure Proc_Iterative_LP_Solve_Remove_resolve_Ri_1 {
+                Body: {
+                    SI_Points_Outliers_1:=SI_Points-SI_Points_Active;
+                    PI_Countnum_o:=0;
+                    for i_out_1 do
+                    PI_Countnum_o:=PI_Countnum_o+1;
+                    endfor;
+                    for i_num_o do	
+                    	for i_out_1 do
+                    		PO_R_store_(i_out_1,i_num_o):=PO_R(i_out_1)
+                    	endfor;
+                    	SI_Points_Active := SI_Points_Active + argmax(i_out_1, PO_R(i_out_1)) ;
+                    	SI_Points_Outliers_2 := argmax(i_out_1, PO_R(i_out_1));
+                    	for i_out_2 do
+                    		if PO_Is_LP_Outlier(i_out_2) = 0 then
+                    			SI_Points_Outliers_1 := SI_Points_Outliers_1 - i_out_2;
+                    		else 
+                    			SI_Points_Active := SI_Points_Active - i_out_2;
+                    			SI_Points_Outliers_1 := SI_Points_Outliers_1 - i_out_2;
+                    		endif;
+                    	endfor;
+                    	solve MP_Feasibility_LP;
+                    endfor;
+                }
+            }
+            Procedure Proc_Iterative_LP_Solve_Remove_resolve_Ri {
+                Body: {
+                    SI_Points_Outliers_1:=SI_Points-SI_Points_Active;
+                    PI_Countnum_o:=0;
+                    for i_out_1 do
+                    PI_Countnum_o:=PI_Countnum_o+1;
+                    endfor;
+                    for i_num_o do	
+                    	for i_out_1 do
+                    		PO_R_store_(i_out_1,i_num_o):=PO_R(i_out_1)
+                    	endfor;
+                    	SI_Points_Active := SI_Points_Active + argmax(i_out_1, PO_R(i_out_1)) ;
+                    	SI_Points_Outliers_2 := argmax(i_out_1, PO_R(i_out_1));
+                    	for i_out_2 do
+                    		if PO_Is_LP_Outlier(i_out_2) = 0 then
+                    			SI_Points_Outliers_1 := SI_Points_Outliers_1 - i_out_2;
+                    		else 
+                    			SI_Points_Active := SI_Points_Active - i_out_2;
+                    			SI_Points_Outliers_1 := SI_Points_Outliers_1 - i_out_2;
+                    		endif;
+                    	endfor;
+                    endfor;
+                    SI_Points_Outliers_1:=SI_Points-SI_Points_Active;
+                    solve MP_Feasibility_LP;
+                }
+            }
+            Procedure Proc_delete_outliers {
+                Body: {
+                    SI_points_Active:= SI_points - SI_Points_Outliers;
+                }
+            }
+            Procedure Proc_delete_outliers_1 {
+                Body: {
+                    SI_points_Active:= SI_points - SI_Points_Outliers_1;
+                }
+            }
+            Procedure Proc_put_back_outliers {
+                Body: {
+                    
+                    SI_Points_Active:= SI_Points;
+                }
             }
         }
-        Procedure Proc_Read_Instance_From_Text_File_copy {
+        Procedure Proc_Comparations_with_methods {
             Body: {
-                if (FileSelect(filename : PSI_TEXTFILE_NAME, directory : "data/", extension : "*.txt", title : "Load text input file")) then
-                
-                	read from file PSI_TEXTFILE_NAME;
-                
-                endif;
-            }
-        }
-        Procedure Copy_Proc_Iterative_LP_Loop {
-            Body: {
-                !!! ASSIGNMENT
-                SI_Points:= SI_Points-SD_LP_Outlier_Points;
-                Solve_Max_Epsilon_LP;
-                PO_Max_Epsilon := VC_Epsilon;
-                
-                for i_Ri do
-                
-                	PI_EPSILON := ( ord( i_Ri ) / PI_Num_Epsilons ) * PO_Max_Epsilon;	
-                	PI_Store_EPSILON(i_Ri):= PI_EPSILON;
-                	Solve MP_Feasibility_LP;
-                	PO_Store_Q_coeff(i_Ri,d1,d2):=PO_Q_Coeff(d1,d2);
-                	PO_Store_Num_outlier(i_Ri):=0;
-                	for i do
-                		if (PO_Min_Dist_Achieved(i) = 0) then
-                			PO_Store_Num_outlier(i_Ri):= PO_Store_Num_outlier(i_Ri)+1;
-                		endif
-                	endfor
-                	!!! TODO: 
-                	!!! Store the number of outliers. Hint: Create a new parameter that uses PO_Is_LP_Outlier
-                	!!! Store the distance metric
-                
-                endfor;
-                
-                !!! TODO: Create a 2D "epsilon vs. number of outliers" 
-                !!! That is, plot with epsilon on the x axis and "number of outliers" on the y axis.  
-                !!! What do you expect this plot to look like?
-            }
-        }
-        Procedure Proc_Iterative_LP_Solve_Remove_resolve_1 {
-            Body: {
-                
-                SI_points_Active := SI_points;
-                Solve_Max_Epsilon_LP;
-                PO_Max_Epsilon := VC_Epsilon;
-                	PI_EPSILON := PO_Max_Epsilon;	
-                	PI_Store_EPSILON(1):= PI_EPSILON;
-                
-                
-                	!Solve MP_Feasibility_LP;
-                	PO_Store_Q_coeff(1,d1,d2):=PO_Q_Coeff(d1,d2);
-            }
-        }
-        Procedure Proc_Iterative_LP_Solve_Remove_resolve_2 {
-            Body: {
-                
-                
-                	SI_Points_Outliers := SI_Points_Outliers + SD_LP_Outlier_Points;
-                	SI_points_Active:= SI_Points_Active-SD_LP_Outlier_Points;
-                	PI_EPSILON := 0.5 * PO_Max_Epsilon;
-                	Solve MP_Feasibility_LP;
-                	!Solve_Max_Epsilon_LP;
-                	PO_Store_Q_coeff(2,d1,d2):=PO_Q_Coeff(d1,d2);
-                
-                	!!! TODO: 
-                	!!! Store the number of outliers. Hint: Create a new parameter that uses PO_Is_LP_Outlier
-                	!!! Store the distance metric
-            }
-        }
-        Procedure Proc_Iterative_LP_Solve_Remove_resolve_3 {
-            Body: {
-                PI_Countnum_o:=0;
+                Proc_Iterative_LP_Solve_Remove_resolve_1;
+                Proc_Iterative_LP_Solve_Remove_resolve_2;
+                PO_Num_outliers('1'):=0;
                 for i_out do
-                PI_Countnum_o:=PI_Countnum_o+1;
+                	PO_Num_outliers('1'):=PO_Num_outliers('1')+1;
                 endfor;
+                
+                
+                Proc_Iterative_LP_Solve_Remove_resolve_1;
+                Proc_Iterative_LP_Solve_Remove_resolve_2;
+                for i_num_iterations do
+                	Proc_Iterative_LP_Solve_Remove_resolve_3;
+                endfor;
+                PO_Num_outliers('2'):=0;
                 for i_out do
-                	SI_Points_Active := SI_Points_Active + i_out;
-                	if PO_Is_LP_Outlier(i_out) = 0 then
-                		SI_Points_Outliers := SI_Points_Outliers - i_out;
-                		SI_Points_Active := SI_Points - SI_Points_Outliers;
-                	else SI_Points_Active := SI_Points_Active - i_out;
-                	endif;
-                	solve MP_Feasibility_LP;
+                	PO_Num_outliers('2'):=PO_Num_outliers('2')+1;
                 endfor;
-            }
-        }
-        Procedure Proc_Iterative_LP_Solve_Remove_resolve_Ri {
-            Body: {
-                SI_Points_Outliers_1:=SI_Points-SI_Points_Active;
-                PI_Countnum_o:=0;
+                
+                
+                Proc_Iterative_LP_Solve_Remove_resolve_1;
+                Proc_Iterative_LP_Solve_Remove_resolve_2;
+                for i_num_iterations do
+                	Proc_Iterative_LP_Solve_Remove_resolve_Ri;
+                endfor;
+                PO_Num_outliers('3'):=0;
                 for i_out_1 do
-                PI_Countnum_o:=PI_Countnum_o+1;
+                	PO_Num_outliers('3'):=PO_Num_outliers('3')+1;
                 endfor;
-                for i_num_o do	
-                	for i_out_1 do
-                		PO_R_store_(i_out_1,i_num_o):=PO_R(i_out_1)
-                	endfor;
-                	SI_Points_Active := SI_Points_Active + argmax(i_out_1, PO_R(i_out_1)) ;
-                	SI_Points_Outliers_2 := argmax(i_out_1, PO_R(i_out_1));
-                	for i_out_2 do
-                		if PO_Is_LP_Outlier(i_out_2) = 0 then
-                			SI_Points_Outliers_1 := SI_Points_Outliers_1 - i_out_2;
-                		else 
-                			SI_Points_Active := SI_Points_Active - i_out_2;
-                			SI_Points_Outliers_1 := SI_Points_Outliers_1 - i_out_2;
-                		endif;
-                	endfor;
-                	solve MP_Feasibility_LP;
+                
+                Proc_Iterative_LP_Solve_Remove_resolve_1;
+                Proc_Iterative_LP_Solve_Remove_resolve_2;
+                Solve_MILP6_3_Problem;
+                PO_Num_outliers('4'):=0;
+                for i_out do
+                	PO_Num_outliers('4'):=PO_Num_outliers('4')+1;
                 endfor;
             }
         }
-        Procedure Procedure_1 {
+        Procedure Solve_MILP6_3_Problem {
             Body: {
+                PD_Q_Coeff(d1,d2):=VC_Q_Coeff(d1,d2);
+                SI_Points_Active:=SI_Points;
+                SI_Points_Active_NonOutliers:=SI_Points_Active-SI_Points_Outliers;
+                solve MILP6_3_Problem_solve;
                 
-                SI_points_Active := SI_points;
-                Solve_Max_Epsilon_LP;
-                PO_Max_Epsilon := VC_Epsilon;
-                
-                	PI_EPSILON := (  5 / PI_Num_Epsilons ) * PO_Max_Epsilon;	
-                	PI_Store_EPSILON(i_Ri):= PI_EPSILON;
-                	Solve MP_Feasibility_LP;
-            }
-        }
-        Procedure Proc_delete_outliers {
-            Body: {
-                SI_points_Active:= SI_points - SI_Points_Outliers;
-            }
-        }
-        Procedure Proc_put_back_outliers {
-            Body: {
-                
-                SI_Points_Active:= SI_Points;
+                SI_Points_Outliers:=SI_Points_Outliers-SI_Points_Outliers;
+                for i_a do
+                	if VC_Z_1(i_a)=1 
+                		then SI_Points_Outliers:=SI_Points_Outliers+i_a;
+                	endif
+                endfor
             }
         }
         Procedure Solve_MILP_Robust_Problem {
@@ -768,11 +951,32 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 {1 .. PI_Num_Epsilons+1}
             }
         }
-        Set SD_Ri_Indices {
+        Set SD_Outliers_Num_Indices {
+            SubsetOf: Integers;
+            Index: i_Outliers_Num;
+            Definition: {
+                {1 .. PI_Outliers_Num}
+            }
+        }
+        Set SD_Iterations_Num_Indices {
+            SubsetOf: Integers;
+            Index: i_num_iterations;
+            Definition: {
+                {1 .. PI_Iterations_Num}
+            }
+        }
+        Set SD_Count_Indices {
             SubsetOf: Integers;
             Index: i_num_o;
             Definition: {
                 {1 .. PI_Countnum_o}
+            }
+        }
+        Set SD_Methods_Indices {
+            SubsetOf: Integers;
+            Index: i_num_methods;
+            Definition: {
+                {1 .. PI_methods_count}
             }
         }
         Parameter PI_Num_Epsilons {
@@ -782,7 +986,23 @@ Model Main_Adaptive_Distance_Metric_Selection {
         Parameter PI_Num_Epsilons_1 {
             Range: integer;
         }
+        Parameter PI_Epsilon_div_MAXEpsilon {
+            InitialData: 0.5;
+        }
         DeclarationSection Output_Declarations {
+            Parameter PI_Iterations_Num {
+                InitialData: 1;
+            }
+            Parameter PI_Outliers_Num {
+                Range: integer;
+            }
+            Parameter PI_methods_count {
+                Range: integer;
+                Definition: 4;
+            }
+            Parameter PO_Num_outliers {
+                IndexDomain: i_num_methods;
+            }
             Parameter PI_Countnum_o;
             Parameter PO_R_store_ {
                 IndexDomain: (i_out,i_num_o);
@@ -815,7 +1035,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Definition: {
                     
                     !VC_Min_Dist(i) - min[ j | (i,j) in SD_Neighbors , VC_Distance(i, j) ]
-                    min[ j_a | (i_a,j_a) in  SD_Neighbors_and_Non, sum[ d , PD_Delta(i_a,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_a,j_a,d1) * PD_Delta(i_a,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]- min[ j_a | (i_a,j_a) in SD_Neighbors , sum[ d , PD_Delta(i_a,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_a,j_a,d1) * PD_Delta(i_a,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
+                    min[ j_a | (i_a,j_a) in  SD_Neighbors_and_Non, sum[ d , PD_Delta(i_a,j_a,d)^2 * PO_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_a,j_a,d1) * PD_Delta(i_a,j_a,d2) * PO_Q_Coeff(d1,d2) ] ]- min[ j_a | (i_a,j_a) in SD_Neighbors , sum[ d , PD_Delta(i_a,j_a,d)^2 * PO_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_a,j_a,d1) * PD_Delta(i_a,j_a,d2) * PO_Q_Coeff(d1,d2) ] ]
                 }
                 Comment: "Ideally, this parameter should be 0. If this quantity is negative, the point i is an outlier.";
             }
