@@ -5,6 +5,7 @@
 	<Page Name="Input Scatter Plot" PageGUID="41B3D3D0-C93B-44D9-9198-DB3DF2857132" />
 	<Page Name="Output Scatter Plot" PageGUID="58B1EDBE-F6CD-47B7-ABEA-0D9C0CE469FE" />
 	<Page Name="Output Scatter Plot(solution)" PageGUID="F19E2E23-0879-47B1-A31D-A5A462923FEC" />
+	<Page Name="Outliers Output Scatter Plot(solution)" PageGUID="F55E0F03-EB29-4C1F-A7B9-7A3FD28F3A4E" />
 	<Page Name="Objective Function Plots" PageGUID="A2189CA2-8BF8-4119-B1F3-906D76CFF774" />
 	<Page Name="Distance Metric Plot" PageGUID="21BDC776-41CB-46B1-BE7D-A6214E326C8E" />
 	<Page Name="Ri Plot" PageGUID="5C0ABE78-78D8-462F-9245-D77A56314AFA" />

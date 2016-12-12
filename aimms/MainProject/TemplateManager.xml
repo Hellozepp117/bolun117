@@ -5,6 +5,7 @@
 	<Page Name="Input Scatter Plot" PageGUID="41B3D3D0-C93B-44D9-9198-DB3DF2857132" />
 	<Page Name="Output Scatter Plot" PageGUID="58B1EDBE-F6CD-47B7-ABEA-0D9C0CE469FE" />
 	<Page Name="Output Scatter Plot(solution)" PageGUID="F19E2E23-0879-47B1-A31D-A5A462923FEC" />
+	<Page Name="Outliers Output Scatter Plot(solution)" PageGUID="F55E0F03-EB29-4C1F-A7B9-7A3FD28F3A4E" />
 	<Page Name="[Data Page] PI_Point" PageGUID="4C21E806-FC86-48E2-9071-9E3375CC376E" />
 	<Page Name="Objective Function Plots" PageGUID="A2189CA2-8BF8-4119-B1F3-906D76CFF774" />
 	<Page Name="[Data Page] VC_Min_Dist" PageGUID="AE5B3D71-35EF-4C40-A54D-DD1271343458" />

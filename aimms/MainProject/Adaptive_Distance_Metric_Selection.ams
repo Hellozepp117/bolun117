@@ -646,6 +646,11 @@ Model Main_Adaptive_Distance_Metric_Selection {
     }
     Section HEURISTICS {
         Section Temp_Procedure {
+            Procedure Procedure_1 {
+                Body: {
+                    PO_R_store_(i_out_1,'1'):=PO_R_store_(i_out_1,'1')-PO_R_store_(i_out_1,'1');
+                }
+            }
             Procedure Proc_Read_Instance_From_Text_File_copy {
                 Body: {
                     if (FileSelect(filename : PSI_TEXTFILE_NAME, directory : "data/", extension : "*.txt", title : "Load text input file")) then
@@ -781,10 +786,12 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     for i_out_1 do
                     PI_Countnum_o:=PI_Countnum_o+1;
                     endfor;
+                    PO_R_store_(i_out_1,'1'):=PO_R_store_(i_out_1,'1')-PO_R_store_(i_out_1,'1');
+                    for i_out_1 do
+                    		PO_R_store_(i_out_1,'1'):=PO_R(i_out_1);
+                    endfor;
                     for i_num_o do	
-                    	for i_out_1 do
-                    		PO_R_store_(i_out_1,i_num_o):=PO_R(i_out_1)
-                    	endfor;
+                    
                     	SI_Points_Active := SI_Points_Active + argmax(i_out_1, PO_R(i_out_1)) ;
                     	SI_Points_Outliers_2 := argmax(i_out_1, PO_R(i_out_1));
                     	for i_out_2 do
@@ -797,6 +804,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     	endfor;
                     endfor;
                     SI_Points_Outliers_1:=SI_Points-SI_Points_Active;
+                    SI_Points_Outliers:=SI_Points_Outliers_1;
                     solve MP_Feasibility_LP;
                 }
             }
@@ -870,6 +878,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 		then SI_Points_Outliers:=SI_Points_Outliers+i_a;
                 	endif
                 endfor
+                SI_Points_Active:=SI_Points - SI_Points_Outliers;
             }
         }
         Procedure Solve_MILP_Robust_Problem {
