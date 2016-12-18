@@ -58,6 +58,11 @@ Model Main_Adaptive_Distance_Metric_Selection {
     }
     Section INPUT_DATA {
         DeclarationSection Input_Set_Declarations {
+            Set SI_Points_N_minus_O {
+                SubsetOf: SI_Points;
+                Index: i_N_O, j_N_O, k_N_O;
+                Definition: SI_Points-SI_Points_Outliers;
+            }
             Set SI_Points {
                 Index: i, j, k;
             }
@@ -72,6 +77,9 @@ Model Main_Adaptive_Distance_Metric_Selection {
             Set SI_Points_Outliers {
                 SubsetOf: SI_Points;
                 Index: i_out, j_out, k_out;
+            }
+            Set SI_Points_Outliers_Ri {
+                SubsetOf: SI_Points;
             }
             Set SI_Points_Outliers_1 {
                 SubsetOf: SI_Points_Outliers;
@@ -127,6 +135,27 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Definition: {
                     
                     { (i,j) | i <> j }
+                }
+            }
+            Set SD_Ri {
+                SubsetOf: (SI_Points,SI_Points_Outliers_Ri);
+                Definition: {
+                    
+                    { (i,j) | i <> j }
+                }
+            }
+            Set SD_Ri_1 {
+                SubsetOf: (SI_Points,SI_Points);
+                Definition: {
+                    
+                    SD_Neighbors-SD_Ri
+                }
+            }
+            Set SD_Ri_2 {
+                SubsetOf: (SI_Points,SI_Points);
+                Definition: {
+                    
+                    SD_Non_Neighbors-SD_Ri
                 }
             }
             Set SD_Neighbors {
@@ -782,6 +811,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
             Procedure Proc_Iterative_LP_Solve_Remove_resolve_Ri {
                 Body: {
                     SI_Points_Outliers_1:=SI_Points-SI_Points_Active;
+                    SI_Points_Outliers_Ri:=SI_Points_Outliers_1;
                     PI_Countnum_o:=0;
                     for i_out_1 do
                     PI_Countnum_o:=PI_Countnum_o+1;
@@ -877,7 +907,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 	if VC_Z_1(i_a)=1 
                 		then SI_Points_Outliers:=SI_Points_Outliers+i_a;
                 	endif
-                endfor
+                endfor;
                 SI_Points_Active:=SI_Points - SI_Points_Outliers;
             }
         }
@@ -1022,9 +1052,9 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Range: nonnegative;
                 Definition: {
                     !min[ j | (i,j) in SD_Non_Neighbors , VC_Distance(i, j) ] / min[ j | (i,j) in SD_Neighbors , VC_Distance(i, j) ] 
-                     min[ j_a | (i_out,j_a) in SD_Neighbors , sum[ d , PD_Delta(i_out,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_out,j_a,d1) * PD_Delta(i_out,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
+                     min[ j_a | (i_out,j_a) in SD_Ri_1  , sum[ d , PD_Delta(i_out,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_out,j_a,d1) * PD_Delta(i_out,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
                      /
-                     min[ j_a | (i_out,j_a) in SD_Non_Neighbors , sum[ d , PD_Delta(i_out,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_out,j_a,d1) * PD_Delta(i_out,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
+                     min[ j_a | (i_out,j_a) in  SD_Ri_2 , sum[ d , PD_Delta(i_out,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_out,j_a,d1) * PD_Delta(i_out,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
                 }
             }
             Parameter PO_Store_Q_coeff {
