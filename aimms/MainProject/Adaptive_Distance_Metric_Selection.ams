@@ -80,6 +80,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
             Set SI_Points_Outliers_Ri {
                 SubsetOf: SI_Points;
+                Index: i_r, j_r, k_r;
             }
             Set SI_Points_Outliers_1 {
                 SubsetOf: SI_Points_Outliers;
@@ -141,7 +142,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 SubsetOf: (SI_Points,SI_Points_Outliers_Ri);
                 Definition: {
                     
-                    { (i,j) | i <> j }
+                    { (i,j_r) | i <> j_r }
                 }
             }
             Set SD_Ri_1 {
@@ -239,6 +240,97 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
     }
     Section MATH_PROGRAMS {
+        Section MILP_Section6_4 {
+            DeclarationSection MILP6_4_Problem {
+                Variable Copy_VC_MILP6_3_OBJ {
+                    Range: free;
+                    Definition: sum[i_a, VC_Lambda_1(i_a)-PD_Rho_1 * VC_Z_1(i_a)];
+                }
+                MathematicalProgram Copy_MILP6_3_Problem_solve {
+                    Objective: VC_MILP6_3_OBJ;
+                    Direction: maximize;
+                    Constraints: SD_MILP6_3_Problem_Constraints;
+                    Variables: SD_MILP6_3_Problem_Variables;
+                    Type: Automatic;
+                }
+                Set Copy_SD_MILP6_3_Problem_Variables {
+                    SubsetOf: AllVariables;
+                    Definition: AllVariables * ( MILP_Section6_3);
+                }
+                Set Copy_SD_MILP6_3_Problem_Constraints {
+                    SubsetOf: AllConstraints;
+                    Definition: AllConstraints * (MILP_Section6_3);
+                }
+            }
+            DeclarationSection MILP6_4_Constraints {
+                Constraint Copy_CL_VC_Y_1 {
+                    IndexDomain: i_a;
+                    Definition: 1 = sum[ j_a | (i_a,j_a) in SD_Neighbors , VC_Y_1(i_a,j_a) ];
+                }
+                Constraint Copy_CL_lambda_condition_1 {
+                    IndexDomain: i_a;
+                    Definition: {
+                        VC_Lambda_1(i_a) <= 1 - VC_Z_1(i_a);
+                    }
+                }
+                Constraint Copy_CL_MILP6_3_Max_Min_Dist_To_Nearest_Non_Neighbor {
+                    IndexDomain: (i_a,k_a) | (i_a,k_a) in SD_Non_Neighbors;
+                    Definition: {
+                        
+                        sum[ j_a | (i_a,j_a) in SD_Neighbors , PD_Distance(i_a,j_a)*VC_Y_1(i_a,j_a)  ] + VC_Lambda(i_a) <= PD_Distance(i_a,k_a) + PI_MAX_DISTANCE * [VC_Z_1(i_a)+VC_Z_1(k_a)];
+                    }
+                }
+                Constraint Copy_CL_Y_condition {
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors;
+                    Definition: {
+                        
+                        VC_Y_1(i_a,j_a) + VC_Z_1(j_a) <=1 ;
+                    }
+                }
+                Constraint Copy_CL_Z_condition {
+                    IndexDomain: i_a_n;
+                    Definition: {
+                        
+                        VC_Z_1(i_a_n) =0 ;
+                    }
+                }
+            }
+            DeclarationSection MILP6_4_Variables {
+                Variable Copy_VC_Lambda_1 {
+                    IndexDomain: i_a;
+                    Range: nonnegative;
+                }
+                Variable Copy_VC_Y_1 {
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors;
+                    Text: "Weight of dij";
+                    Range: binary;
+                }
+                Variable Copy_VC_Z_1 {
+                    IndexDomain: i_a;
+                    Text: "Define if point i is an Outlier";
+                    Range: binary;
+                }
+            }
+            DeclarationSection MILP6_4_Parameters {
+                Parameter Copy_PD_Q_Coeff {
+                    IndexDomain: (d1,d2);
+                }
+                Parameter PD_Distance_4 {
+                    IndexDomain: (i_a,j_a) | i_a <> j_a;
+                    Range: [0, PI_MAX_DISTANCE];
+                    Definition: {
+                        sum[ d , PD_Delta(i_a,j_a,d)^2 * VC_Q_Coeff(d,d) ]
+                        +
+                        2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_a,j_a,d1) * PD_Delta(i_a,j_a,d2) * PD_Q_Coeff(d1,d2) ]
+                    }
+                }
+                Parameter PD_Rho_4 {
+                    Text: "Penalty Parameter";
+                    Default: 0;
+                    Definition: 2;
+                }
+            }
+        }
         Section MILP_Section6_3 {
             DeclarationSection MILP6_3_Problem {
                 Variable VC_MILP6_3_OBJ {
@@ -769,17 +861,25 @@ Model Main_Adaptive_Distance_Metric_Selection {
             Procedure Proc_Iterative_LP_Solve_Remove_resolve_3 {
                 Body: {
                     PI_Countnum_o:=0;
-                    for i_out do
-                    PI_Countnum_o:=PI_Countnum_o+1;
-                    endfor;
-                    for i_out do
-                    	SI_Points_Active := SI_Points_Active + i_out;
-                    	if PO_Is_LP_Outlier(i_out) = 0 then
-                    		SI_Points_Outliers := SI_Points_Outliers - i_out;
-                    		SI_Points_Active := SI_Points - SI_Points_Outliers;
-                    	else SI_Points_Active := SI_Points_Active - i_out;
-                    	endif;
-                    endfor;
+                    PI_Countnum_o_2:=1;
+                    while (PI_Countnum_o <> PI_Countnum_o_2) do
+                    	PI_Countnum_o:=0;
+                    	for i_out do
+                    		PI_Countnum_o:=PI_Countnum_o+1;
+                    	endfor;
+                    	for i_out do
+                    		SI_Points_Active := SI_Points_Active + i_out;
+                    		if PO_Is_LP_Outlier(i_out) = 0 then
+                    			SI_Points_Outliers := SI_Points_Outliers - i_out;
+                    			SI_Points_Active := SI_Points - SI_Points_Outliers;
+                    		else SI_Points_Active := SI_Points_Active - i_out;
+                    		endif;
+                    	endfor;
+                    	PI_Countnum_o_2:=0;
+                    	for i_out do
+                    		PI_Countnum_o_2:=PI_Countnum_o_2+1;
+                    	endfor;
+                    endwhile;
                     	solve MP_Feasibility_LP;
                 }
             }
@@ -825,6 +925,10 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     	SI_Points_Active := SI_Points_Active + argmax(i_out_1, PO_R(i_out_1)) ;
                     	SI_Points_Outliers_2 := argmax(i_out_1, PO_R(i_out_1));
                     	for i_out_2 do
+                    		if PO_R(i_out_2) <= 1 then
+                    			break;
+                    			break;
+                    		endif;
                     		if PO_Is_LP_Outlier(i_out_2) = 0 then
                     			SI_Points_Outliers_1 := SI_Points_Outliers_1 - i_out_2;
                     		else 
@@ -1043,6 +1147,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 IndexDomain: i_num_methods;
             }
             Parameter PI_Countnum_o;
+            Parameter PI_Countnum_o_2;
             Parameter PO_R_store_ {
                 IndexDomain: (i_out,i_num_o);
             }
@@ -1052,9 +1157,9 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Range: nonnegative;
                 Definition: {
                     !min[ j | (i,j) in SD_Non_Neighbors , VC_Distance(i, j) ] / min[ j | (i,j) in SD_Neighbors , VC_Distance(i, j) ] 
-                     min[ j_a | (i_out,j_a) in SD_Ri_1  , sum[ d , PD_Delta(i_out,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_out,j_a,d1) * PD_Delta(i_out,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
+                     min[ j_a | (i_out,j_a) in SD_Ri_2   , sum[ d , PD_Delta(i_out,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_out,j_a,d1) * PD_Delta(i_out,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
                      /
-                     min[ j_a | (i_out,j_a) in  SD_Ri_2 , sum[ d , PD_Delta(i_out,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_out,j_a,d1) * PD_Delta(i_out,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
+                     min[ j_a | (i_out,j_a) in SD_Ri_1  , sum[ d , PD_Delta(i_out,j_a,d)^2 * VC_Q_Coeff(d,d) ] + 2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i_out,j_a,d1) * PD_Delta(i_out,j_a,d2) * VC_Q_Coeff(d1,d2) ] ]
                 }
             }
             Parameter PO_Store_Q_coeff {

@@ -2,44 +2,37 @@ Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remo
 Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
 Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
 Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
-Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
 The use of a for around these statement(s) is unnecessary and probably inefficient.
-Syntax error at line 12 in user-defined function section "Solve_MILP6_3_Problem", column 1.
-The symbol "SI_Points_Active" is not expected.
-Syntax error at line 12 in user-defined function section "Solve_MILP6_3_Problem", column 1.
-The symbol "SI_Points_Active" is not expected.
-Syntax error at line 1546, column 44.
-The symbol "," is not expected.
-Syntax error at line 2053, column 44.
-The symbol "," is not expected.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Syntax error at line 5 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3", column 8.
+The symbol ")" is not expected.
 Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
 Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
-Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
-Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
-Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
-The use of a for around these statement(s) is unnecessary and probably inefficient.
-Domain violation at line 3130, column 49.
-The number of arguments in the set "!__0__!" is not correct.
-Domain violation at line 3169, column 49.
-The number of arguments in the set "!__1__!" is not correct.
-Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
-Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
-Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
-Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
-Warning at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
-The use of a for around these statement(s) is unnecessary and probably inefficient.
-Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
-Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
-Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
 Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
 Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
 The use of a for around these statement(s) is unnecessary and probably inefficient.
 Warning: The parameter "PI_Point" is not initialized (default values are used).
-Warning: The domain set "SI_Dimensions" is not initialized (default values are used).
 Warning: The element parameter "PE_Class" is not initialized (default values are used).
-Execution error at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri" (while evaluating the definition of set "SD_Ri").
-The element '002' is not in the set "SI_Points_Outliers_Ri".
-Execution error at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri" (while evaluating the definition of set "SD_Ri").
-The element '002' is not in the set "SI_Points_Outliers_Ri".
-Execution error at line 9 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri" (while evaluating the definition of set "SD_Ri").
-The element '002' is not in the set "SI_Points_Outliers_Ri".
+Warning: The domain set "SI_Dimensions" is not initialized (default values are used).
+Warning: The variable "VC_Q_Coeff" is not initialized (default values are used).
+Warning at line 2 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The parameter "PI_Countnum_o" is not initialized (default values are used).
+Warning at line 2 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The parameter "PI_Countnum_o_2" is not initialized (default values are used).
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 19 to 18.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 16 to 15.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 19 to 18.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 16 to 15.
