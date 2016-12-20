@@ -58,13 +58,13 @@ Model Main_Adaptive_Distance_Metric_Selection {
     }
     Section INPUT_DATA {
         DeclarationSection Input_Set_Declarations {
+            Set SI_Points {
+                Index: i, j, k;
+            }
             Set SI_Points_N_minus_O {
                 SubsetOf: SI_Points;
                 Index: i_N_O, j_N_O, k_N_O;
                 Definition: SI_Points-SI_Points_Outliers;
-            }
-            Set SI_Points {
-                Index: i, j, k;
             }
             Set SI_Points_Active {
                 SubsetOf: SI_Points;
@@ -131,6 +131,17 @@ Model Main_Adaptive_Distance_Metric_Selection {
     }
     Section REFINED_DATA {
         DeclarationSection Refined_Set_Declarations {
+            Set SD_Neighbors_minus_O {
+                SubsetOf: (SI_Points, SI_Points);
+                Index: i_NO, j_NO;
+            }
+            Set SD_Outliers {
+                SubsetOf: (SI_Points_Outliers, SI_Points_Outliers);
+                Index: i_SD_O, j_SD_O;
+                Definition: {
+                    { (i_out,j_out) | i_out <> j_out }
+                }
+            }
             Set SD_Neighbors_and_Non {
                 SubsetOf: (SI_Points,SI_Points);
                 Definition: {
@@ -160,18 +171,22 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 }
             }
             Set SD_Neighbors {
-                SubsetOf: (SI_Points,SI_Points);
+                SubsetOf: (SI_Points, SI_Points);
                 Definition: {
                     
                     { (i,j) | i <> j and PE_Class(i) = PE_Class(j) }
                 }
             }
             Set SD_Non_Neighbors {
-                SubsetOf: (SI_Points,SI_Points);
+                SubsetOf: (SI_Points, SI_Points);
                 Definition: {
                     
                     { (i,j) | PE_Class(i) <> PE_Class(j) }
                 }
+            }
+            Set SD_IK {
+                SubsetOf: (SD_Non_Neighbors);
+                Index: i_IK, k_IK;
             }
         }
         DeclarationSection Refined_Parameter_Declarations {
@@ -766,6 +781,24 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
     }
     Section HEURISTICS {
+        Procedure Set_IK {
+            Body: {
+                SD_IK:=SD_Non_Neighbors;
+                SD_Neighbors_minus_O:=SD_Neighbors;
+                !for i_SD_O in SD_Outliers do
+                !	for j_SD_O in SD_Outliers do
+                !	 	if ((i_SD_O,j_SD_O) in SD_Neighbors_minus_O) then 
+                !	 		SD_Neighbors_minus_O:=SD_Neighbors_minus_O-(i_SD_O,j_SD_O);
+                !	 	endif;
+                !	endfor;
+                !endfor;
+                for i_IK do
+                	for k_IK do
+                
+                	endfor;
+                endfor;
+            }
+        }
         Section Temp_Procedure {
             Procedure Procedure_1 {
                 Body: {
@@ -817,7 +850,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     SI_points_Active := SI_points;
                     Solve_Max_Epsilon_LP;
                     PO_Max_Epsilon := VC_Epsilon;
-                    	PI_EPSILON := PO_Max_Epsilon;	
+                    	PI_EPSILON :=0.5* PO_Max_Epsilon;	
                     	PI_Store_EPSILON(1):= PI_EPSILON;
                     
                     

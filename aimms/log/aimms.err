@@ -36,3 +36,317 @@ Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Rem
 The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 19 to 18.
 Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
 The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 16 to 15.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Syntax error at line 5100, column 1.
+The symbol '(' is not expected but a symbol like 'identifier' is expected.
+Syntax error at line 5162, column 1.
+The symbol '(' is not expected but a symbol like 'identifier' is expected.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Syntax error at line 6719, column 1.
+The symbol '(' is not expected but a symbol like 'identifier' is expected.
+Syntax error at line 6812, column 1.
+The symbol '(' is not expected but a symbol like 'identifier' is expected.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Syntax error at line 8339, column 1.
+The symbol '(' is not expected but a symbol like 'identifier' is expected.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 4 in user-defined function section "Set_IK".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 4 in user-defined function section "Set_IK".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 4 in user-defined function section "Set_IK".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 4 in user-defined function section "Set_IK".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Domain violation at line 16459, column 13.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 16524, column 13.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Warning at line 6 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Domain violation at line 18096, column 13.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 18102, column 13.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 18142, column 13.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 18148, column 13.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 18188, column 14.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 18252, column 14.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Warning at line 6 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Domain violation at line 19821, column 14.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 19826, column 14.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 19865, column 14.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 19870, column 14.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Warning at line 6 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 6 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Execution error while evaluating the definition of set "SD_Outliers".
+The element '001' is not in the domain set "SI_Points_Outliers".
+Execution error while evaluating the definition of set "SD_Outliers".
+The element '001' is not in the domain set "SI_Points_Outliers".
+Warning at line 6 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 6 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Execution error while evaluating the definition of set "SD_Outliers".
+The element '001' is not in the domain set "SI_Points_Outliers".
+Warning at line 6 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Domain violation at line 28112, column 17.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 28176, column 17.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Warning at line 6 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Domain violation at line 29745, column 17.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 29750, column 17.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Warning at line 6 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Domain violation at line 31468, column 13.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 31474, column 13.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 31513, column 13.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 31518, column 13.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Syntax error at line 2 in user-defined function section "Set_IK", column 13.
+The symbol "-" is not expected.
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Semantic error at line 5 in user-defined function section "Set_IK", column 47.
+Total (compound) dimension of the indices is too high.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Semantic error at line 5 in user-defined function section "Set_IK", column 47.
+Total (compound) dimension of the indices is too high.
+Semantic error at line 5 in user-defined function section "Set_IK", column 47.
+Total (compound) dimension of the indices is too high.
+Semantic error at line 5 in user-defined function section "Set_IK", column 47.
+Total (compound) dimension of the indices is too high.
+Domain violation at line 2 in user-defined function section "Set_IK", column 36.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Warning at line 14 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 14 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 14 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 14 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 14 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Domain violation at line 2 in user-defined function section "Set_IK", column 35.
+The dimension of the set expression on the left (1) does not match with the dimension of the set expression on the right (2).
+Domain violation at line 5 in user-defined function section "Set_IK", column 40.
+The number of arguments in the compound set "SD_Neighbors_minus_O" is not correct.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Semantic error at line 5 in user-defined function section "Set_IK", column 37.
+The identifier "is" has not been declared.
+Domain violation at line 5 in user-defined function section "Set_IK", column 40.
+The number of arguments in the compound set "SD_Neighbors_minus_O" is not correct.
+Domain violation at line 5 in user-defined function section "Set_IK", column 40.
+The number of arguments in the compound set "SD_Neighbors_minus_O" is not correct.
+Semantic error at line 3 in user-defined function section "Set_IK", column 15.
+The index "i_SD_O" is not a superset nor a subset of domain set "SI_Points_Outliers".
+Domain violation at line 5 in user-defined function section "Set_IK", column 40.
+The number of arguments in the compound set "SD_Neighbors_minus_O" is not correct.
+Syntax error at line 5 in user-defined function section "Set_IK", column 37.
+The symbol "<=" is not expected.
+Syntax error at line 5 in user-defined function section "Set_IK", column 37.
+The symbol "<" is not expected.
+Domain violation at line 5 in user-defined function section "Set_IK", column 40.
+The number of arguments in the compound set "SD_Neighbors_minus_O" is not correct.
+Domain violation at line 5 in user-defined function section "Set_IK", column 40.
+The number of arguments in the compound set "SD_Neighbors_minus_O" is not correct.
+Warning at line 14 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 14 in user-defined function section "Set_IK".
+Usage of directly nested for statements is unnecessary and inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 11 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 29 to 28.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 19 to 18.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+The cardinality of the range domain set "SI_Points_Outliers" of for loop index "i_out" has been changed from 16 to 15.
