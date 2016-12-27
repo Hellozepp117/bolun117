@@ -44,23 +44,23 @@
 
 % The \icmltitle you define below is probably too long as a header.
 % Therefore, a short form for the running title is supplied here:
-\icmltitlerunning{TODO2}
+\icmltitlerunning{A Novel Approach to Supervised Classification Using Non-Linear Metrics}
 
 \begin{document} 
 
 \twocolumn[
-\icmltitle{TODO}
+\icmltitle{A Novel Approach to Supervised Classification Using Non-Linear Metrics}
 
 % It is OKAY to include author information, even for blind
 % submissions: the style file will automatically remove it for you
 % unless you've provided the [accepted] option to the icml2016
 % package.
-\icmlauthor{Your Name}{email@yourdomain.edu}
-\icmladdress{Your Fantastic Institute,
-            314159 Pi St., Palo Alto, CA 94306 USA}
-\icmlauthor{Your CoAuthor's Name}{email@coauthordomain.edu}
-\icmladdress{Their Fantastic Institute,
-            27182 Exp St., Toronto, ON M6H 2T1 CANADA}
+\icmlauthor{Krishnan Kumaran, Dimitri Papageorgiou, Francisco Trespalacios}{[krisnan.kumaran,dimitri.j.papageorgiou,francisco.trespalacios]@exxonmobil.com}
+\icmladdress{ExxonMobil Corporate Strategic Research,
+            1545 US 22 East, Annandale, NJ 08801 USA}
+\icmlauthor{Martin Takac, Bolun Xu}{[mat614,bo215]@lehigh.edu}
+\icmladdress{Industrial and Systems Eng., Lehigh University
+            200 West Packer Avenue, Bethlehem, 18015}
 
 % You may provide any keywords that you 
 % find helpful for describing your paper; these are used to populate 
@@ -71,40 +71,73 @@
 ]
 
 \begin{abstract} 
-Use MILP and re-add non_outliers back to dataset.
+Clustering (also known as unsupervised classification) and Classification (commonly understood to be supervised,
+ i.e. based on training data) are common ways of performing data analysis to achieve a range of objectives like 
+anomaly detection and diagnosis, data segmentation and model development/refinement. Consequently, there is a 
+large body of research on these topics (see for example\cite{Hastie} and references therein for a survey of 
+currently used methods) offering different solutions ranging from K-means, spectral methods and other more 
+complex methods for Clustering, and Support Vector Machines (SVM), Artificial(Deep/Shallow) Neural Networks (ANN), their 
+non-linear Kernel-based variants and others for Classification.
+
+In previous work, we developed clustering methods [see 2012 US patent \cite{KKpatent}] which  extend an existing 
+technique known as Agglomerative Clustering using a trade-off curve to automatically select the optimal 
+number of clusters in a consistent manner from the data, a capability not available among other commonly 
+used clustering algorithms like K-means. Like all clustering methods, however, this method requires the 
+choice of a similarity/distance metric between the data points, and while there are typically a few 
+reasonable choices for most data, the results can depend strongly on this choice.
+
+In this work, we extend the concepts behind agglomerative clustering to a supervised classification 
+method aimed at learning the optimal distance/similarity metric directly from training data. The main advantages of
+this form of Supervised Classification, as compared to current state-of-the-art methods (Deep Neural Networks, SVM etc.) are
+\begin{itemize}
+\item{The formulation accommodates multiple disjoint ``islands'' belonging to the same user-specified class, since
+the classification criterion is based on distances to nearest co-class/non-class neighbors. This is a crucial property
+to enable accurate classification while allowing for sufficiently simple metrics that do not require all examples of each
+class to be forced into a single compact region of the transformed space defined by the metric. It also automatically builds
+robustness of classification performance to substantial diversity within user-defined classes, which is often a reality in most practical applications.}
+\item{Another key advantage of our method is that the mis-classifications with the optimally computed metric provide guidelines
+for new data acquisition and data quality control to improve classification performance. This is a key ``value-of-information'' criterion that can significantly improve both classification performance and computational burden by ensuring training data completeness, representativeness and economy, which are not adequately addressed in current applications of DNN and other methods which often depend on
+very large quantities of training data (e.g. internet cat images).}
+\end{itemize}
+
+Finally, the metric learning process can be formulated as an optimization problem (Mixed-Integer Linear Program, or MILP, 
+in its simplest form) that can be hard to solve for realistic data sizes, but we present fast and parallelizable methods to compute the optimal metric.
+We demonstrate classification and computational performance of the algorithms through several simple and intuitive examples.
 \end{abstract} 
 
- 
- 
- 
- 
-\section{Introduction and Motivation}  
- 
+
+\section{Introduction}  
+Supervised Classification is one of the most commonly used Machine Learning paradigms both in the industry and academic research. There is a large body of past and continuing research on the topic
  
 \paragraph{Contributions.} 
  
  
-\section{Algorithm}
+\section{Motivation}
+
+\section{Illustration Examples}
+
+
+\section{Mathematical Formulation} 
+ 
+ 
+\section{Algorithm / Work Flow}
 
 
 
 \section{Numerical Experiments/Results}
 
 
+\subsection{NN comparison}
+
+\subsection{Economy of data collection}
+
+DNN - > autoencoders
+
+
 \section{Conclusion} 
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- % Acknowledgements should only appear in the accepted version. 
+% Acknowledgements should only appear in the accepted version. 
 
 % In the unusual situation where you want a paper to appear in the
 % references without citing it in the main text, use \nocite
