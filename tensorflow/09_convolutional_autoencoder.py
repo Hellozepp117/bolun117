@@ -151,7 +151,7 @@ def test_mnist():
     # %%
     # Fit all training data
     batch_size = 100
-    n_epochs = 20 #10
+    n_epochs = 5 #10
     for epoch_i in range(n_epochs):
         for batch_i in range(mnist.train.num_examples // batch_size):
             batch_xs, _ = mnist.train.next_batch(batch_size)
