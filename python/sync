@@ -1,0 +1,18 @@
+#!/bin/sh
+ 
+RSYNC=/usr/bin/rsync
+SSH=/usr/bin/ssh
+KEY=/home/taki/.cron/cron
+RUSER=mat614
+RHOST=polyps.ie.lehigh.edu
+LPATH=/work/jointProjects/2017_MSC_Bolun_Xu_Clustering/python
+
+  
+ 
+RPATH=/home/mat614/Clustering
+
+$RSYNC -avr --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r $LPATH -e  "$SSH -i $KEY" $RUSER@$RHOST:$RPATH 
+
+
+
+
