@@ -1,0 +1,43 @@
+SECTION
+
+  DECLARATION SECTION Stopwatch_Declarations
+
+    QUANTITY:
+       identifier  :  SI_Time_Duration
+       base unit   :  s
+       conversions :  tick -> s : # -> # / 100
+       comment     :  "Expresses the value for the duration of periods." ;
+
+    STRING PARAMETER:
+       identifier  :  StartTime
+       comment     :  "Time the stopwatch was started" ;
+
+    PARAMETER:
+       identifier  :  ElapsedTime
+       unit        :  s
+       comment     :  "Time that has elapsed since the stopwatch was started. The value for this is updated
+                       by the StopStopwatch procedure" ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  StartStopwatch
+    comment    :  "Set the starttime of the stopwatch"
+    body       :  
+      !Use the CurrentToString AIMMS function to store the current time in YYYY-MM-DD HH:MM:SS:TT format
+      StartTime := CurrentToString( "%c%y-%m-%d %H:%M:%S:%t");
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  StopStopwatch
+    comment    :  "Deterine how many ticks have elapsed since the start of the stopwatch"
+    body       :  
+      !Using the CurrentToMoment AIMMS function, we can ask for the number of ticks that have elapsed at the moment
+      !since the given StartTime (which was stored by calling the StartStopwatch procedure).
+      !Please note that we do not actually 'stop' the stopwatch, but only store the time elapsed.
+      ElapsedTime := CurrentToMoment( [tick], StartTime );
+
+  ENDPROCEDURE  ;
+
+ENDSECTION  ;

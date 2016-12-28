@@ -1,6 +1,7 @@
 ## ams_version=1.0
 
 Model Main_Adaptive_Distance_Metric_Selection {
+    Section Clock_tick;
     Section INPUT_INTERFACE {
         Section EXCEL_INTERFACE {
             DeclarationSection EXCEL_FILE_INFO {
@@ -102,6 +103,8 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
         }
         DeclarationSection Input_Parameter_Declarations {
+            Parameter temp1;
+            Parameter temp2;
             Parameter PI_Store_EPSILON {
                 IndexDomain: i_Ri;
             }
@@ -132,15 +135,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
     Section REFINED_DATA {
         DeclarationSection Refined_Set_Declarations {
             Set SD_Neighbors_minus_O {
-                SubsetOf: (SI_Points, SI_Points);
-                Index: i_NO, j_NO;
-            }
-            Set SD_Outliers {
-                SubsetOf: (SI_Points_Outliers, SI_Points_Outliers);
-                Index: i_SD_O, j_SD_O;
-                Definition: {
-                    { (i_out,j_out) | i_out <> j_out }
-                }
+                SubsetOf: (SI_Points, SI_Points_N_minus_O);
             }
             Set SD_Neighbors_and_Non {
                 SubsetOf: (SI_Points,SI_Points);
@@ -171,7 +166,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 }
             }
             Set SD_Neighbors {
-                SubsetOf: (SI_Points, SI_Points);
+                SubsetOf: (SI_Points,SI_Points);
                 Definition: {
                     
                     { (i,j) | i <> j and PE_Class(i) = PE_Class(j) }
@@ -186,7 +181,6 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
             Set SD_IK {
                 SubsetOf: (SD_Non_Neighbors);
-                Index: i_IK, k_IK;
             }
         }
         DeclarationSection Refined_Parameter_Declarations {
@@ -783,20 +777,21 @@ Model Main_Adaptive_Distance_Metric_Selection {
     Section HEURISTICS {
         Procedure Set_IK {
             Body: {
-                SD_IK:=SD_Non_Neighbors;
-                SD_Neighbors_minus_O:=SD_Neighbors;
-                !for i_SD_O in SD_Outliers do
-                !	for j_SD_O in SD_Outliers do
-                !	 	if ((i_SD_O,j_SD_O) in SD_Neighbors_minus_O) then 
-                !	 		SD_Neighbors_minus_O:=SD_Neighbors_minus_O-(i_SD_O,j_SD_O);
-                !	 	endif;
-                !	endfor;
-                !endfor;
-                for i_IK do
-                	for k_IK do
+                SD_Neighbors_minus_O:={ (i,j_N_O) | i <> j_N_O and PE_Class(i) = PE_Class(j_N_O) };
                 
-                	endfor;
-                endfor;
+                SD_IK:=SD_Non_Neighbors;
+                
+                !{ (i,k) in SD_Non_Neighbors and j in SD_Neighbors_minus_O| |  PO_distance(i,j) > PO_distance(i,k)};
+                
+                for i_IK do
+                !		for j_N_O do
+                !			temp1:= PO_distance(i,j_N_O) + PI_EPSILON;
+                !			temp2:= PO_distance(i_IK);
+                !			if ( temp1 <= temp2) then
+                !				SD_IK:=SD_IK-(i_IK);
+                !			endif;
+                !		endfor;
+                !endfor;
             }
         }
         Section Temp_Procedure {
@@ -895,6 +890,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Body: {
                     PI_Countnum_o:=0;
                     PI_Countnum_o_2:=1;
+                    
                     while (PI_Countnum_o <> PI_Countnum_o_2) do
                     	PI_Countnum_o:=0;
                     	for i_out do
@@ -959,6 +955,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     	SI_Points_Outliers_2 := argmax(i_out_1, PO_R(i_out_1));
                     	for i_out_2 do
                     		if PO_R(i_out_2) <= 1 then
+                    			SI_Points_Active := SI_Points_Active - argmax(i_out_1, PO_R(i_out_1)) ;
                     			break;
                     			break;
                     		endif;
@@ -1166,6 +1163,14 @@ Model Main_Adaptive_Distance_Metric_Selection {
             InitialData: 0.5;
         }
         DeclarationSection Output_Declarations {
+            Parameter PO_distance {
+                IndexDomain: (i,j);
+                Definition: {
+                    sum[ d , PD_Delta(i,j,d)^2 * PO_Q_Coeff(d,d) ]
+                    +
+                    2*sum[ (d1,d2) | ord(d1) < ord(d2) , PD_Delta(i,j,d1) * PD_Delta(i,j,d2) * PO_Q_Coeff(d1,d2) ]
+                }
+            }
             Parameter PI_Iterations_Num {
                 InitialData: 1;
             }
