@@ -1,0 +1,6 @@
+ 
+
+do autoencoders, use the middle layer as "feature" representation
+and then find outliers there.....
+
+hopefully, we will discover that the ourliers are really bad and are maybe harming DNN
