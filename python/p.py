@@ -15,15 +15,17 @@ def createDefaultModel():
 
 
 
-for j in xrange(20):
+for j in xrange(1):
 
 	model = createDefaultModel()
 
 	model.Constraint1 = Constraint(expr =  model.x[1] * model.x[2] >= 1)
 
-	opt = SolverFactory("cplex")
 
-	results = opt.solve(model)
+
+	opt = SolverFactory("cplex")
+	solver_manager = SolverManagerFactory('neos')
+	results = solver_manager.solve(model,opt=opt)
 
 
 	print(results)
