@@ -10,15 +10,17 @@ dimension = len(features[0])
 print dimension
 print features[1][0]
 
-for i in xrange(0,dimension):
-    print i
-    
-    def c11bRule(model,labels,i,k):
-    n = len(labels)
-    for i in xrange(n):
-        myLabel = labels[i]
-        for k in xrange(n):
-            if labels[k] != myLabel:
-                return 0 <= 0
-            
-    return model.x[i,k,v] <= model.a[i,k]*model.y[i]
+J=range(len(labels))
+
+print J
+
+p=5
+P_1=range(p) 
+P_2=range(p-1) 
+for i in xrange(p-1):  
+    P_2[i] = [] 
+for k1 in xrange(p-1):  
+    for k2 in xrange(p-k1-1):
+        temp=k2+k1+1
+        P_2[k1].append(temp)
+print P_2

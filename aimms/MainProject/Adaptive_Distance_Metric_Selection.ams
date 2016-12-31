@@ -783,7 +783,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 
                 !{ (i,k) in SD_Non_Neighbors and j in SD_Neighbors_minus_O| |  PO_distance(i,j) > PO_distance(i,k)};
                 
-                for i_IK do
+                !for i_IK do
                 !		for j_N_O do
                 !			temp1:= PO_distance(i,j_N_O) + PI_EPSILON;
                 !			temp2:= PO_distance(i_IK);
@@ -856,10 +856,11 @@ Model Main_Adaptive_Distance_Metric_Selection {
             Procedure Proc_Iterative_LP_Solve_Remove_resolve_2 {
                 Body: {
                     
-                    
+                    	SI_points_Active := SI_points;
                     	SI_Points_Outliers := SI_Points_Outliers + SD_LP_Outlier_Points;
                     	SI_points_Active:= SI_Points_Active-SD_LP_Outlier_Points;
-                    	PI_EPSILON := PI_Epsilon_div_MAXEpsilon * PO_Max_Epsilon;
+                    	!PI_EPSILON := PI_Epsilon_div_MAXEpsilon * PO_Max_Epsilon;
+                    	PI_EPSILON := 0.01;
                     	Solve MP_Feasibility_LP;
                     	!Solve_Max_Epsilon_LP;
                     	PO_Store_Q_coeff(2,d1,d2):=PO_Q_Coeff(d1,d2);
