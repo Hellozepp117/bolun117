@@ -6,10 +6,8 @@ from OutlierDetection import *
 
 
 
-od = OutlierDetection('dataset3.txt2' , True)    
-# od = OutlierDetection('50_c2_d2.txt' , False)    
-
-
+# od = OutlierDetection('dataset3.txt2' , True)    
+od = OutlierDetection('50_c2_d2.txt' , False)    
 
 
 epsilonMax, B, D, results, model = od.findLargestEpsilon()
@@ -29,6 +27,22 @@ print 'Matrix B is \n', B
 print "Matrix D is  \n ", D
 print "vector t is  \n ", t
 print "outliers: ",outliers
+
+
+# remove outliers and resolve
+
+# start adding points ....  MIP / R_i greeedy / Random insertion
+
+
+
+
+
+
+
+
+
+
+
 
 
 
