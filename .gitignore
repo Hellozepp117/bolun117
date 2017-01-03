@@ -26,3 +26,4 @@ thetaCase.pdf
 accelerated_cocoa/nips2015.pdf
 accelerated_cocoa/paper.log
 cifar
+*.pyc
