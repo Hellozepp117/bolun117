@@ -8,7 +8,6 @@ import math
 from libs.activations import lrelu
 from libs.utils import corrupt
 
-
 # %%
 def autoencoder(input_shape=[None, 784],
                 n_filters=[1, 10, 10, 10, 10],
@@ -151,9 +150,13 @@ def test_mnist():
     # %%
     # Fit all training data
     batch_size = 100
-    n_epochs = 5 #10
+    n_epochs = 20
     for epoch_i in range(n_epochs):
+        print epoch_i
+#     for epoch_i in range(2):
         for batch_i in range(mnist.train.num_examples // batch_size):
+#         for   batch_i in range( 1):
+            print batch_i
             batch_xs, _ = mnist.train.next_batch(batch_size)
             train = np.array([img - mean_img for img in batch_xs])
             sess.run(optimizer, feed_dict={ae['x']: train})
@@ -161,22 +164,48 @@ def test_mnist():
 
     # %%
     # Plot example reconstructions
-    n_examples = 20
-    test_xs, _ = mnist.test.next_batch(n_examples)
-    test_xs_norm = np.array([img - mean_img for img in test_xs])
-    recon = sess.run(ae['y'], feed_dict={ae['x']: test_xs_norm})
-    print(recon.shape)
-    fig, axs = plt.subplots(2, n_examples, figsize=(10, 2))
-    for example_i in range(n_examples):
-        axs[0][example_i].imshow(
-            np.reshape(test_xs[example_i, :], (28, 28)))
-        axs[1][example_i].imshow(
-            np.reshape(
-                np.reshape(recon[example_i, ...], (784,)) + mean_img,
-                (28, 28)))
-    fig.show()
-    plt.draw()
-    plt.waitforbuttonpress()
+    
+    fo = open('../python/OurMethod/src/dataset3.txt','w')
+    foi = open('../python/OurMethod/src/dataset3_images.txt','w')
+    
+    for k in xrange(10):
+        print k
+        n_examples = 64
+        test_xs, test_ys = mnist.test.next_batch(n_examples)
+        
+        test_xs_norm = np.array([img - mean_img for img in test_xs])
+        recon = sess.run(ae['y'], feed_dict={ae['x']: test_xs_norm})
+        
+        reconZ = sess.run(ae['z'], feed_dict={ae['x']: test_xs_norm})
+        
+        
+        for sj in xrange(n_examples):
+            out=[]
+            for i in   reconZ[sj]:
+                for j in i:
+                    for k in j:
+                        out+= [k]
+            yy = test_ys[sj]
+            label = sum( yy[j]*j for j in xrange(10) )
+            if (label == 0 or label==1 or label==2):
+                fo.write(str(int(label))+':'+' '.join([str(kk) for kk in out])+'\n')
+                foi.write(' '.join(  [str(kk) for kk in test_xs[sj] ]   )+'\n')
+    fo.close() 
+    foi.close()
+ 
+    if False:           
+        print(recon.shape)
+        fig, axs = plt.subplots(2, n_examples, figsize=(10, 2))
+        for example_i in range(n_examples):
+            axs[0][example_i].imshow(
+                np.reshape(test_xs[example_i, :], (28, 28)))
+            axs[1][example_i].imshow(
+                np.reshape(
+                    np.reshape(recon[example_i, ...], (784,)) + mean_img,
+                    (28, 28)))
+        fig.show()
+        plt.draw()
+        plt.waitforbuttonpress()
 
 
 # %%

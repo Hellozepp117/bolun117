@@ -6,7 +6,11 @@ from OutlierDetection import *
 
 
 
-od = OutlierDetection('dataset2.txt' )    
+od = OutlierDetection('dataset3.txt2' , True)    
+# od = OutlierDetection('50_c2_d2.txt' , False)    
+
+
+
 
 epsilonMax, B, D, results, model = od.findLargestEpsilon()
 

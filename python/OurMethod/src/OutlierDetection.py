@@ -1,15 +1,22 @@
 from pyomo.environ import *
 import numpy as np
 import math
-
+import time
 #https://github.com/Pyomo/PyomoGallery/blob/master/network_interdiction/multi_commodity_flow/multi_commodity_flow_interdict.py
 
     
 
 def solveModel(model):
         opt = SolverFactory("cplex")
-        solver_manager = SolverManagerFactory('neos')
-        results = solver_manager.solve(model, opt=opt)
+        
+        print "-------------Going to solve the model-------------"
+#         solver_manager = SolverManagerFactory('neos')
+#         results = solver_manager.solve(model, opt=opt)
+        
+        results = opt.solve(model)
+        print(results)
+        print "-------------Model solved-------------"
+        
         return results
 
 
@@ -41,7 +48,7 @@ class OutlierDetection:
     
 
 
-    def __init__(self, filename ):
+    def __init__(self, filename ,normalize):
 
         self.labels = []  
         self.features = []
@@ -54,13 +61,14 @@ class OutlierDetection:
         #centralize data TODO    
             
         #normalizeData
-        M = 0
-        for sample in self.features:
-                normi = sum(xi*xi for xi in sample)
-                M = max(M,normi)
-        M = math.sqrt(M)        
-        self.features = [   [ xi/M for xi in sample  ]        for sample in self.features  ]
-            
+        if normalize:
+            M = 0
+            for sample in self.features:
+                    normi = sum(xi*xi for xi in sample)
+                    M = max(M,normi)
+            M = math.sqrt(M)
+            self.features = [   [ xi/M for xi in sample  ]        for sample in self.features  ]
+
         self.n = len(self.labels)
         self.nonOutlier = range(self.n)
         self.outlier = []
@@ -74,7 +82,13 @@ class OutlierDetection:
             xj = self.features[j]
             x = [  (xi[k]-xj[k]) for k in xrange(self.d) ]
             return ( model.D[(i,j)] ==   sum(  x[k]*x[l]* model.B[(k,l)]      for k in model.d for l in model.d   )      )
+        
+        print "SSSSSSSSSSSSS"
+        start_time = time.time()
         model.distanceBetweenPointGivenBConstrain = Constraint(model.N*model.N, rule=distanceBetweenPointGivenB)
+        elapsed_time = time.time() - start_time
+        
+        print "XXXXXXXXXXXx",elapsed_time
 
     def addConstraint_lower_diagonal_of_B_is_zero(self,model):
         #matrix B will be zero under diagonal
@@ -99,22 +113,26 @@ class OutlierDetection:
         model.B = Var(model.d * model.d   ) #,bounds=(-1, 1) 
 
 
+
         # ------------------  Constraints        
         def epsLessThanDij(model, i,j):
             if self.labels[i] == self.labels[j]:
                 return Constraint.Skip
             else:
                 return ( model.eps <= model.D[(i,j)]   )
+            
+            
         model.epsLessThanDikConstrain = Constraint(model.N*model.N, rule=epsLessThanDij)
 
         
         self.addConstraint_lower_diagonal_of_B_is_zero(model)
+
         self.addConstraint_d_ij_as_function_of_features_and_B(model)
 
         # ------------------  Objective Function        
         model.OBJ = Objective(expr=model.eps, sense=maximize, doc='maximize epsilon')
-
         # ------------------  Solve Problem        
+
         results = solveModel(model)
         
         B = self.getMatrixBFromResult(model)
