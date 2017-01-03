@@ -845,7 +845,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     SI_points_Active := SI_points;
                     Solve_Max_Epsilon_LP;
                     PO_Max_Epsilon := VC_Epsilon;
-                    	PI_EPSILON :=0.5* PO_Max_Epsilon;	
+                    	PI_EPSILON :=PI_Epsilon_div_MAXEpsilon* PO_Max_Epsilon;	
                     	PI_Store_EPSILON(1):= PI_EPSILON;
                     
                     
@@ -859,8 +859,8 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     	SI_points_Active := SI_points;
                     	SI_Points_Outliers := SI_Points_Outliers + SD_LP_Outlier_Points;
                     	SI_points_Active:= SI_Points_Active-SD_LP_Outlier_Points;
-                    	!PI_EPSILON := PI_Epsilon_div_MAXEpsilon * PO_Max_Epsilon;
-                    	PI_EPSILON := 0.01;
+                    	PI_EPSILON := PI_Epsilon_div_MAXEpsilon * PO_Max_Epsilon;
+                    
                     	Solve MP_Feasibility_LP;
                     	!Solve_Max_Epsilon_LP;
                     	PO_Store_Q_coeff(2,d1,d2):=PO_Q_Coeff(d1,d2);
