@@ -7,7 +7,23 @@ The use of a for around these statement(s) is unnecessary and probably inefficie
 Warning: The parameter "PI_Point" is not initialized (default values are used).
 Warning: The domain set "SI_Dimensions" is not initialized (default values are used).
 Warning: The element parameter "PE_Class" is not initialized (default values are used).
-Generation error at line 1 in user-defined function section "Procedure_1".
-The LP mathematical program "MP_Max_Epsilon_LP" does not contain any elements.
-Warning at line 5 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_2".
-The parameter "PO_Max_Epsilon" is not initialized (default values are used).
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 4 in user-defined function section "Solve_MILP6_3_Problem".
+After zero iterations CPLEX 12.6.3 concluded that an integer solution to MILP6_3_Problem_solve does not exist.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.
+Warning at line 8 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3_1".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 12 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_3".
+Adapting domain set "SI_Points_Outliers" inside a for loop where it is also used as a range may lead to unpredictable results.
+Warning at line 10 in user-defined function section "Proc_Iterative_LP_Solve_Remove_resolve_Ri".
+The use of a for around these statement(s) is unnecessary and probably inefficient.

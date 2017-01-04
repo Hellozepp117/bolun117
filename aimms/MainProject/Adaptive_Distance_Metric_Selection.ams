@@ -180,7 +180,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 }
             }
             Set SD_IK {
-                SubsetOf: SD_Non_Neighbors;
+                SubsetOf: (SD_Non_Neighbors);
             }
         }
         DeclarationSection Refined_Parameter_Declarations {
@@ -846,18 +846,17 @@ Model Main_Adaptive_Distance_Metric_Selection {
                     SI_points_Active := SI_points;
                     Solve_Max_Epsilon_LP;
                     PO_Max_Epsilon := VC_Epsilon;
-                    	PI_EPSILON :=PI_Epsilon_div_MAXEpsilon* PO_Max_Epsilon;	
-                    	PI_Store_EPSILON(1):= PI_EPSILON;
+                    PI_Store_EPSILON(1):= PI_EPSILON;
                     
                     
-                    	!Solve MP_Feasibility_LP;
-                    	PO_Store_Q_coeff(1,d1,d2):=PO_Q_Coeff(d1,d2);
+                    !Solve MP_Feasibility_LP;
+                    PO_Store_Q_coeff(1,d1,d2):=PO_Q_Coeff(d1,d2);
                 }
             }
             Procedure Proc_Iterative_LP_Solve_Remove_resolve_2 {
                 Body: {
                     
-                    	SI_points_Active := SI_points;
+                    	SI_points_Active := SI_points-SI_Points_Outliers;
                     	SI_Points_Outliers := SI_Points_Outliers + SD_LP_Outlier_Points;
                     	SI_points_Active:= SI_Points_Active-SD_LP_Outlier_Points;
                     	PI_EPSILON := PI_Epsilon_div_MAXEpsilon * PO_Max_Epsilon;
@@ -1210,7 +1209,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
             Parameter PI_TOLERANCE {
                 Range: nonnegative;
-                Definition: 1e-5;
+                Definition: 1e-7;
             }
             Parameter PO_Max_Epsilon;
             Parameter PO_LP_Separation {
