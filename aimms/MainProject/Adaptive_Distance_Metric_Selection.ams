@@ -135,7 +135,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
     Section REFINED_DATA {
         DeclarationSection Refined_Set_Declarations {
             Set SD_Neighbors_minus_O {
-                SubsetOf: (SI_Points, SI_Points_N_minus_O);
+                SubsetOf: (SI_Points,SI_Points_N_minus_O);
             }
             Set SD_Neighbors_and_Non {
                 SubsetOf: (SI_Points,SI_Points);
@@ -180,7 +180,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 }
             }
             Set SD_IK {
-                SubsetOf: (SD_Non_Neighbors);
+                SubsetOf: SD_Non_Neighbors;
             }
         }
         DeclarationSection Refined_Parameter_Declarations {
@@ -797,7 +797,8 @@ Model Main_Adaptive_Distance_Metric_Selection {
         Section Temp_Procedure {
             Procedure Procedure_1 {
                 Body: {
-                    PO_R_store_(i_out_1,'1'):=PO_R_store_(i_out_1,'1')-PO_R_store_(i_out_1,'1');
+                    SI_points_Active := SI_points;
+                    solve MP_Max_Epsilon_LP;
                 }
             }
             Procedure Proc_Read_Instance_From_Text_File_copy {

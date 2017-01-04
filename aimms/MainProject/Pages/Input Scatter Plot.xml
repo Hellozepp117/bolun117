@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Page Version="4000" TimeStamp="2016-12-02 12:44:12">
+<Page Version="4000" TimeStamp="2016-12-20 10:37:23">
 	<PageEditSize Type="Inherited" />
 	<ProjectUUID>13A7D782-E291-4B68-87A1-8DAD9D688856</ProjectUUID>
 	<TemplatesTabOrderPosition>1</TemplatesTabOrderPosition>
@@ -86,11 +86,6 @@
 			<Action Type="Run">
 				<RunWhat>SpecificProcecure</RunWhat>
 				<Procedure>Proc_Generate_Random_Instance_Annulus_2D</Procedure>
-				<AbortOnError>true</AbortOnError>
-			</Action>
-			<Action Type="Run">
-				<RunWhat>SpecificProcecure</RunWhat>
-				<Procedure>Proc_Normalize_Data</Procedure>
 				<AbortOnError>true</AbortOnError>
 			</Action>
 		</ActionSequence>
@@ -344,6 +339,7 @@
 			<Symbol>PI_Outlier_Probability</Symbol>
 			<Symbol>PI_Noise</Symbol>
 			<Symbol>Proc_Generate_Random_Instance_Gaussian_2D</Symbol>
+			<Symbol>gen</Symbol>
 			<Symbol>Proc_Generate_Random_Instance_Annulus_2D</Symbol>
 			<Symbol>Proc_Generate_Random_Instance_Heart_2D</Symbol>
 			<Symbol>Proc_Generate_Random_Instance_Star_2D</Symbol>
@@ -356,7 +352,6 @@
 			<Symbol>PI_Node_Size</Symbol>
 			<Symbol>Proc_Normalize_Data</Symbol>
 			<Symbol>i</Symbol>
-			<Symbol>gen</Symbol>
 		</Model>
 	</UsedReferences>
 </Page>
