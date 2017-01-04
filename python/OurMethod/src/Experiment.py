@@ -44,17 +44,17 @@ while notFinished:
     print od.outliers
     print od.nonOutlier
 
-    if notFinished:
-        # what model do we solve to re-optimize B and D???? I am not sure about this step
-        print od.B
-        epsilonMax, B, D, results, model = od.findLargestEpsilon()
-        print "Epsilon max = ", epsilonMax
-        epsilon = epsilonMax*0.5
-        t, outliersNEW, results, model = od.findDistanceBandSetOfOutliersForEpsilon(epsilon)
-        outliers+=outliersNEW
-        print "we have ",len(outliersNEW), "outliers: ",outliersNEW
-        print "all outliers ",len(outliers)," : ",outliers
-        print od.B
+#     if notFinished:
+#         # what model do we solve to re-optimize B and D???? I am not sure about this step
+#         print od.B
+#         epsilonMax, B, D, results, model = od.findLargestEpsilon()
+#         print "Epsilon max = ", epsilonMax
+#         epsilon = epsilonMax*0.5
+#         t, outliersNEW, results, model = od.findDistanceBandSetOfOutliersForEpsilon(epsilon)
+#         outliers+=outliersNEW
+#         print "we have ",len(outliersNEW), "outliers: ",outliersNEW
+#         print "all outliers ",len(outliers)," : ",outliers
+#         print od.B
     
     iteration=iteration+1
     
