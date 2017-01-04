@@ -13,8 +13,8 @@ od = OutlierDetection('50_c2_d2.txt' , False)
 epsilonMax, B, D, results, model = od.findLargestEpsilon()
 
 print "Epsilon max = ", epsilonMax
-print 'Matrix B is \n', B
-print "Matrix D is  \n ", D
+# print 'Matrix B is \n', B
+# print "Matrix D is  \n ", D
 
 #print "--------------------"    
 #print(results)
@@ -22,16 +22,48 @@ print "Matrix D is  \n ", D
 
  
 epsilon = epsilonMax*0.5
-B, D,t, outliers, results, model = od.findDistanceBandSetOfOutliersForEpsilon(epsilon)
-print 'Matrix B is \n', B
-print "Matrix D is  \n ", D
-print "vector t is  \n ", t
-print "outliers: ",outliers
+t, outliers, results, model = od.findDistanceBandSetOfOutliersForEpsilon(epsilon)
+print "we have ",len(outliers), "outliers: ",outliers
 
 
-# remove outliers and resolve
+notFinished = True
+iteration = 0
+while notFinished:
+    # remove outliers and resolve
+    
+    print "\n\n Iteration ",iteration 
+    
+    od.setOutlierList(outliers)
+    print od.outliers
+    print od.nonOutlier
+    notFinished = od.insertOutliers_Method_CyclicAssignment()
+#     TODO: Bolun, please try to implement this two functions
+#     outliers = insertOutliers_Method_Ri_Assignment()   
+#     outliers = insertOutliers_Method_MIP_Assignment()
 
-# start adding points ....  MIP / R_i greeedy / Random insertion
+    print od.outliers
+    print od.nonOutlier
+
+    if notFinished:
+        # what model do we solve to re-optimize B and D???? I am not sure about this step
+        print od.B
+        epsilonMax, B, D, results, model = od.findLargestEpsilon()
+        print "Epsilon max = ", epsilonMax
+        epsilon = epsilonMax*0.5
+        t, outliersNEW, results, model = od.findDistanceBandSetOfOutliersForEpsilon(epsilon)
+        outliers+=outliersNEW
+        print "we have ",len(outliersNEW), "outliers: ",outliersNEW
+        print "all outliers ",len(outliers)," : ",outliers
+        print od.B
+    
+    iteration=iteration+1
+    
+    
+    
+
+
+
+# start adding points ....   R_i greeedy / Random insertion / MIP 
 
 
 

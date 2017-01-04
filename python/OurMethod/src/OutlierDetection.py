@@ -9,13 +9,13 @@ import time
 def solveModel(model):
         opt = SolverFactory("cplex")
         
-        print "-------------Going to solve the model-------------"
-#         solver_manager = SolverManagerFactory('neos')
-#         results = solver_manager.solve(model, opt=opt)
+#         print "-------------Going to solve the model-------------"
+        solver_manager = SolverManagerFactory('neos')
+        results = solver_manager.solve(model, opt=opt)
         
-        results = opt.solve(model)
-        print(results)
-        print "-------------Model solved-------------"
+#         results = opt.solve(model)
+#         print(results)
+#         print "-------------Model solved-------------"
         
         return results
 
@@ -83,12 +83,9 @@ class OutlierDetection:
             x = [  (xi[k]-xj[k]) for k in xrange(self.d) ]
             return ( model.D[(i,j)] ==   sum(  x[k]*x[l]* model.B[(k,l)]      for k in model.d for l in model.d   )      )
         
-        print "SSSSSSSSSSSSS"
-        start_time = time.time()
-        model.distanceBetweenPointGivenBConstrain = Constraint(model.N*model.N, rule=distanceBetweenPointGivenB)
-        elapsed_time = time.time() - start_time
-        
-        print "XXXXXXXXXXXx",elapsed_time
+#         start_time = time.time()
+        model.distanceBetweenPointGivenBConstrain = Constraint(model.NAll*model.NAll, rule=distanceBetweenPointGivenB)
+#         elapsed_time = time.time() - start_time
 
     def addConstraint_lower_diagonal_of_B_is_zero(self,model):
         #matrix B will be zero under diagonal
@@ -103,11 +100,12 @@ class OutlierDetection:
     def findLargestEpsilon(self):
         
         model = ConcreteModel()
-        # ------------------  definition of sets        
+        # ------------------  definition of sets
         model.N = Set(initialize=self.nonOutlier, doc='Set of nodes')
-        model.d = Set(initialize=range(self.d), doc='Set of features')
+        model.NAll = Set(initialize=range(self.n), doc='Set of nodes')
+        model.d = Set(initialize=range(self.d), doc='Set of features')        
         # ------------------  definition of variables        
-        model.D = Var(model.N * model.N, domain=NonNegativeReals, bounds=(0, 1)) 
+        model.D = Var(model.NAll * model.NAll, domain=NonNegativeReals, bounds=(0, 1)) 
         model.eps = Var(within=NonNegativeReals,  initialize=0) #bounds=(0, 1),
         model.B = Var(model.d * model.d   ) #,bounds=(-1, 1) 
         # ------------------  Constraints        
@@ -128,17 +126,70 @@ class OutlierDetection:
         return model.eps.value, B, D, results, model
 
 
+    def setOutlierList(self,outliers):
+        self.nonOutlier=range(self.n)
+        
+        for outlier in outliers:
+            self.nonOutlier.remove(outlier)
+        self.outliers = outliers
 
 
+
+    def insertOutliers_Method_CyclicAssignment(self):
+        didSomeInsertion = False
+        notFinished = True
+        while notFinished:
+            notFinished = False
+            for outlier in self.outliers:
+                minDistance = 100000
+                minDistanceLabel = -1
+                # find that if the closes point is the same class
+                for trialPoint in self.nonOutlier:
+                    if minDistance > self.D[outlier,trialPoint]:
+                        minDistance = self.D[outlier,trialPoint]
+                        minDistanceLabel = self.labels[trialPoint]
+                if minDistanceLabel == self.labels[outlier]:
+                    self.outliers.remove(outlier)
+                    self.nonOutlier+=[outlier]
+                    didSomeInsertion = True
+                    notFinished = True
+                    break
+        return didSomeInsertion
+                        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+        
+        
+        
+        
+        
+        
+    def insertOutliers_Method_Ri_Assignment(self):
+        pass
+        
+    def insertOutliers_Method_MIP_Assignment(self):
+        pass
+
+        
 
     def findDistanceBandSetOfOutliersForEpsilon(self,epsilon):
         self.epsilon = epsilon
         model = ConcreteModel()
         # ------------------  definition of sets        
         model.N = Set(initialize=self.nonOutlier, doc='Set of nodes')
-        model.d = Set(initialize=range(self.d), doc='Set of features')
+        model.NAll = Set(initialize=range(self.n), doc='Set of nodes')
+        model.d = Set(initialize=range(self.d), doc='Set of features')        
         # ------------------  definition of variables        
-        model.D = Var(model.N * model.N, domain=NonNegativeReals, bounds=(0, 1)) 
+        model.D = Var(model.NAll * model.NAll, domain=NonNegativeReals, bounds=(0, 1)) 
         model.B = Var(model.d * model.d   ) #,bounds=(-1, 1) 
         model.t = Var(model.N, domain=NonNegativeReals, bounds=(0, None)) 
         # ------------------  Constraints        
@@ -158,8 +209,8 @@ class OutlierDetection:
         # ------------------  Solve Problem        
         results = solveModel(model)
         
-        B = self.getMatrixBFromResult(model)
-        D = self.getMatrixDFromResult(model)
+        self.B = self.getMatrixBFromResult(model)
+        self.D = self.getMatrixDFromResult(model)
         
         t=np.zeros(( self.n))
         for i in model.N:
@@ -169,7 +220,7 @@ class OutlierDetection:
             m = 1000;
             for j in xrange(self.n):
                 if  self.labels[i]==self.labels[j] and i<>j:
-                    m = min(m, D[i,j])
+                    m = min(m, self.D[i,j])
             if m > t[i]+self.EPS_M:
                 outliers+=[i]        
-        return B, D, t, outliers, results, model
+        return  t, outliers, results, model
