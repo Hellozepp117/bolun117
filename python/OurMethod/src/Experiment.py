@@ -2,18 +2,19 @@ from __future__ import division
 
 from OutlierDetection import *
 
+import pickle 
+filename = 'dataset_cifar2_sub2.txt'
+filename = 'dataset3.txt'
 
+od = OutlierDetection(filename , True)    
 
-
-
-# od = OutlierDetection('dataset3.txt2' , True)    
-od = OutlierDetection('50_c2_d2.txt' , False)    
+# od = OutlierDetection('50_c2_d2.txt' , False)    
 
 
 epsilonMax, B, D, results, model = od.findLargestEpsilon()
 
 print "Epsilon max = ", epsilonMax
-# print 'Matrix B is \n', B
+print 'Matrix B is \n', B
 # print "Matrix D is  \n ", D
 
 #print "--------------------"    
@@ -21,21 +22,35 @@ print "Epsilon max = ", epsilonMax
 #print(model.display())
 
  
-epsilon = epsilonMax*0.5
+epsilon = epsilonMax*0.01
 t, outliers, results, model = od.findDistanceBandSetOfOutliersForEpsilon(epsilon)
 print "we have ",len(outliers), "outliers: ",outliers
 
 
-notFinished = True
+od.setOutlierList(outliers)
+t, newoutliers, results, model = od.findDistanceBandSetOfOutliersForEpsilon(epsilon)
+print "we have ",len(newoutliers), "outliers: ",newoutliers
+outliers+=newoutliers
+print "at the end we have ", len(outliers),":",outliers
+
+
+data={}
+data["B"]=od.B
+data["outliers"]=outliers        
+pickle.dump( data, open( filename_+"0.pickle", "wb" ) ) 
+
+
+notFinished = True 
 iteration = 0
 while notFinished:
     # remove outliers and resolve
-    
     print "\n\n Iteration ",iteration 
     
+   
     od.setOutlierList(outliers)
     print od.outliers
     print od.nonOutlier
+    print "Insertion of outliers procedure    "
     notFinished = od.insertOutliers_Method_CyclicAssignment()
 #     TODO: Bolun, please try to implement this two functions
 #     outliers = insertOutliers_Method_Ri_Assignment()   
@@ -44,17 +59,20 @@ while notFinished:
     print od.outliers
     print od.nonOutlier
 
-#     if notFinished:
-#         # what model do we solve to re-optimize B and D???? I am not sure about this step
-#         print od.B
-#         epsilonMax, B, D, results, model = od.findLargestEpsilon()
-#         print "Epsilon max = ", epsilonMax
-#         epsilon = epsilonMax*0.5
-#         t, outliersNEW, results, model = od.findDistanceBandSetOfOutliersForEpsilon(epsilon)
-#         outliers+=outliersNEW
-#         print "we have ",len(outliersNEW), "outliers: ",outliersNEW
-#         print "all outliers ",len(outliers)," : ",outliers
-#         print od.B
+    if notFinished:
+        outliers = od.outliers
+        # what model do we solve to re-optimize B and D???? I am not sure about this step
+        od.setOutlierList(od.outliers)
+        t, newoutliers, results, model = od.findDistanceBandSetOfOutliersForEpsilon(epsilon)
+        print "we have ",len(newoutliers), "new outliers: ",newoutliers
+        outliers+=newoutliers
+        print "at the end we have ", len(outliers),":",outliers
+        
+    
+    data={}
+    data["B"]=od.B
+    data["outliers"]=outliers        
+    pickle.dump( data, open( filename_+str(iteration)+".pickle", "wb" ) ) 
     
     iteration=iteration+1
     

@@ -10,11 +10,11 @@ def solveModel(model):
         opt = SolverFactory("cplex")
         
 #         print "-------------Going to solve the model-------------"
-        solver_manager = SolverManagerFactory('neos')
-        results = solver_manager.solve(model, opt=opt)
+#         solver_manager = SolverManagerFactory('neos')
+#         results = solver_manager.solve(model, opt=opt)
         
-#         results = opt.solve(model)
-#         print(results)
+        results = opt.solve(model)
+        print(results)
 #         print "-------------Model solved-------------"
         
         return results
@@ -27,8 +27,8 @@ class OutlierDetection:
     EPS_M = 0.000001
     def getMatrixDFromResult(self,model):
         D=np.zeros((self.n, self.n))
-        for i in model.N:
-            for j in model.N:
+        for i in model.NAll:
+            for j in model.NAll:
                 D[i,j] = model.D[(i,j)].value
         return D
 
@@ -83,10 +83,11 @@ class OutlierDetection:
             x = [  (xi[k]-xj[k]) for k in xrange(self.d) ]
             return ( model.D[(i,j)] ==   sum(  x[k]*x[l]* model.B[(k,l)]      for k in model.d for l in model.d   )      )
         
-#         start_time = time.time()
+        start_time = time.time()
+        print "Start "
         model.distanceBetweenPointGivenBConstrain = Constraint(model.NAll*model.NAll, rule=distanceBetweenPointGivenB)
-#         elapsed_time = time.time() - start_time
-
+        elapsed_time = time.time() - start_time
+        print "done D contsr", elapsed_time
     def addConstraint_lower_diagonal_of_B_is_zero(self,model):
         #matrix B will be zero under diagonal
         def lowerBisZero(model, i,j):
@@ -216,11 +217,34 @@ class OutlierDetection:
         for i in model.N:
             t[i] = model.t[(i)].value
         outliers=[]
-        for i in xrange(self.n):
-            m = 1000;
-            for j in xrange(self.n):
-                if  self.labels[i]==self.labels[j] and i<>j:
-                    m = min(m, self.D[i,j])
-            if m > t[i]+self.EPS_M:
-                outliers+=[i]        
+#         for i in xrange(self.n):
+#             m = 1000;
+#             for j in xrange(self.n):
+#                 if  self.labels[i]==self.labels[j] and i<>j:
+#                     m = min(m, self.D[i,j])
+#             if m > t[i]+self.EPS_M:
+#                 outliers+=[i]  
+
+        
+ 
+        
+        minPoint = -1
+        for sample in model.N: 
+            minDistanceInClass=10000
+            minDistanceToOtherClass = 10000              
+            for toTest in model.N:
+                if (sample <> toTest):
+                    if self.labels[sample]==self.labels[toTest] and self.D[sample,toTest] <   minDistanceInClass:
+                        minDistanceInClass =  self.D[sample,toTest]
+                    if self.labels[sample] <> self.labels[toTest] and self.D[sample,toTest] <   minDistanceToOtherClass:
+                        minDistanceToOtherClass =  self.D[sample,toTest]
+                        minPoint = toTest
+                        
+                        
+                        
+            if (minDistanceToOtherClass < minDistanceInClass):
+                outliers+=[sample] 
+#                 print "adding outlier",sample,"closes point is ",minPoint           
+                
+                
         return  t, outliers, results, model
