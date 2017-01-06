@@ -1,4 +1,5 @@
-__author__ = 'Bolun'
+# -*- coding: utf-8 -*-
+__author__ = 'Box'
 
 from numpy import *
 import matplotlib.pyplot as plt
@@ -8,15 +9,11 @@ import time
 def loadDataSet(fileName):
     dataMat = []
     labelMat = []
-    f = open(fileName,'rU')
-    for line in f:
-        data =  line.split(':')
-        labelMat.append([float(xi) for xi in data[1].split()])
-        if int(data[0])<1:
-            dataMat.append(float(-1))
-        else :
-            dataMat.append(float(data[0]))
-    f.close()
+    with open(fileName) as fr:
+        for line in fr.readlines():
+            lineArr = line.split()
+            dataMat.append([float(lineArr[0]), float(lineArr[1])])
+            labelMat.append(float(lineArr[2]))
     return dataMat, labelMat
 
 def selectJrand(i, m):
@@ -114,7 +111,10 @@ def innerL(i, oS):
         return 0
 
 def smoP(dataMatIn, classLabels, C, toler, maxIter, kTup=('lin', 0)):
-
+    """
+    ���룺���ݼ�, ����ǩ, ����C, �ݴ���, ���ѭ������
+    �����Ŀ��b, ����alphas
+    """
     oS = optStruct(mat(dataMatIn), mat(classLabels).transpose(), C, toler)
     iterr = 0
     entireSet = True
@@ -140,7 +140,10 @@ def smoP(dataMatIn, classLabels, C, toler, maxIter, kTup=('lin', 0)):
     return oS.b, oS.alphas
 
 def calcWs(alphas, dataArr, classLabels):
-
+    """
+    ���룺alphas, ���ݼ�, ����ǩ
+    �����Ŀ��w
+    """
     X = mat(dataArr)
     labelMat = mat(classLabels).transpose()
     m, n = shape(X)
@@ -172,7 +175,7 @@ def plotFeature(dataMat, labelMat, weights, b):
     plt.show()
 
 def main():
-    trainDataSet, trainLabel = loadDataSet("200_C2_D2.txt")
+    trainDataSet, trainLabel = loadDataSet('testSet.txt')
     b, alphas = smoP(trainDataSet, trainLabel, 0.6, 0.0001, 40)
     ws = calcWs(alphas, trainDataSet, trainLabel)
     print("ws = \n", ws)
