@@ -6,6 +6,12 @@
 %\documentstyle[icml2016,epsf,natbib]{article}
 % If you rely on Latex2e packages, like most moden people use this:
 \documentclass{article}
+\usepackage{amsmath}
+
+
+\newcommand{\mc}{\mathcal}
+
+\def\st{{\rm s.t.}}
 
 % use Times
 \usepackage{times}
@@ -50,6 +56,44 @@
 \newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 \newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
 \newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+
+\renewcommand{\v}[1]{{{#1}}} %\mathbf  2  \ensuremath
+
+
+
+\newcommand{\vell}{\boldsymbol{\ell}}
+\newcommand{\valpha}{\boldsymbol{\alpha}}
+\newcommand{\vbeta}{\boldsymbol{\beta}}
+\newcommand{\vgamma}{\boldsymbol{\gamma}}
+\newcommand{\vGamma}{\boldsymbol{\Gamma}}
+\newcommand{\vdelta}{\boldsymbol{\delta}}
+\newcommand{\vlambda}{\boldsymbol{\lambda}}
+\newcommand{\vLambda}{\boldsymbol{\Lambda}}
+\newcommand{\vxi}{\boldsymbol{\xi}}
+\newcommand{\vpi}{\boldsymbol{\pi}}
+
+\newcommand{\xor}{\underline{\vee}}
+\newcommand{\Xor}{\underline{\bigvee}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 % The \icmltitle you define below is probably too long as a header.
@@ -131,7 +175,7 @@ in its simplest form) that can be hard to solve for realistic data sizes, but we
 We demonstrate classification and computational performance of the algorithms through several simple and intuitive examples.
 
 
-\section{Introduction}  
+\paragraph{Introduction}  
 Supervised Classification is one of the most commonly used Machine Learning paradigms both in the industry and academic research. There is a large body of past and continuing research on the topic
 
 
@@ -189,32 +233,226 @@ mention
  
  
  
+\begin{itemize}
+\item derive LP formulation and procedure to improve metric
+\item propose algorithm to report outliers and suggest regions which needs more samples
+
+\item iterative algorithm for training NN ?????
+
+\item TODO
+\end{itemize} 
  
  
  
+ \clearpage 
 \section{Motivation \& Illustration Examples}
  
  
+\subparagraph{Distance Learning} 
+
+
+ 
+ 
+\subparagraph{Outlier Detection \& Further Sampling Recommendation} 
+ 
  
 
 
+\subparagraph{Interactive Sampling Procedure} 
+
+ 
+
+\clearpage
 \section{Mathematical Formulation} 
  
+
+
+\begin{equation}
+\mc{F} = \{ (\v{a},\v{B},\v{d}) \in \Re^p \times \Re^{p \times p} \times \Re_+^{N \times N} : \v{B}~\text{symmetric}, d_{ij} = \v{a}^{\top}
+\vdelta_{ij} + \vdelta_{ij}^{\top} \v{B}\vdelta_{ij} \quad \forall i,j \in \mc{N} \}
+\end{equation}
+or
+\begin{subequations} \label{set:feasible_region_distance_metric}
+\begin{alignat}{4}
+%\mc{F} = \Bigg\{ \v{a},\v{B},\v{d} : &  &&  \\
+    & d_{ij} = \sum_{k=1}^p \delta_{ijk} a_{k} + %\sum_{k=1}^p \delta_{ijk}^2 b_{kk} + 2 \sum_{k=1}^{p-1} \sum_{\ell=k+1}^p  \delta_{ijk} \delta_{ij\ell} b_{k\ell} && \qquad \forall i,j \in \mc{N} \label{eq:distance_metric_def} \\
+%    & 0 \leq d_{ij} \leq 1 && \qquad \forall i,j \in \mc{N} \\
+ %   & \v{a} \in \Re^p && \\ 
+    & b_{k\ell} \in \Re && \qquad \forall k=1,\dots,p, \ell=k,\dots,p \Bigg\}
+\end{alignat}
+\end{subequations}
+
+
+
+
+\begin{subequations} \label{model:epsilon_lp_1}
+\begin{alignat}{4}
+\max_{{a},{B},{d},\epsilon}~~& \epsilon &&  \\
+\st~~& \epsilon \leq d_{ik} && \qquad \forall i \in \mc{N}, k \in \mc{N}\backslash\mc{C}_i \label{eq:epsilon_lp_separation_constr_t} \\
+    & \eqref{set:feasible_region_distance_metric} & & 
+\end{alignat}
+\end{subequations}
+Let $\epsilon^{\max}$ be the maximum non-neighbor separation, i.e., the optimal value of $\epsilon$ in \eqref{model:epsilon_lp_1}.
+
+
+
+
+
+
+
  
+Given $\epsilon \in (0,\epsilon^{\max}]$, model \eqref{model:1} can be expressed as a linear programming feasibility problem:
+\begin{subequations} \label{model:big_lp_1}
+\begin{alignat}{4}
+\max_{\v{a},\v{B},\v{d},\v{t}}~~& \sum_{i \in \mc{N}} t_i &&  \\
+\st~~& t_i + \epsilon \leq d_{ik} && \qquad \forall i \in \mc{N}, k \in \mc{N}\backslash\mc{C}_i \label{eq:big_lp_separation_constr_t} \\
+    & t_i \leq d_{ij} && \qquad \forall i \in \mc{N}, j \in \mc{C}_i \label{eq:big_lp_dual_constr_t} \\
+    & t_i \geq 0 & & \qquad \forall i \in \mc{N} \\
+    & \eqref{set:feasible_region_distance_metric} & & 
+\end{alignat}
+\end{subequations}
+For $\epsilon \in (0,\epsilon^{\max}]$, model \eqref{model:big_lp_1} is always feasible since the origin $\v{0}$ is always feasible.
+Note that $t_i$ represents the distance to point $i$'s nearest neighbor since constraints \eqref{eq:big_lp_dual_constr_t} ensure that $t_i \leq \min_{j \in \mc{C}_i} d_{ij}$,
+while the objective function encourages $t_i = \min_{j \in \mc{C}_i} d_{ij}$ for all $i$.
+Meanwhile, constraints \eqref{eq:big_lp_separation_constr_t} ensure that the separation $[\min_{k \in \mc{N}\backslash\mc{C}_i} d_{ik}] - [\min_{j \in \mc{C}_i} d_{ij}]$ is at least $\epsilon$.
+If model \eqref{model:big_lp_1} returns a feasible solution with $t_i^* = \min_{j \in \mc{C}_i} d_{ij}^* > 0$ for all $i \in \mc{N}$, then the distance metric satisfies requirements 1-3.
+Otherwise there exists a subset $\mc{O}$ of outlier points such that $0 \leq t_i^* < \min_{j \in \mc{C}_i} d_{ij}^*$ for all $i \in \mc{O}$, which means that no such distance metric guaranteeing a minimum separation exists for the choice of $\epsilon$.
+
+
+
+
+
+
+
+\clearpage 
 \section{Algorithm / Work Flow}
 
 
 
+
+
+
+\clearpage
 \section{Numerical Experiments/Results}
+
+
+\subsection{Outlier Detection and Further sampling recommendation}
+
+In the experiment we took MNIST and CIFAR100 dataset
+
+we used  auto-encoders and then run Algorithm XXX
+
+
+
+
+
+Cifra 
+[7, 35, 64, 71, 73, 81]
+
+\includegraphics[scale=.1]{fig/c5.eps}
+\includegraphics[scale=.1]{fig/c6.eps}
+\includegraphics[scale=.1]{fig/c12.eps}
+
+outlier
+\includegraphics[scale=.1]{fig/c7.eps}
+
+
+\includegraphics[scale=.1]{fig/c8.eps}
+\includegraphics[scale=.1]{fig/c10.eps}
+
+
+
+MNIST
+[120]
+
+\includegraphics[scale=.1]{fig/MNIST119.eps}
+\includegraphics[scale=.1]{fig/MNIST121.eps}
+\includegraphics[scale=.1]{fig/MNIST122.eps}
+\includegraphics[scale=.1]{fig/MNIST124.eps}
+
+ourlier
+\includegraphics[scale=.1]{fig/MNIST120.eps}
+
+
+
+
+
+
+In Figure \ref{fig:AE}
+\begin{figure}
+
+\todo[inline,color=green]{TODO}
+\caption{TODO}
+\label{fig:AE}
+
+\end{figure}
+
+
 
 
 \subsection{NN comparison}
 
+we run NN
+on following datasets, using 
+$\ell_1, \ell_2, \ell_\infty$ distance measure
+and compare it with the optimal distance measure we have train by our procedure
+
+
+In Figure \ref{fig:NN-exp}
+\begin{figure}
+
+\todo[inline,color=green]{TODO}
+\caption{TODO}
+\label{fig:NN-exp}
+
+
+\end{figure}
+
+
+
+
+\begin{table}
+\caption{Comparison of testing error of NN with different metrics.}
+\label{tbl:BD-NN}
+\begin{tabular}{l|r|r|r|r}
+dataset & NN-$\ell_1$ 
+		& NN-$\ell_2$
+		& NN-$\ell_\infty$
+        & NN-B
+\\        
+a1a
+\\
+a9a
+\\
+covtype
+\\
+mushrooms
+\\
+splice
+\\
+iris
+\\
+breast-cancer
+\end{tabular}
+
+
+
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Economy of data collection}
 
-DNN - > autoencoders
 
-
+\clearpage 
 \section{Conclusion} 
  
  
@@ -226,6 +464,16 @@ DNN - > autoencoders
 
 \bibliography{example_paper}
 \bibliographystyle{icml2016}
+
+
+
+\clearpage 
+\appendix
+
+\onecolumn 
+\section{Proofs}
+
+$$ TODO $$
 
 \end{document} 
 
