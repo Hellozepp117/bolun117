@@ -3,28 +3,33 @@ from __future__ import division
 from OutlierDetection import *
 
 import pickle 
-filename = 'dataset_cifar2_sub2.txt'
-filename = 'dataset3.txt'
-
-od = OutlierDetection(filename , True)    
-
+# filename = 'dataset_cifar2_sub2.txt'
+# filename = 'dataset_cifar_sub.txt'
 # od = OutlierDetection('50_c2_d2.txt' , False)    
 
 
-epsilonMax, B, D, results, model = od.findLargestEpsilon()
+
+filename = 'dataset3.txt'
+od = OutlierDetection(filename , True)    
+
+
+
+epsilonMax, B = od.findLargestEpsilonRowAndColumnGeneration()
 
 print "Epsilon max = ", epsilonMax
-print 'Matrix B is \n', B
+# print 'Matrix B is \n', B
 # print "Matrix D is  \n ", D
 
 #print "--------------------"    
 #print(results)
 #print(model.display())
 
+"""
  
 epsilon = epsilonMax*0.01
 t, outliers, results, model = od.findDistanceBandSetOfOutliersForEpsilon(epsilon)
 print "we have ",len(outliers), "outliers: ",outliers
+
 
 
 od.setOutlierList(outliers)
@@ -37,7 +42,7 @@ print "at the end we have ", len(outliers),":",outliers
 data={}
 data["B"]=od.B
 data["outliers"]=outliers        
-pickle.dump( data, open( filename_+"0.pickle", "wb" ) ) 
+pickle.dump( data, open( filename+"0.pickle", "wb" ) ) 
 
 
 notFinished = True 
@@ -72,7 +77,7 @@ while notFinished:
     data={}
     data["B"]=od.B
     data["outliers"]=outliers        
-    pickle.dump( data, open( filename_+str(iteration)+".pickle", "wb" ) ) 
+    pickle.dump( data, open( filename+str(iteration)+".pickle", "wb" ) ) 
     
     iteration=iteration+1
     
@@ -89,7 +94,7 @@ while notFinished:
 
 
 
-
+"""
 
 
 

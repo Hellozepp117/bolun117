@@ -73,6 +73,7 @@ class OutlierDetection:
         self.nonOutlier = range(self.n)
         self.outlier = []
         self.d = len(self.features[0])
+        print "INIT FINISHED"
 
 
     def addConstraint_d_ij_as_function_of_features_and_B(self,model):
@@ -98,6 +99,155 @@ class OutlierDetection:
         model.lowerBisZeroConstrain = Constraint(model.d*model.d, rule=lowerBisZero)
 
 
+
+    def findLargestEpsilonRowAndColumnGeneration(self):
+        
+        B = np.identity(self.d)
+        notDone = True
+        S = {}
+        
+        if True:
+            RI = {}
+            PI = {}
+            # Now let's use current Metric to find out critical points
+            
+            start = time.time()
+            print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+            
+            dm = [ [j,k,   sum([   (self.features[j][l]-self.features[k][l])*(self.features[j][m]-self.features[k][m]) for l in xrange(self.d) for m in xrange(self.d)           ])               ]  for j in xrange(self.n) for k in xrange(self.n)] 
+
+            print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",time.time()-start
+            print dm[1:10]
+
+            start = time.time()
+            for sample in self.nonOutlier:
+#                 print sample
+                distanceInClass = 1000000
+                distanceToOtherClass = 1000000
+                for testTo in self.nonOutlier:
+                    if (sample <> testTo):
+                        x = [self.features[sample][k] - self.features[testTo][k] for k in xrange(self.d)]
+                        distance = sum(  x[k]*x[l]*B[k,l] for k in xrange(self.d) for l in xrange(self.d)   )
+                        if (self.labels[sample] == self.labels[testTo] and distance < distanceInClass):
+                            distanceInClass = distance
+                        if (self.labels[sample] <> self.labels[testTo] and distance < distanceToOtherClass):
+                            distanceToOtherClass = distance
+                            PI[sample] = testTo
+                RI[sample] = distanceToOtherClass / distanceInClass
+            print "YYYYYYYYYYYYYYYYYYYYYYYYY"   ,time.time()-start          
+            M = 0
+            Mi = -1
+            for k in RI:
+                if  RI[k] > 3:
+                    S[k] = 1
+                    S[PI[k]] = 1 
+            print "RI:",RI
+            
+        
+        
+        while notDone:
+            
+        
+            model = ConcreteModel()
+            # ------------------  definition of sets
+            model.N = Set(initialize=self.nonOutlier, doc='Set of nodes')
+            model.NAll = Set(initialize=range(self.n), doc='Set of nodes')
+            model.d = Set(initialize=range(self.d), doc='Set of features')        
+            
+            
+            model.S = Set(initialize=S.keys(), doc='Set of active nodes')
+            
+            model.D = Var(model.S * model.S, domain=NonNegativeReals, bounds=(0, 1)) 
+            model.eps = Var(within=NonNegativeReals,  initialize=0) #bounds=(0, 1),
+            model.B = Var(model.d * model.d   ) #,bounds=(-1, 1) 
+            
+            def epsLessThanDij(model, i,j):
+                if self.labels[i] == self.labels[j]:
+                    return Constraint.Skip
+                else:
+                    return ( model.eps <= model.D[(i,j)]   )
+            model.epsLessThanDikConstrain = Constraint(model.S*model.S, rule=epsLessThanDij)
+            
+            self.addConstraint_lower_diagonal_of_B_is_zero(model)
+            
+            def distanceBetweenPointGivenB(model, i,j):
+                xi = self.features[i]
+                xj = self.features[j]
+                x = [  (xi[k]-xj[k]) for k in xrange(self.d) ]
+                return ( model.D[(i,j)] ==   sum(  x[k]*x[l]* model.B[(k,l)]      for k in model.d for l in model.d   )      )
+            
+            start_time = time.time()
+            print "Start "
+            model.distanceBetweenPointGivenBConstrain = Constraint(model.S*model.S, rule=distanceBetweenPointGivenB)
+            elapsed_time = time.time() - start_time
+            print "done D contsr", elapsed_time
+
+            model.OBJ = Objective(expr=model.eps, sense=maximize, doc='maximize epsilon')
+            
+            results = solveModel(model)
+            B = self.getMatrixBFromResult(model)
+
+            epsilon = model.eps.value
+
+
+            notDone = False
+            print S.keys()            
+            # CHECK ALL CONSTRAINTS
+            smallest = 10000
+            largest = -10000
+            epsSmallest = 100000
+            smAdd = []
+            larAdd = []
+            epsAdd = []
+            for sample in model.N:
+                for testTo in model.N:
+                    if (sample <> testTo):
+                        x = [self.features[sample][k] - self.features[testTo][k] for k in xrange(self.d)]
+                        distance = sum(  x[k]*x[l]*B[k,l] for k in xrange(self.d) for l in xrange(self.d)   )
+                        if (self.labels[sample] == self.labels[testTo] ):
+                            if distance < 0 and distance < smallest:
+                                smallest = distance
+                                smAdd = [sample, testTo]
+                                notDone = True
+#                                 print "PROBLEM1", sample, testTo
+                            if distance > 1 and distance > largest:
+                                largest = distance
+                                larAdd = [sample, testTo]
+                                notDone = True
+#                                 print "PROBLEM2", sample, testTo
+                                
+                        if (self.labels[sample] <> self.labels[testTo] ):
+                            if distance < epsilon:
+#                                 print "PROBLEM3", sample, testTo,epsSmallest,distance, epsAdd
+                                
+                                notDone = True
+                                if distance < epsSmallest:
+                                    epsSmallest = distance
+                                    epsAdd= [sample, testTo]
+            for e in smAdd:
+                S[e]=1
+            for e in larAdd:
+                S[e]=1
+            for e in epsAdd:
+                S[e]=1
+            
+                            
+            print S.keys()
+            print len(S.keys()), self.n
+            
+            
+        
+        
+        
+        
+        # ------------------  definition of variables        
+        # ------------------  Constraints        
+        # ------------------  Objective Function        
+        # ------------------  Solve Problem        
+#         D = self.getMatrixDFromResult(model)
+        return model.eps.value , B
+
+
     def findLargestEpsilon(self):
         
         model = ConcreteModel()
@@ -115,7 +265,7 @@ class OutlierDetection:
                 return Constraint.Skip
             else:
                 return ( model.eps <= model.D[(i,j)]   )
-        model.epsLessThanDikConstrain = Constraint(model.N*model.N, rule=epsLessThanDij)
+        model.epsLessThanDikConstrain = Constraint(model.NAll*model.NAll, rule=epsLessThanDij)
         self.addConstraint_lower_diagonal_of_B_is_zero(model)
         self.addConstraint_d_ij_as_function_of_features_and_B(model)
         # ------------------  Objective Function        
