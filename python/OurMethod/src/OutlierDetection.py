@@ -3,7 +3,7 @@ import numpy as np
 import math
 import time
 #https://github.com/Pyomo/PyomoGallery/blob/master/network_interdiction/multi_commodity_flow/multi_commodity_flow_interdict.py
-
+import mymodule
     
 
 def solveModel(model):
@@ -23,6 +23,10 @@ def solveModel(model):
 
 
 class OutlierDetection:
+
+
+
+
 
     EPS_M = 0.000001
     def getMatrixDFromResult(self,model):
@@ -45,8 +49,15 @@ class OutlierDetection:
                     B[j,i] = B[i,j]
         return B
 
-    
-
+    def setBInSorter(self,B):
+        for i in xrange(self.d):
+            for j in xrange(self.d):
+                if j>i:
+                    self.sorter.setBij(i,j,2*B[i,j])
+                if j==i:
+                    self.sorter.setBij(i,j,B[i,j])
+                if j<i:
+                    self.sorter.setBij(i,j,0)
 
     def __init__(self, filename ,normalize):
 
@@ -58,8 +69,7 @@ class OutlierDetection:
             self.labels+=[ int(data[0]) ]
             self.features+=[  [float(xi) for xi in data[1].split() ]              ]
         f.close()
-        #centralize data TODO    
-            
+        
         #normalizeData
         if normalize:
             M = 0
@@ -73,6 +83,16 @@ class OutlierDetection:
         self.nonOutlier = range(self.n)
         self.outlier = []
         self.d = len(self.features[0])
+
+        self.sorter = mymodule.MySorter()
+        self.sorter.InitializeData(self.n,self.d)
+
+        for sample in xrange(self.n):
+            self.sorter.setLabel(sample,self.labels[sample])
+            for feat in xrange(self.d):
+                self.sorter.setFeature(sample, feat,self.features[sample][feat] )
+
+
         print "INIT FINISHED"
 
 
@@ -103,8 +123,13 @@ class OutlierDetection:
     def findLargestEpsilonRowAndColumnGeneration(self):
         
         B = np.identity(self.d)
+        self.setBInSorter(B)
         notDone = True
         S = {}
+        
+        
+        totalPoints  = self.sorter.computeTopRiPoints(10)
+        print totalPoints
         
         if True:
             RI = {}
@@ -112,7 +137,7 @@ class OutlierDetection:
             # Now let's use current Metric to find out critical points
             
             start = time.time()
-            print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+            print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", self.d, self.n
             
             dm = [ [j,k,   sum([   (self.features[j][l]-self.features[k][l])*(self.features[j][m]-self.features[k][m]) for l in xrange(self.d) for m in xrange(self.d)           ])               ]  for j in xrange(self.n) for k in xrange(self.n)] 
 
@@ -135,13 +160,7 @@ class OutlierDetection:
                             PI[sample] = testTo
                 RI[sample] = distanceToOtherClass / distanceInClass
             print "YYYYYYYYYYYYYYYYYYYYYYYYY"   ,time.time()-start          
-            M = 0
-            Mi = -1
-            for k in RI:
-                if  RI[k] > 3:
-                    S[k] = 1
-                    S[PI[k]] = 1 
-            print "RI:",RI
+
             
         
         
