@@ -124,6 +124,12 @@ class MySorter(_object):
     def computeTopRiPoints(self, k=10):
         return _mymodule.MySorter_computeTopRiPoints(self, k)
 
+    def getIndexForTopList(self, index=0, coordinate=0):
+        return _mymodule.MySorter_getIndexForTopList(self, index, coordinate)
+
+    def getValueForTopList(self, index=0):
+        return _mymodule.MySorter_getValueForTopList(self, index)
+
     def computeDistanceVialation(self, epsilon=0):
         return _mymodule.MySorter_computeDistanceVialation(self, epsilon)
 

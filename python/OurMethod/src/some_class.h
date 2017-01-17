@@ -29,7 +29,7 @@ valueIdx(int _s1, int _s2, double _val){
         std::vector<double> features;
         std::vector<double> B;
         std::vector<int> labels;
-        std::list<valueIdx> topList;
+        std::vector<valueIdx> topList;
     public:
          
         MySorter();
@@ -42,6 +42,10 @@ valueIdx(int _s1, int _s2, double _val){
         void setLabel(int sample=0, int label=0);
   
         int computeTopRiPoints(int k=10);
+ 
+        int getIndexForTopList(int index=0, int coordinate=0);
+        double getValueForTopList(int index=0);
+ 
  
 		void computeDistanceVialation(double epsilon=0);
  

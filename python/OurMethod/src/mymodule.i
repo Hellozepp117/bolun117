@@ -16,7 +16,9 @@
 		double computeDistanceBetweenTwoPoint(int i=0,int j=0);
 
 		int computeTopRiPoints(int k=10);
-		
+		int getIndexForTopList(int index=0, int coordinate=0);
+        double getValueForTopList(int index=0);
+
 		void computeDistanceVialation(double epsilon=0);
         void MethodB(int a = 5);
         int GetValA();

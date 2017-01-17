@@ -1,6 +1,6 @@
 #include "some_class.h"
 
-
+#include <algorithm>    // std::sort
  
 MySorter::MySorter(){
 	
@@ -8,8 +8,27 @@ MySorter::MySorter(){
  
  
  bool compareValueIdx (const valueIdx first,const valueIdx second){
-     return first.val < second.val;
+     return first.val > second.val;
  }
+ bool compareValueIdxSmallestFirst (const valueIdx first,const valueIdx second){
+     return first.val < second.val;
+ } 
+ 
+int  MySorter::getIndexForTopList(int index, int coordinate){
+    
+    if (coordinate==0){
+        return this->topList[index].s1;
+    }else{
+        return this->topList[index].s2;
+    }
+    
+}
+
+double  MySorter::getValueForTopList(int index){
+    return this->topList[index].val;
+}
+ 
+ 
  
 int MySorter::computeTopRiPoints(int k){
     int totalPoints = 0; 
@@ -17,28 +36,44 @@ int MySorter::computeTopRiPoints(int k){
     
     for (int sample = 0; sample<this->n;sample++){
         double minInclass = 1000;
+        double maxDistance = -1;
         double minOutclass = 1000;
         int idx = -1;
+        int icidx=-1;
+        int icMidx=-1;
         for (int to=0;to<this->n; to++){
             if (sample != to){
                 double distance = this->computeDistanceBetweenTwoPoint(sample, to);
                 if (this->labels[sample]==this->labels[to] && minInclass > distance ){
                     minInclass = distance;
+                    icidx = to;
                 }
+                if (  maxDistance < distance ){
+                    maxDistance = distance;
+                    icMidx = to;
+                }
+                
+                
                 if (this->labels[sample]!=this->labels[to] && minOutclass > distance ){
                     minOutclass = distance;
                     idx=to;
                 }
-                if (minOutclass > 0 && minOutclass < minInclass){
-                    this->topList.push_back( valueIdx(sample,to,minInclass/minOutclass) );
-                    totalPoints++;
-                }
-                
-                
+//                 if (minOutclass >= 0 ){
+//                 }
             }
         }
+        this->topList.push_back( valueIdx(sample,idx, minOutclass) );
+        totalPoints++;
+        if (minInclass<0){
+            this->topList.push_back( valueIdx(sample,icidx, minInclass) );
+            totalPoints++;
+        }
+        if (maxDistance>1){
+            this->topList.push_back( valueIdx(sample,icMidx, maxDistance) );
+            totalPoints++;
+        }
     }
-    this->topList.sort(compareValueIdx);    
+   std::sort( this->topList.begin(),this->topList.end(),compareValueIdxSmallestFirst);    
     
     
     return totalPoints;

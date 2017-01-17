@@ -5,16 +5,17 @@ import time
 #https://github.com/Pyomo/PyomoGallery/blob/master/network_interdiction/multi_commodity_flow/multi_commodity_flow_interdict.py
 import mymodule
     
+EMA = 0.0000000001
 
 def solveModel(model):
-        opt = SolverFactory("cplex")
+        opt = SolverFactory("cplex")#,solver_io='python')
         
 #         print "-------------Going to solve the model-------------"
 #         solver_manager = SolverManagerFactory('neos')
 #         results = solver_manager.solve(model, opt=opt)
         
         results = opt.solve(model)
-        print(results)
+#         print(results)
 #         print "-------------Model solved-------------"
         
         return results
@@ -77,7 +78,7 @@ class OutlierDetection:
                     normi = sum(xi*xi for xi in sample)
                     M = max(M,normi)
             M = math.sqrt(M)
-            self.features = [   [ xi/M for xi in sample  ]        for sample in self.features  ]
+            self.features = [   [ xi/M for xi in sample   ]        for sample in self.features  ]
 
         self.n = len(self.labels)
         self.nonOutlier = range(self.n)
@@ -119,7 +120,14 @@ class OutlierDetection:
         model.lowerBisZeroConstrain = Constraint(model.d*model.d, rule=lowerBisZero)
 
 
+    def updateViolations(self):
+        self.violations = self.violationsHM.values()
 
+    def addViolation(self,n1, n2):
+        if n1<n2:
+            self.violationsHM[str(n1)+"_"+str(n2)] = [n1,n2]
+        else:
+            self.violationsHM[str(n2)+"_"+str(n1)] = [n2,n1]
     def findLargestEpsilonRowAndColumnGeneration(self):
         
         B = np.identity(self.d)
@@ -128,132 +136,189 @@ class OutlierDetection:
         S = {}
         
         
+        
         totalPoints  = self.sorter.computeTopRiPoints(10)
-        print totalPoints
+        self.violationsHM={}
+        for i in xrange(totalPoints):
+            self.addViolation(self.sorter.getIndexForTopList(i,0) , self.sorter.getIndexForTopList(i,1))
+        self.updateViolations()
+
+
+        print "d = ",self.d
+
+
         
-        if True:
-            RI = {}
-            PI = {}
-            # Now let's use current Metric to find out critical points
-            
-            start = time.time()
-            print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", self.d, self.n
-            
-            dm = [ [j,k,   sum([   (self.features[j][l]-self.features[k][l])*(self.features[j][m]-self.features[k][m]) for l in xrange(self.d) for m in xrange(self.d)           ])               ]  for j in xrange(self.n) for k in xrange(self.n)] 
-
-            print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",time.time()-start
-            print dm[1:10]
-
-            start = time.time()
-            for sample in self.nonOutlier:
-#                 print sample
-                distanceInClass = 1000000
-                distanceToOtherClass = 1000000
-                for testTo in self.nonOutlier:
-                    if (sample <> testTo):
-                        x = [self.features[sample][k] - self.features[testTo][k] for k in xrange(self.d)]
-                        distance = sum(  x[k]*x[l]*B[k,l] for k in xrange(self.d) for l in xrange(self.d)   )
-                        if (self.labels[sample] == self.labels[testTo] and distance < distanceInClass):
-                            distanceInClass = distance
-                        if (self.labels[sample] <> self.labels[testTo] and distance < distanceToOtherClass):
-                            distanceToOtherClass = distance
-                            PI[sample] = testTo
-                RI[sample] = distanceToOtherClass / distanceInClass
-            print "YYYYYYYYYYYYYYYYYYYYYYYYY"   ,time.time()-start          
-
-            
+#         print self.violations
         
+        
+#         if True:
+#             
+#             start = time.time()
+#             print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", self.d, self.n
+#             
+#             dm = [ [j,k,   sum([   (self.features[j][l]-self.features[k][l])*(self.features[j][m]-self.features[k][m]) for l in xrange(self.d) for m in xrange(self.d)           ])               ]  for j in xrange(self.n) for k in xrange(self.n)] 
+# 
+#             print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",time.time()-start
+#             print dm[1:10]
+# 
+#             start = time.time()
+#             for sample in self.nonOutlier:
+# #                 print sample
+#                 distanceInClass = 1000000
+#                 distanceToOtherClass = 1000000
+#                 for testTo in self.nonOutlier:
+#                     if (sample <> testTo):
+#                         x = [self.features[sample][k] - self.features[testTo][k] for k in xrange(self.d)]
+#                         distance = sum(  x[k]*x[l]*B[k,l] for k in xrange(self.d) for l in xrange(self.d)   )
+#                         if (self.labels[sample] == self.labels[testTo] and distance < distanceInClass):
+#                             distanceInClass = distance
+#                         if (self.labels[sample] <> self.labels[testTo] and distance < distanceToOtherClass):
+#                             distanceToOtherClass = distance
+#                             PI[sample] = testTo
+#                 RI[sample] = distanceToOtherClass / distanceInClass
+#             print "YYYYYYYYYYYYYYYYYYYYYYYYY"   ,time.time()-start          
+
+            
+        it = 0
         
         while notDone:
-            
+            it = it+1
         
             model = ConcreteModel()
             # ------------------  definition of sets
-            model.N = Set(initialize=self.nonOutlier, doc='Set of nodes')
-            model.NAll = Set(initialize=range(self.n), doc='Set of nodes')
-            model.d = Set(initialize=range(self.d), doc='Set of features')        
+#             model.N = Set(initialize=self.nonOutlier, doc='Set of nodes')
             
-            
-            model.S = Set(initialize=S.keys(), doc='Set of active nodes')
-            
-            model.D = Var(model.S * model.S, domain=NonNegativeReals, bounds=(0, 1)) 
-            model.eps = Var(within=NonNegativeReals,  initialize=0) #bounds=(0, 1),
+#             model.NAll = Set(initialize=range(self.n), doc='Set of nodes')
+            model.d = Set(initialize=range(self.d), doc='Set of features')
+                    
+            model.S = Set(initialize=range(len(self.violations))      , doc='Set of active nodes')
+            model.D = Var(model.S, domain=NonNegativeReals, bounds=(0, 1)) 
+
+            model.eps = Var(within=NonNegativeReals,  initialize=0) #, bounds=(0, 1)  
             model.B = Var(model.d * model.d   ) #,bounds=(-1, 1) 
             
-            def epsLessThanDij(model, i,j):
+            
+            def epsLessThanDij(model, idx):
+                i = self.violations[idx][0]
+                j = self.violations[idx][1]
                 if self.labels[i] == self.labels[j]:
                     return Constraint.Skip
                 else:
-                    return ( model.eps <= model.D[(i,j)]   )
-            model.epsLessThanDikConstrain = Constraint(model.S*model.S, rule=epsLessThanDij)
+                    return ( model.eps <= model.D[idx]   )
+            model.epsLessThanDikConstrain = Constraint(model.S, rule=epsLessThanDij)
             
             self.addConstraint_lower_diagonal_of_B_is_zero(model)
             
-            def distanceBetweenPointGivenB(model, i,j):
+            def distanceBetweenPointGivenB(model, idx):
+                i = self.violations[idx][0]
+                j = self.violations[idx][1]
                 xi = self.features[i]
                 xj = self.features[j]
                 x = [  (xi[k]-xj[k]) for k in xrange(self.d) ]
-                return ( model.D[(i,j)] ==   sum(  x[k]*x[l]* model.B[(k,l)]      for k in model.d for l in model.d   )      )
-            
+                return ( model.D[(idx)] ==   sum(  x[k]*x[l]* model.B[(k,l)]      for k in model.d for l in model.d   )      )
             start_time = time.time()
             print "Start "
-            model.distanceBetweenPointGivenBConstrain = Constraint(model.S*model.S, rule=distanceBetweenPointGivenB)
+            model.distanceBetweenPointGivenBConstrain = Constraint(model.S, rule=distanceBetweenPointGivenB)
             elapsed_time = time.time() - start_time
             print "done D contsr", elapsed_time
 
             model.OBJ = Objective(expr=model.eps, sense=maximize, doc='maximize epsilon')
-            
+            start_time = time.time()
             results = solveModel(model)
+            elapsed_time = time.time() - start_time
+            print "solving time", elapsed_time
+            
             B = self.getMatrixBFromResult(model)
-
+            
+            print B
             epsilon = model.eps.value
+            
+            self.setBInSorter(B)
+        
+            totalPoints  = self.sorter.computeTopRiPoints(10)
+            print "-------------------------"
+#             print "New violations",totalPoints
+#             if (totalPoints > 20):
+#                 totalPoints = 20
+#             for i in xrange(3):
+#                 print "Current worst points",self.sorter.getIndexForTopList(i,0),self.sorter.getIndexForTopList(i,1),self.sorter.getValueForTopList(i)
+
 
 
             notDone = False
-            print S.keys()            
-            # CHECK ALL CONSTRAINTS
-            smallest = 10000
-            largest = -10000
-            epsSmallest = 100000
-            smAdd = []
-            larAdd = []
-            epsAdd = []
-            for sample in model.N:
-                for testTo in model.N:
-                    if (sample <> testTo):
-                        x = [self.features[sample][k] - self.features[testTo][k] for k in xrange(self.d)]
-                        distance = sum(  x[k]*x[l]*B[k,l] for k in xrange(self.d) for l in xrange(self.d)   )
-                        if (self.labels[sample] == self.labels[testTo] ):
-                            if distance < 0 and distance < smallest:
-                                smallest = distance
-                                smAdd = [sample, testTo]
-                                notDone = True
-#                                 print "PROBLEM1", sample, testTo
-                            if distance > 1 and distance > largest:
-                                largest = distance
-                                larAdd = [sample, testTo]
-                                notDone = True
-#                                 print "PROBLEM2", sample, testTo
-                                
-                        if (self.labels[sample] <> self.labels[testTo] ):
-                            if distance < epsilon:
-#                                 print "PROBLEM3", sample, testTo,epsSmallest,distance, epsAdd
-                                
-                                notDone = True
-                                if distance < epsSmallest:
-                                    epsSmallest = distance
-                                    epsAdd= [sample, testTo]
-            for e in smAdd:
-                S[e]=1
-            for e in larAdd:
-                S[e]=1
-            for e in epsAdd:
-                S[e]=1
+            for i in xrange(totalPoints):
+                if (self.sorter.getValueForTopList(i) < -EMA):
+                    self.addViolation(self.sorter.getIndexForTopList(i,0) , self.sorter.getIndexForTopList(i,1))
+#                     print "CASE A",self.sorter.getIndexForTopList(i,0),self.sorter.getIndexForTopList(i,1),self.sorter.getValueForTopList(i)
+                    notDone = True
+                if (self.sorter.getValueForTopList(i) > 1+EMA):
+                    self.addViolation(self.sorter.getIndexForTopList(i,0) , self.sorter.getIndexForTopList(i,1))
+#                     print "CASE C",self.sorter.getIndexForTopList(i,0),self.sorter.getIndexForTopList(i,1),self.sorter.getValueForTopList(i)
+                    notDone = True
+                    
+                    
+                if ( (self.sorter.getValueForTopList(i) < epsilon-EMA) and (self.labels[self.sorter.getIndexForTopList(i,0)] <> self.labels[self.sorter.getIndexForTopList(i,1)]  )):
+                    self.addViolation(self.sorter.getIndexForTopList(i,0) , self.sorter.getIndexForTopList(i,1))
+#                     print "CASE B",self.sorter.getIndexForTopList(i,0),self.sorter.getIndexForTopList(i,1),self.sorter.getValueForTopList(i),epsilon
+                    notDone = True
+                    
+                    
+                    
+                    
+                    
+            self.updateViolations()
+            print "Iteration ", it, " Total violations now ",len(self.violations)
             
-                            
-            print S.keys()
-            print len(S.keys()), self.n
             
+#             print self.violations
+            
+            
+            
+
+#             if it>10:
+#             print S.keys()            
+#             # CHECK ALL CONSTRAINTS
+#             smallest = 10000
+#             largest = -10000
+#             epsSmallest = 100000
+#             smAdd = []
+#             larAdd = []
+#             epsAdd = []
+#             for sample in model.N:
+#                 for testTo in model.N:
+#                     if (sample <> testTo):
+#                         x = [self.features[sample][k] - self.features[testTo][k] for k in xrange(self.d)]
+#                         distance = sum(  x[k]*x[l]*B[k,l] for k in xrange(self.d) for l in xrange(self.d)   )
+#                         if (self.labels[sample] == self.labels[testTo] ):
+#                             if distance < 0 and distance < smallest:
+#                                 smallest = distance
+#                                 smAdd = [sample, testTo]
+#                                 notDone = True
+# #                                 print "PROBLEM1", sample, testTo
+#                             if distance > 1 and distance > largest:
+#                                 largest = distance
+#                                 larAdd = [sample, testTo]
+#                                 notDone = True
+# #                                 print "PROBLEM2", sample, testTo
+#                                 
+#                         if (self.labels[sample] <> self.labels[testTo] ):
+#                             if distance < epsilon:
+# #                                 print "PROBLEM3", sample, testTo,epsSmallest,distance, epsAdd
+#                                 
+#                                 notDone = True
+#                                 if distance < epsSmallest:
+#                                     epsSmallest = distance
+#                                     epsAdd= [sample, testTo]
+#             for e in smAdd:
+#                 S[e]=1
+#             for e in larAdd:
+#                 S[e]=1
+#             for e in epsAdd:
+#                 S[e]=1
+#             
+#                             
+#             print S.keys()
+#             print len(S.keys()), self.n
             
         
         
