@@ -10,7 +10,7 @@ from libs.utils import corrupt
 
 # %%
 def autoencoder(input_shape=[None, 784],
-                n_filters=[1, 10, 10, 10, 10],
+                n_filters=[1, 10, 10, 10, 5],
                 filter_sizes=[3, 3, 3, 3, 3],
                 corruption=False):
     """Build a deep denoising autoencoder w/ tied weights.
@@ -150,13 +150,13 @@ def test_mnist():
     # %%
     # Fit all training data
     batch_size = 100
-    n_epochs = 20
+    n_epochs = 200
     for epoch_i in range(n_epochs):
-        print epoch_i
+#         print epoch_i
 #     for epoch_i in range(2):
         for batch_i in range(mnist.train.num_examples // batch_size):
 #         for   batch_i in range( 1):
-            print batch_i
+#             print batch_i
             batch_xs, _ = mnist.train.next_batch(batch_size)
             train = np.array([img - mean_img for img in batch_xs])
             sess.run(optimizer, feed_dict={ae['x']: train})
@@ -165,10 +165,10 @@ def test_mnist():
     # %%
     # Plot example reconstructions
     
-    fo = open('../python/OurMethod/src/dataset3.txt','w')
-    foi = open('../python/OurMethod/src/dataset3_images.txt','w')
+    fo = open('../python/OurMethod/src/MNIST.txt','w')
+    foi = open('../python/OurMethod/src/MNIST_images.txt','w')
     
-    for k in xrange(10):
+    for k in xrange(50):
         print k
         n_examples = 64
         test_xs, test_ys = mnist.test.next_batch(n_examples)

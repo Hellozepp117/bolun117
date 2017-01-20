@@ -353,21 +353,47 @@ why our approach is better for proposing where to sample, we can also use KNN
 
 
 \clearpage
+\onecolumn 
 \section{Numerical Experiments/Results}
 
 
 \subsection{Outlier Detection and Further sampling recommendation}
 
-In the experiment we took MNIST and CIFAR100 dataset
+In the experiment we took MNIST and CIFAR100 dataset.
+\begin{itemize}
+\item We run autoencoders with CNN to 
+find a condensed representation of images
+\item after we find the best $B$ and get a collection of outliers
+\item We show both examples for a non-outlier case and also for outlier case
+\end{itemize}
 
-we used  auto-encoders and then run Algorithm XXX
+
+In Figure \ref{fig:AE-MNIST}
+(left) we show an non-outlier image together with 4 closest points.
+On right, we show an outlier image together with 4 it's closest neighbours.
+We compare it with the non-optimized distance metric (second row). The detailed description of the experiment is in supplementary material.
+\begin{figure}[h!]
+
+\todo[inline,color=green]{TODO}
+\caption{TODO}
+\label{fig:AE-MNIST}
+
+\end{figure}
+
+In Figure \eqref{fig:AE-CIFAR}
+we show the same but on CIFAR100 dataset.
+The detailed description of the experiment is in supplementary material.
+\begin{figure}[h!]
+
+\todo[inline,color=green]{TODO}
+\caption{TODO}
+\label{fig:AE-CIFAR}
+
+\end{figure}
 
 
 
-
-
-Cifra 
-[7, 35, 64, 71, 73, 81]
+ 
 
 \includegraphics[scale=.1]{fig/c5.eps}
 \includegraphics[scale=.1]{fig/c6.eps}
@@ -381,9 +407,7 @@ outlier
 \includegraphics[scale=.1]{fig/c10.eps}
 
 
-
-MNIST
-[120]
+ 
 
 \includegraphics[scale=.1]{fig/MNIST119.eps}
 \includegraphics[scale=.1]{fig/MNIST121.eps}
@@ -398,18 +422,11 @@ ourlier
 
 
 
-In Figure \ref{fig:AE}
-\begin{figure}
-
-\todo[inline,color=green]{TODO}
-\caption{TODO}
-\label{fig:AE}
-
-\end{figure}
 
 
 
 
+\clearpage
 \subsection{NN comparison}
 
 we run NN
@@ -419,7 +436,7 @@ and compare it with the optimal distance measure we have train by our procedure
 
 
 In Figure \ref{fig:NN-exp}
-\begin{figure}
+\begin{figure}[h!]
 
 \todo[inline,color=green]{TODO}
 \caption{TODO}
@@ -431,7 +448,7 @@ In Figure \ref{fig:NN-exp}
 
 
 
-\begin{table}
+\begin{table}[h!]
 \caption{Comparison of testing error of NN with different metrics.}
 \label{tbl:BD-NN}
 \begin{tabular}{l|r|r|r|r}
@@ -467,7 +484,7 @@ breast-cancer
 
 
 
-
+\clearpage
 
 \subsection{Economy of data collection}
 

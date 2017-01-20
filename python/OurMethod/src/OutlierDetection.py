@@ -4,17 +4,22 @@ import math
 import time
 #https://github.com/Pyomo/PyomoGallery/blob/master/network_interdiction/multi_commodity_flow/multi_commodity_flow_interdict.py
 import mymodule
+from matplotlib.mlab import dist
+from dis import dis
     
-EMA = 0.0000000001
+EMA = 0.000001
 
 def solveModel(model):
-        opt = SolverFactory("cplex")#,solver_io='python')
-        
+        opt = SolverFactory("cbc")#,solver_io='python')
+#         opt = SolverFactory("cplexamp")
 #         print "-------------Going to solve the model-------------"
 #         solver_manager = SolverManagerFactory('neos')
 #         results = solver_manager.solve(model, opt=opt)
-        
-        results = opt.solve(model)
+        start_time = time.time()
+        print "Start "
+        results = opt.solve(model)#, warmstart=True)
+        elapsed_time = time.time() - start_time
+        print "solving took ", elapsed_time
 #         print(results)
 #         print "-------------Model solved-------------"
         
@@ -58,7 +63,7 @@ class OutlierDetection:
                 if j==i:
                     self.sorter.setBij(i,j,B[i,j])
                 if j<i:
-                    self.sorter.setBij(i,j,0)
+                    self.sorter.setBij(i,j,0.0)
 
     def __init__(self, filename ,normalize):
 
@@ -78,7 +83,7 @@ class OutlierDetection:
                     normi = sum(xi*xi for xi in sample)
                     M = max(M,normi)
             M = math.sqrt(M)
-            self.features = [   [ xi/M for xi in sample   ]        for sample in self.features  ]
+            self.features = [   [ xi/M for xi in sample    ]        for sample in self.features  ]
 
         self.n = len(self.labels)
         self.nonOutlier = range(self.n)
@@ -124,10 +129,58 @@ class OutlierDetection:
         self.violations = self.violationsHM.values()
 
     def addViolation(self,n1, n2):
+        hadThisKey = False
         if n1<n2:
-            self.violationsHM[str(n1)+"_"+str(n2)] = [n1,n2]
+            key = str(n1)+"_"+str(n2)
+            if key in self.violationsHM:
+                hadThisKey = True
+            self.violationsHM[key] = [n1,n2]
         else:
-            self.violationsHM[str(n2)+"_"+str(n1)] = [n2,n1]
+            key = str(n2)+"_"+str(n1)
+            if key in self.violationsHM:
+                hadThisKey = True
+            self.violationsHM[key] = [n2,n1]
+        return hadThisKey
+            
+            
+    def addConstraintsBetweenBandD_SPARSE(self,model):    
+        def distanceBetweenPointGivenB(model, idx):
+                i = self.violations[idx][0]
+                j = self.violations[idx][1]
+                xi = self.features[i]
+                xj = self.features[j]
+                x = [  (xi[k]-xj[k]) for k in xrange(self.d) ]
+                return ( model.D[(idx)] ==   sum(  x[k]*x[l]* model.B[(k,l)]      for k in model.d for l in model.d   )      )
+#         start_time = time.time()
+        model.distanceBetweenPointGivenBConstrain = Constraint(model.S, rule=distanceBetweenPointGivenB)
+#         elapsed_time = time.time() - start_time
+#         print "done D contsr", elapsed_time        
+            
+    def addBVariable(self,model,B):    
+            def fB(model, i,j):
+                if i < j:
+                    return (0, 0)            
+                else:
+                    return (None, None)
+            def fBE(model, i,j):
+                if i<j:
+                    return 0
+                if i>j:
+                    return 2*B[i,j]
+                return B[i,j]
+            model.B = Var(model.d * model.d  ,bounds=fB, initialize=fBE ) #,bounds=(-1, 1) 
+    def addDistanceVariable(self,model):    
+            def fDE(model, idx):
+                i = self.violations[idx][0]
+                j = self.violations[idx][1]
+                if j==140:
+                    print idx, i,j
+                distance = self.sorter.computeDistanceBetweenTwoPoint(i, j)
+                if distance < 0 or distance > 1:
+                    return None
+                return distance
+            model.D = Var(model.S, domain=NonNegativeReals, bounds=(0, 1), initialize=fDE)                         
+            
     def findLargestEpsilonRowAndColumnGeneration(self):
         
         B = np.identity(self.d)
@@ -183,21 +236,15 @@ class OutlierDetection:
         
         while notDone:
             it = it+1
-        
             model = ConcreteModel()
-            # ------------------  definition of sets
-#             model.N = Set(initialize=self.nonOutlier, doc='Set of nodes')
-            
-#             model.NAll = Set(initialize=range(self.n), doc='Set of nodes')
             model.d = Set(initialize=range(self.d), doc='Set of features')
-                    
             model.S = Set(initialize=range(len(self.violations))      , doc='Set of active nodes')
-            model.D = Var(model.S, domain=NonNegativeReals, bounds=(0, 1)) 
+            
+            self.addDistanceVariable(model)
+            self.addBVariable(model,B)    
+            self.addConstraintsBetweenBandD_SPARSE(model)
 
             model.eps = Var(within=NonNegativeReals,  initialize=0) #, bounds=(0, 1)  
-            model.B = Var(model.d * model.d   ) #,bounds=(-1, 1) 
-            
-            
             def epsLessThanDij(model, idx):
                 i = self.violations[idx][0]
                 j = self.violations[idx][1]
@@ -207,44 +254,16 @@ class OutlierDetection:
                     return ( model.eps <= model.D[idx]   )
             model.epsLessThanDikConstrain = Constraint(model.S, rule=epsLessThanDij)
             
-            self.addConstraint_lower_diagonal_of_B_is_zero(model)
-            
-            def distanceBetweenPointGivenB(model, idx):
-                i = self.violations[idx][0]
-                j = self.violations[idx][1]
-                xi = self.features[i]
-                xj = self.features[j]
-                x = [  (xi[k]-xj[k]) for k in xrange(self.d) ]
-                return ( model.D[(idx)] ==   sum(  x[k]*x[l]* model.B[(k,l)]      for k in model.d for l in model.d   )      )
-            start_time = time.time()
-            print "Start "
-            model.distanceBetweenPointGivenBConstrain = Constraint(model.S, rule=distanceBetweenPointGivenB)
-            elapsed_time = time.time() - start_time
-            print "done D contsr", elapsed_time
-
             model.OBJ = Objective(expr=model.eps, sense=maximize, doc='maximize epsilon')
-            start_time = time.time()
+#             start_time = time.time()
             results = solveModel(model)
-            elapsed_time = time.time() - start_time
-            print "solving time", elapsed_time
+#             elapsed_time = time.time() - start_time
+#             print "solving time", elapsed_time
             
             B = self.getMatrixBFromResult(model)
-            
-            print B
-            epsilon = model.eps.value
-            
             self.setBInSorter(B)
-        
+            epsilon = model.eps.value
             totalPoints  = self.sorter.computeTopRiPoints(10)
-            print "-------------------------"
-#             print "New violations",totalPoints
-#             if (totalPoints > 20):
-#                 totalPoints = 20
-#             for i in xrange(3):
-#                 print "Current worst points",self.sorter.getIndexForTopList(i,0),self.sorter.getIndexForTopList(i,1),self.sorter.getValueForTopList(i)
-
-
-
             notDone = False
             for i in xrange(totalPoints):
                 if (self.sorter.getValueForTopList(i) < -EMA):
@@ -255,80 +274,12 @@ class OutlierDetection:
                     self.addViolation(self.sorter.getIndexForTopList(i,0) , self.sorter.getIndexForTopList(i,1))
 #                     print "CASE C",self.sorter.getIndexForTopList(i,0),self.sorter.getIndexForTopList(i,1),self.sorter.getValueForTopList(i)
                     notDone = True
-                    
-                    
                 if ( (self.sorter.getValueForTopList(i) < epsilon-EMA) and (self.labels[self.sorter.getIndexForTopList(i,0)] <> self.labels[self.sorter.getIndexForTopList(i,1)]  )):
                     self.addViolation(self.sorter.getIndexForTopList(i,0) , self.sorter.getIndexForTopList(i,1))
 #                     print "CASE B",self.sorter.getIndexForTopList(i,0),self.sorter.getIndexForTopList(i,1),self.sorter.getValueForTopList(i),epsilon
                     notDone = True
-                    
-                    
-                    
-                    
-                    
             self.updateViolations()
-            print "Iteration ", it, " Total violations now ",len(self.violations)
-            
-            
-#             print self.violations
-            
-            
-            
-
-#             if it>10:
-#             print S.keys()            
-#             # CHECK ALL CONSTRAINTS
-#             smallest = 10000
-#             largest = -10000
-#             epsSmallest = 100000
-#             smAdd = []
-#             larAdd = []
-#             epsAdd = []
-#             for sample in model.N:
-#                 for testTo in model.N:
-#                     if (sample <> testTo):
-#                         x = [self.features[sample][k] - self.features[testTo][k] for k in xrange(self.d)]
-#                         distance = sum(  x[k]*x[l]*B[k,l] for k in xrange(self.d) for l in xrange(self.d)   )
-#                         if (self.labels[sample] == self.labels[testTo] ):
-#                             if distance < 0 and distance < smallest:
-#                                 smallest = distance
-#                                 smAdd = [sample, testTo]
-#                                 notDone = True
-# #                                 print "PROBLEM1", sample, testTo
-#                             if distance > 1 and distance > largest:
-#                                 largest = distance
-#                                 larAdd = [sample, testTo]
-#                                 notDone = True
-# #                                 print "PROBLEM2", sample, testTo
-#                                 
-#                         if (self.labels[sample] <> self.labels[testTo] ):
-#                             if distance < epsilon:
-# #                                 print "PROBLEM3", sample, testTo,epsSmallest,distance, epsAdd
-#                                 
-#                                 notDone = True
-#                                 if distance < epsSmallest:
-#                                     epsSmallest = distance
-#                                     epsAdd= [sample, testTo]
-#             for e in smAdd:
-#                 S[e]=1
-#             for e in larAdd:
-#                 S[e]=1
-#             for e in epsAdd:
-#                 S[e]=1
-#             
-#                             
-#             print S.keys()
-#             print len(S.keys()), self.n
-            
-        
-        
-        
-        
-        # ------------------  definition of variables        
-        # ------------------  Constraints        
-        # ------------------  Objective Function        
-        # ------------------  Solve Problem        
-#         D = self.getMatrixDFromResult(model)
+            print "Iteration ", it, " Total violations now ",len(self.violations), ' EpSILON ',epsilon
         return model.eps.value , B
 
 
@@ -367,6 +318,20 @@ class OutlierDetection:
         for outlier in outliers:
             self.nonOutlier.remove(outlier)
         self.outliers = outliers
+
+    def insertOutliers_Method_CyclicAssignmentSPARSE(self,  currentOultiers):
+        canInsert = True
+        wasDoneSomeChange = False
+        while canInsert:
+            canInsert = False
+            for sample in currentOultiers:
+                val =   self.sorter.computeRi(sample)
+                if val>1:
+                    canInsert = True
+                    currentOultiers.remove(sample)
+                    self.sorter.removeOutlier(sample)
+                    wasDoneSomeChange = True
+        return currentOultiers,wasDoneSomeChange
 
 
 
@@ -413,6 +378,108 @@ class OutlierDetection:
         
     def insertOutliers_Method_MIP_Assignment(self):
         pass
+
+    def findDistanceBandSetOfOutliersForEpsilon_SPARSE(self,epsilon,Binit, currentOutliers=[]):
+        
+        
+        self.epsilon = epsilon
+        self.B = Binit
+        self.violationsHM={}
+        self.sorter.setEpsilon(epsilon)
+        self.sorter.resetOutliers()
+        
+        for x in currentOutliers:
+            self.sorter.setOutlier(x)
+        
+        
+        NOTFINISHED = True
+        IT=0
+        TI = {}
+        while NOTFINISHED:
+            NOTFINISHED = False
+            print "ITERATION --------",IT     
+            IT=IT+1   
+            self.setBInSorter(self.B)
+        # we should find the worst violations for given "B"
+        
+            totalPoints = self.sorter.getViolationsForT()
+        
+            vio = [  [self.sorter.getIndexForTopList(i, 0), self.sorter.getIndexForTopList(i, 1), self.sorter.getValueForTopList(i)] for i in xrange(totalPoints)            ]
+            for x in vio:
+                n1=x[0]
+                n2=x[1]
+                TI[n1]=1
+                TI[n2]=1
+                hadThisKey = self.addViolation(n1, n2)
+                if hadThisKey:
+                    pass
+                else:
+                    NOTFINISHED = True
+            if (NOTFINISHED):
+         
+                
+                Ts = TI.keys()
+                self.updateViolations()
+                
+                print "Init Itartions   total points ",totalPoints, 'TOTAL Constraints',len(self.violations), "total ts",len(Ts)
+                
+                model = ConcreteModel()
+                model.d = Set(initialize=range(self.d), doc='Set of features')
+                model.S = Set(initialize=range(len(self.violations))      , doc='Set of distance bounds')
+                model.N = Set(initialize= Ts      , doc='Set of active nodes')
+                
+                self.addDistanceVariable(model)
+                self.addBVariable(model,self.B)    
+                self.addConstraintsBetweenBandD_SPARSE(model)
+        
+                model.t = Var(model.N, domain=NonNegativeReals, bounds=(0, 1)) #
+        
+                def tiBound(model, idx):
+                    i = self.violations[idx][0]
+                    j = self.violations[idx][1]
+                    if i==j:
+                        return Constraint.Skip
+                    if self.labels[i] == self.labels[j]:
+                        return (  model.t[(i)] <= model.D[idx] )
+                    else:
+                        return ( model.t[(i)] + self.epsilon <= model.D[idx]   )
+                    
+                model.tiBoundConstrain = Constraint( model.S , rule=tiBound)
+                
+                # ------------------  Objective Function        
+                model.OBJ = Objective(expr=sum( model.t[i] for i in model.N ), sense=maximize, doc='maximize epsilon')
+        
+                results = solveModel(model)
+                self.B = self.getMatrixBFromResult(model)
+
+        t={}
+        for i in model.t:
+            t[i]=model.t[i].value    
+        newOutliers = []
+        
+        
+        totalPoints = self.sorter.getViolationsForT()
+
+        for i in  xrange(totalPoints):
+            sample = self.sorter.getIndexForTopList(i, 0)
+            to = self.sorter.getIndexForTopList(i, 1)
+            isOutlier = self.sorter.getOutlierForTopList(i)
+            if isOutlier ==1:
+                newOutliers+=[sample]
+            
+        print "total points from C++",totalPoints, len(vio)
+
+
+
+
+        
+#         for idx in model.S:
+#                 print model.D[idx].value, self.violations[idx][0],self.violations[idx][1],self.sorter.computeDistanceBetweenTwoPoint(self.violations[idx][0], self.violations[idx][1])
+                
+
+
+        return t,  newOutliers, self.B
+
 
         
 

@@ -14,7 +14,13 @@
 		void setBij(int i=0, int j=0, double value=0);
 		void setLabel(int sample=0, int label=0);
 		double computeDistanceBetweenTwoPoint(int i=0,int j=0);
-
+        void setEpsilon(double value=0);
+        void resetOutliers();
+        void setOutlier(int idx = 0);
+        void removeOutlier(int idx = 0);
+        int getOutlierForTopList(int index=0);
+        double computeRi(int sample=0);
+        int getViolationsForT();
 		int computeTopRiPoints(int k=10);
 		int getIndexForTopList(int index=0, int coordinate=0);
         double getValueForTopList(int index=0);

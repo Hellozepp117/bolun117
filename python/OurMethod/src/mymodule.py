@@ -121,6 +121,27 @@ class MySorter(_object):
     def computeDistanceBetweenTwoPoint(self, i=0, j=0):
         return _mymodule.MySorter_computeDistanceBetweenTwoPoint(self, i, j)
 
+    def setEpsilon(self, value=0):
+        return _mymodule.MySorter_setEpsilon(self, value)
+
+    def resetOutliers(self):
+        return _mymodule.MySorter_resetOutliers(self)
+
+    def setOutlier(self, idx=0):
+        return _mymodule.MySorter_setOutlier(self, idx)
+
+    def removeOutlier(self, idx=0):
+        return _mymodule.MySorter_removeOutlier(self, idx)
+
+    def getOutlierForTopList(self, index=0):
+        return _mymodule.MySorter_getOutlierForTopList(self, index)
+
+    def computeRi(self, sample=0):
+        return _mymodule.MySorter_computeRi(self, sample)
+
+    def getViolationsForT(self):
+        return _mymodule.MySorter_getViolationsForT(self)
+
     def computeTopRiPoints(self, k=10):
         return _mymodule.MySorter_computeTopRiPoints(self, k)
 

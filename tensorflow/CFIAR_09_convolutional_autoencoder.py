@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 # %%
 def autoencoder(input_shape=[None, 3072],
-                n_filters=[3, 4, 4, 4 ],
+                n_filters=[3, 8, 8, 3 ],
                 filter_sizes=[3, 3, 3, 3 ],
                 corruption=False):
     """Build a deep denoising autoencoder w/ tied weights.
@@ -170,8 +170,8 @@ def traing_cifar(feat, labels):
     # %%
     # Plot example reconstructions
     
-    fo = open('../python/OurMethod/src/dataset_cifar2.txt','w')
-    foi = open('../python/OurMethod/src/dataset_cifar_images2.txt','w')
+    fo = open('../python/OurMethod/src/CIFAR.txt','w')
+    foi = open('../python/OurMethod/src/CIFAR_images.txt','w')
     
     n_examples = 100
     for k in xrange(n/n_examples):
