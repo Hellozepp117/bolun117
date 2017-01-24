@@ -11,13 +11,13 @@ EMA = 0.000001
 
 def solveModel(model):
         opt = SolverFactory("cbc")#,solver_io='python')
-#         opt = SolverFactory("cplexamp")
+#         opt = SolverFactory("cplex")
 #         print "-------------Going to solve the model-------------"
 #         solver_manager = SolverManagerFactory('neos')
 #         results = solver_manager.solve(model, opt=opt)
         start_time = time.time()
         print "Start "
-        results = opt.solve(model)#, warmstart=True)
+        results = opt.solve(model)#)#, warmstart=True
         elapsed_time = time.time() - start_time
         print "solving took ", elapsed_time
 #         print(results)

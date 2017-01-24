@@ -7,18 +7,20 @@ import pickle
 
 
 
-filename = 'dataset_cifar2_sub2.txt'
-od = OutlierDetection('50_c2_d2.txt' , False)    
 
 
 
 # filename = 'MNIST.txt'
-# filename = 'CIFAR.txt'
+filename = 'CIFAR_f.txt'
 # filename = 'dataset_cifar2.txt'
 # filename = 'dataset_cifar_sub.txt'
 # filename = 'dataset_cifar2_sub.txt'
-# od = OutlierDetection(filename , True)    
+# filename = 'CIFAR.txt'
 
+
+filename = 'synthetic.txt'
+
+od = OutlierDetection(filename , False)    
 
 
 
@@ -29,6 +31,7 @@ od = OutlierDetection('50_c2_d2.txt' , False)
 
 
 epsilonMax, B = od.findLargestEpsilonRowAndColumnGeneration()
+
 
 print "Epsilon max = ", epsilonMax
 
@@ -73,6 +76,7 @@ while wasDoneSomeChange:
     
 print "FINAL LIST OF OUTLIERS",currentOultiers
 
+print B
 
 
 
