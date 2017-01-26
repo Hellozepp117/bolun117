@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 # %%
 def autoencoder(input_shape=[None, 3072],
-                n_filters=[3, 8, 8, 3 ],
+                n_filters=[3, 40, 40, 2 ],
                 filter_sizes=[3, 3, 3, 3 ],
                 corruption=False):
     """Build a deep denoising autoencoder w/ tied weights.
@@ -170,8 +170,8 @@ def traing_cifar(feat, labels):
     # %%
     # Plot example reconstructions
     
-    fo = open('../python/OurMethod/src/CIFAR.txt','w')
-    foi = open('../python/OurMethod/src/CIFAR_images.txt','w')
+    fo = open('../python/OurMethod/src/CIFAR5.txt','w')
+    foi = open('../python/OurMethod/src/CIFAR5_images.txt','w')
     
     n_examples = 100
     for k in xrange(n/n_examples):
@@ -218,7 +218,7 @@ def traing_cifar(feat, labels):
 
 # %%
 if __name__ == '__main__':
-    cifar  = pickle.load( open( "cifar/3classCFAR100.pickle", "rb" ) )
+    cifar  = pickle.load( open( "cifar/5classCFAR100.pickle", "rb" ) )
     
     feat = cifar['data']
     labels = cifar['labels']

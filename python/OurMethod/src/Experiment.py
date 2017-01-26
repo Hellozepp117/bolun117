@@ -16,11 +16,12 @@ filename = 'CIFAR_f.txt'
 # filename = 'dataset_cifar_sub.txt'
 # filename = 'dataset_cifar2_sub.txt'
 # filename = 'CIFAR.txt'
+filename = 'MNISTFULL.txt'
 
 
-filename = 'synthetic.txt'
+# filename = 'synthetic.txt'
 
-od = OutlierDetection(filename , False)    
+od = OutlierDetection(filename , True)    
 
 
 
@@ -50,6 +51,8 @@ data["outliers"]=currentOultiers
 data["epsilon"]=epsilon        
 pickle.dump( data, open( filename+"_INIT"+".pickle", "wb" ) )  
 
+
+
 wasDoneSomeChange = True 
 iteration = 0
 while wasDoneSomeChange:
@@ -61,24 +64,28 @@ while wasDoneSomeChange:
     currentOultiers, wasDoneSomeChange = od.insertOutliers_Method_CyclicAssignmentSPARSE(currentOultiers)
     print currentOultiers
     
-    if (wasDoneSomeChange):
-        t,  newOutliers, B = od.findDistanceBandSetOfOutliersForEpsilon_SPARSE(epsilon,B,currentOultiers)    
-        print newOutliers
-        for x in newOutliers:
-            currentOultiers +=[x]
-    if iteration > 4:
-        break
+    
     iteration=iteration+1
     data={}
-    data["B"]=od.B
+    data["B"]=B
     data["outliers"]=currentOultiers        
     pickle.dump( data, open( filename+"_"+str(iteration)+".pickle", "wb" ) ) 
     
+    
+    
+    if (wasDoneSomeChange):
+        t,  newOutliers, B = od.findDistanceBandSetOfOutliersForEpsilon_SPARSE(epsilon,B,currentOultiers)    
+        print "new outliers identified",newOutliers
+        for x in newOutliers:
+            currentOultiers +=[x]
+    if iteration > 10:
+        break
 print "FINAL LIST OF OUTLIERS",currentOultiers
 
-print B
-
-
+data={}
+data["B"]=od.B
+data["outliers"]=currentOultiers        
+pickle.dump( data, open( filename+"_"+"FINAL"+".pickle", "wb" ) )  
 
 
     

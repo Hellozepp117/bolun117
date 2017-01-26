@@ -10,7 +10,7 @@ from libs.utils import corrupt
 
 # %%
 def autoencoder(input_shape=[None, 784],
-                n_filters=[1, 10, 10, 10, 5],
+                n_filters=[1, 40, 40, 40, 4],
                 filter_sizes=[3, 3, 3, 3, 3],
                 corruption=False):
     """Build a deep denoising autoencoder w/ tied weights.
@@ -165,12 +165,13 @@ def test_mnist():
     # %%
     # Plot example reconstructions
     
-    fo = open('../python/OurMethod/src/MNIST.txt','w')
-    foi = open('../python/OurMethod/src/MNIST_images.txt','w')
+    fo = open('../python/OurMethod/src/MNISTFULL.txt','w')
+    foi = open('../python/OurMethod/src/MNISTFULL_images.txt','w')
     
-    for k in xrange(50):
+    
+    n_examples = 100
+    for k in xrange(10000/n_examples):
         print k
-        n_examples = 64
         test_xs, test_ys = mnist.test.next_batch(n_examples)
         
         test_xs_norm = np.array([img - mean_img for img in test_xs])
@@ -187,9 +188,9 @@ def test_mnist():
                         out+= [k]
             yy = test_ys[sj]
             label = sum( yy[j]*j for j in xrange(10) )
-            if (label == 0 or label==1 or label==2):
-                fo.write(str(int(label))+':'+' '.join([str(kk) for kk in out])+'\n')
-                foi.write(' '.join(  [str(kk) for kk in test_xs[sj] ]   )+'\n')
+#             if (label == 0 or label==1 or label==2):
+            fo.write(str(int(label))+':'+' '.join([str(kk) for kk in out])+'\n')
+            foi.write(' '.join(  [str(kk) for kk in test_xs[sj] ]   )+'\n')
     fo.close() 
     foi.close()
  

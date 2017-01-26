@@ -90,17 +90,22 @@ int MySorter::getViolationsForT(){
             int idxInClass=-1;
             int idxoutClass=-1;
             for (int to=0;to<this->n; to++){
+            
+            
+            double distance = this->computeDistanceBetweenTwoPoint(sample, to);
+                //                     if (sample==0 || to == 0)
+                //                     std::cout << sample<<" "<<to<<" "<<distance<<std::endl;
+                                    if (distance > MaxDistance){
+                                        MaxDistance = distance;
+                                        idxMaxDistance = to;
+                //                         if (sample==0|| to==0)
+                //                             std::cout<<"C++3 "<< sample<<" "<<to<<" "<< MaxDistance<<std::endl;
+                                    }
+            
+            
                 if (sample != to && !this->isOutlier[to]){
                     
-                    double distance = this->computeDistanceBetweenTwoPoint(sample, to);
-//                     if (sample==0 || to == 0)
-//                     std::cout << sample<<" "<<to<<" "<<distance<<std::endl;
-                    if (distance > MaxDistance){
-                        MaxDistance = distance;
-                        idxMaxDistance = to;
-//                         if (sample==0|| to==0)
-//                             std::cout<<"C++3 "<< sample<<" "<<to<<" "<< MaxDistance<<std::endl;
-                    }
+                    
                     
                     if (this->labels[sample] ==  this->labels[to]){
                         if (distance < closestInclassPoint){

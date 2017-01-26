@@ -17,7 +17,9 @@ def solveModel(model):
 #         results = solver_manager.solve(model, opt=opt)
         start_time = time.time()
         print "Start "
-        results = opt.solve(model)#)#, warmstart=True
+        results = opt.solve(model)#)#
+#         results = opt.solve(model, warmstart=True)#)#
+        
         elapsed_time = time.time() - start_time
         print "solving took ", elapsed_time
 #         print(results)
@@ -65,25 +67,35 @@ class OutlierDetection:
                 if j<i:
                     self.sorter.setBij(i,j,0.0)
 
-    def __init__(self, filename ,normalize):
 
-        self.labels = []  
-        self.features = []
-        f = open(filename,'rU')
-        for line in f:
-            data =  line.split(':')
-            self.labels+=[ int(data[0]) ]
-            self.features+=[  [float(xi) for xi in data[1].split() ]              ]
-        f.close()
+    def __init__(self, filename ,normalize,labels=[], features=[]):
+
+        self.labels = labels 
+        self.features = features
         
-        #normalizeData
-        if normalize:
-            M = 0
-            for sample in self.features:
-                    normi = sum(xi*xi for xi in sample)
-                    M = max(M,normi)
-            M = math.sqrt(M)
-            self.features = [   [ xi/M for xi in sample    ]        for sample in self.features  ]
+        if filename != None:
+            f = open(filename,'rU')
+            i=0
+            for line in f:
+                data =  line.split(':')
+                self.labels+=[ int(data[0]) ]
+                self.features+=[  [float(xi) for xi in data[1].split() ]              ]
+                i=i+1
+                if i > 100:
+                    break
+            f.close()
+            
+            #normalizeData
+            if normalize:
+                M = 0
+                for sample in self.features:
+                        normi = sum(xi*xi for xi in sample)
+                        M = max(M,normi)
+                M = math.sqrt(M)
+                self.features = [   [ xi/M for xi in sample    ]        for sample in self.features  ]
+
+
+
 
         self.n = len(self.labels)
         self.nonOutlier = range(self.n)
@@ -173,8 +185,6 @@ class OutlierDetection:
             def fDE(model, idx):
                 i = self.violations[idx][0]
                 j = self.violations[idx][1]
-                if j==140:
-                    print idx, i,j
                 distance = self.sorter.computeDistanceBetweenTwoPoint(i, j)
                 if distance < 0 or distance > 1:
                     return None
@@ -197,7 +207,7 @@ class OutlierDetection:
         self.updateViolations()
 
 
-        print "d = ",self.d
+        print "d = ",self.d, "total points = ",totalPoints
 
 
         
@@ -331,6 +341,10 @@ class OutlierDetection:
                     currentOultiers.remove(sample)
                     self.sorter.removeOutlier(sample)
                     wasDoneSomeChange = True
+                    
+                    
+                    MUSIM SKONTOLROCAT CI TOTO NEPOSERE UZ BODY CO SU TAM!!!
+                    
         return currentOultiers,wasDoneSomeChange
 
 
@@ -453,8 +467,8 @@ class OutlierDetection:
                 self.B = self.getMatrixBFromResult(model)
 
         t={}
-        for i in model.t:
-            t[i]=model.t[i].value    
+#         for i in model.t:
+#             t[i]=model.t[i].value    
         newOutliers = []
         
         
@@ -467,7 +481,7 @@ class OutlierDetection:
             if isOutlier ==1:
                 newOutliers+=[sample]
             
-        print "total points from C++",totalPoints, len(vio)
+#         print "total points from C++",totalPoints, len(vio)
 
 
 
