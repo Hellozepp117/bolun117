@@ -11,7 +11,15 @@ LPATH=/work/jointProjects/2017_MSC_Bolun_Xu_Clustering/python
  
 RPATH=/home/mat614/Clustering
 
-$RSYNC -avr --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r $LPATH -e  "$SSH -i $KEY" $RUSER@$RHOST:$RPATH 
+$RSYNC -avr --exclude "results" --exclude "*.pyc" --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r $LPATH -e  "$SSH -i $KEY" $RUSER@$RHOST:$RPATH 
+
+LPATH=/work/jointProjects/2017_MSC_Bolun_Xu_Clustering/tensorflow
+
+  
+ 
+RPATH=/home/mat614/Clustering
+
+$RSYNC -avr --exclude "results" --exclude "*.pyc" --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r $LPATH -e  "$SSH -i $KEY" $RUSER@$RHOST:$RPATH 
 
 
 

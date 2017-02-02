@@ -76,12 +76,7 @@
 \newcommand{\xor}{\underline{\vee}}
 \newcommand{\Xor}{\underline{\bigvee}}
 
-
-
-
-
-
-
+ 
 
 
 
@@ -330,66 +325,163 @@ Otherwise there exists a subset $\mc{O}$ of outlier points such that $0 \leq t_i
 
 
 
+try the approach suggested today.
+Use a subset of data, find $B$, 
+compute $R^{-1}$ and remove values on the left from knee point
+and then we should get points on bounday and re-optimize.
+
+
+
+
+
+
+
+why our approach is better for proposing where to sample, we can also use KNN
+
+
+
+
+
+
+
+
 
 
 \clearpage
+\onecolumn 
 \section{Numerical Experiments/Results}
 
 
 \subsection{Outlier Detection and Further sampling recommendation}
 
-In the experiment we took MNIST and CIFAR100 dataset
-
-we used  auto-encoders and then run Algorithm XXX
-
-
-
-
-
-Cifra 
-[7, 35, 64, 71, 73, 81]
-
-\includegraphics[scale=.1]{fig/c5.eps}
-\includegraphics[scale=.1]{fig/c6.eps}
-\includegraphics[scale=.1]{fig/c12.eps}
-
-outlier
-\includegraphics[scale=.1]{fig/c7.eps}
+In the experiment we took MNIST and CIFAR100 dataset.
+\begin{itemize}
+\item We run autoencoders with CNN to 
+find a condensed representation of images
+\item after we find the best $B$ and get a collection of outliers
+\item We show both examples for a non-outlier case and also for outlier case
+\end{itemize}
 
 
-\includegraphics[scale=.1]{fig/c8.eps}
-\includegraphics[scale=.1]{fig/c10.eps}
-
-
-
-MNIST
-[120]
-
-\includegraphics[scale=.1]{fig/MNIST119.eps}
-\includegraphics[scale=.1]{fig/MNIST121.eps}
-\includegraphics[scale=.1]{fig/MNIST122.eps}
-\includegraphics[scale=.1]{fig/MNIST124.eps}
-
-ourlier
-\includegraphics[scale=.1]{fig/MNIST120.eps}
-
-
-
-
-
-
-In Figure \ref{fig:AE}
-\begin{figure}
+In Figure \ref{fig:AE-MNIST}
+(left) we show an non-outlier image together with 4 closest points.
+On right, we show an outlier image together with 4 it's closest neighbours.
+We compare it with the non-optimized distance metric (second row). The detailed description of the experiment is in supplementary material.
+\begin{figure}[h!]
 
 \todo[inline,color=green]{TODO}
 \caption{TODO}
-\label{fig:AE}
+\label{fig:AE-MNIST}
 
 \end{figure}
 
+In Figure \eqref{fig:AE-CIFAR}
+we show the same but on CIFAR100 dataset.
+The detailed description of the experiment is in supplementary material.
+\begin{figure}[h!]
+
+\todo[inline,color=green]{TODO}
+\caption{TODO}
+\label{fig:AE-CIFAR}
+
+\end{figure}
+
+ 
+ \clearpage 
+
+\subsection{MNIST}
+
+following table shows the outlier (first column) and 3 closest points in the dataset
+
+
+\begin{tabular}{cccc}
+
+2 &1& 1& 1\\
+
+\includegraphics[scale=.1]{fig/MNIST_207_2_0_207_2.eps}&
+\includegraphics[scale=.1]{fig/MNIST_207_2_1_942_1.eps}&
+\includegraphics[scale=.1]{fig/MNIST_207_2_2_510_1.eps}&
+\includegraphics[scale=.1]{fig/MNIST_207_2_3_514_1.eps} 
+ 
+
+
+\\ \hline 
+2 & 0 & 2 & 2\\
+\includegraphics[scale=.1]{fig/MNIST_392_2_0_392_2.eps} &
+\includegraphics[scale=.1]{fig/MNIST_392_2_1_161_0.eps}&
+\includegraphics[scale=.1]{fig/MNIST_392_2_2_424_2.eps}&
+\includegraphics[scale=.1]{fig/MNIST_392_2_3_609_2.eps}
+\\
+\hline 
+2 & 0 & 0 & 0 \\
+
+\includegraphics[scale=.1]{fig/MNIST_653_2_0_653_2.eps} &
+\includegraphics[scale=.1]{fig/MNIST_653_2_1_171_0.eps}&
+\includegraphics[scale=.1]{fig/MNIST_653_2_2_252_0.eps}&
+\includegraphics[scale=.1]{fig/MNIST_653_2_3_938_0.eps} 
+ 
+
+
+\\
+\hline 
+2 & 0 & 0 & 0 \\
+
+\includegraphics[scale=.1]{fig/MNIST_771_2_0_771_2.eps} &
+\includegraphics[scale=.1]{fig/MNIST_771_2_1_818_0.eps} &
+\includegraphics[scale=.1]{fig/MNIST_771_2_2_875_0.eps} &
+\includegraphics[scale=.1]{fig/MNIST_771_2_3_793_0.eps}
+
+\\ \hline 
 
 
 
+1 & 2 & 2 &2 \\ 
+
+\includegraphics[scale=.1]{fig/MNIST_947_1_0_947_1.eps}&
+\includegraphics[scale=.1]{fig/MNIST_947_1_1_913_2.eps}&
+\includegraphics[scale=.1]{fig/MNIST_947_1_2_806_2.eps}&
+\includegraphics[scale=.1]{fig/MNIST_947_1_3_13_2.eps}
+\\ \hline
+1 & 2 & 1 & 2 \\
+
+\includegraphics[scale=.1]{fig/MNIST_962_1_0_962_1.eps}&
+\includegraphics[scale=.1]{fig/MNIST_962_1_1_760_2.eps}&
+\includegraphics[scale=.1]{fig/MNIST_962_1_2_733_1.eps}&
+\includegraphics[scale=.1]{fig/MNIST_962_1_3_456_2.eps} 
+
+
+
+\end{tabular}
+
+ 
+ 
+ 
+
+\clearpage
+\subsection{Experiments with synthetic data}
+
+
+We compare with LMNN (I used the lmnn v3 software)
+with our approach
+In Figure \ref{fig:synthetic} we show the dataset
+and also we show the unit distance plot for various $K$ for LMNN algorithm.
+Note that for value of $K=2$ and $K=4$ the their result is terrible.
+\begin{figure}[h!]
+
+\includegraphics[scale=.2]{fig/synthetic1.eps}
+\includegraphics[scale=.3]{fig/synthetic1lmnn.eps}
+\includegraphics[scale=.2]{fig/synthetic1our.eps}
+
+\caption{Comparison of LMNN for various parameter $K$.
+In code it is written 
+ attract $K$ nearest similar labeled vectors. 
+ The last plot on right is the solution give by our algorithm. 
+ PS: just to note, this is different from the one you are used to plot.
+}
+\label{fig:synthetic}
+\end{figure}
+
+\clearpage
 \subsection{NN comparison}
 
 we run NN
@@ -399,7 +491,7 @@ and compare it with the optimal distance measure we have train by our procedure
 
 
 In Figure \ref{fig:NN-exp}
-\begin{figure}
+\begin{figure}[h!]
 
 \todo[inline,color=green]{TODO}
 \caption{TODO}
@@ -411,7 +503,7 @@ In Figure \ref{fig:NN-exp}
 
 
 
-\begin{table}
+\begin{table}[h!]
 \caption{Comparison of testing error of NN with different metrics.}
 \label{tbl:BD-NN}
 \begin{tabular}{l|r|r|r|r}
@@ -447,7 +539,7 @@ breast-cancer
 
 
 
-
+\clearpage
 
 \subsection{Economy of data collection}
 

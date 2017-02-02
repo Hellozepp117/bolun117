@@ -1,26 +1,36 @@
-'''
+import mymodule
+import numpy as np
+
+n=10
+d=3
+
+X = np.random.rand(n,d)
+labels = np.random.rand(n,1)
+labels = [ int(x < 0.5) for x in labels]
+print labels
 
 
-@author: Bolun
-'''
-labels = [ 0, 0, 1, 1]
-features = [ [0, 1],[.1, 1.1 ],[.1, 2.1 ],[-2, 2.01 ] ]
-dimension = len(features[0])
-    
-print dimension
-print features[1][0]
+sorter = mymodule.MySorter()
+sorter.InitializeData(n,d)
 
-J=range(len(labels))
 
-print J
+print X
+B=np.random.rand(d,d)
+for i in xrange(d):
+	for j in xrange(d):
+		if j< i:
+			B[i,j] = 0
+print B
 
-p=5
-P_1=range(p) 
-P_2=range(p-1) 
-for i in xrange(p-1):  
-    P_2[i] = [] 
-for k1 in xrange(p-1):  
-    for k2 in xrange(p-k1-1):
-        temp=k2+k1+1
-        P_2[k1].append(temp)
-print P_2
+
+
+
+
+
+
+
+
+
+sorter.MethodB()
+sorter.MethodB(10)
+print sorter.GetValA()
