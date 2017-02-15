@@ -478,10 +478,11 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
             DeclarationSection Common_Constraints {
                 Constraint CL_Q_Coeff {
-                    IndexDomain: (d1,d2);
+                    IndexDomain: (d1,d2) | ord(d1) = ord(d2) and ord(d1)=1;
                     Definition: {
                         !if (ord(d1) < ord(d2)) then VC_Q_Coeff(d1,d2)=0 else 1=1 endif;
-                        1=1;
+                        VC_Q_Coeff(d1,d2)>= 1;
+                        !1=1;
                     }
                 }
             }
@@ -551,7 +552,7 @@ Model Main_Adaptive_Distance_Metric_Selection {
             DeclarationSection MILP_Problem {
                 Variable VC_MILP_OBJ {
                     Range: free;
-                    Definition: sum[i, VC_Lambda(i)-PD_Rho * VC_Z(i)];
+                    Definition: sum[i_a, VC_Lambda(i_a)-PD_Rho * VC_Z(i_a)];
                 }
                 MathematicalProgram MILP_Problem_solve {
                     Objective: VC_MILP_OBJ;
@@ -571,55 +572,55 @@ Model Main_Adaptive_Distance_Metric_Selection {
             }
             DeclarationSection MILP_Constraints {
                 Constraint CL_VC_Y {
-                    IndexDomain: i;
-                    Definition: 1 = sum[ j | (i,j) in SD_Neighbors , VC_Y(i,j) ];
+                    IndexDomain: i_a;
+                    Definition: 1 = sum[ j_a | (i_a,j_a) in SD_Neighbors , VC_Y(i_a,j_a) ];
                 }
                 Constraint CL_lambda_condition {
-                    IndexDomain: i;
+                    IndexDomain: i_a;
                     Definition: {
-                        VC_Lambda(i) <= 1 - VC_Z(i);
+                        VC_Lambda(i_a) <= 1 - VC_Z(i_a);
                     }
                 }
                 Constraint CL_MILP_Max_Min_Dist_To_Nearest_Non_Neighbor {
-                    IndexDomain: (i,k) | (i,k) in SD_Non_Neighbors;
+                    IndexDomain: (i_a,k_a) | (i_a,k_a) in SD_Non_Neighbors;
                     Definition: {
                         
-                        sum[ j | (i,j) in SD_Neighbors , VC_W(i,j) ] + VC_Lambda(i) <= VC_Distance(i,k) + PI_MAX_DISTANCE * VC_Z(i);
+                        sum[ j_a | (i_a,j_a) in SD_Neighbors , VC_W(i_a,j_a) ] + VC_Lambda(i_a) <= VC_Distance(i_a,k_a) + PI_MAX_DISTANCE * VC_Z(i_a);
                     }
                 }
                 Constraint CL_McCormick_envolopes_1 {
-                    IndexDomain: (i,j) | (i,j) in SD_Neighbors;
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors;
                     Definition: {
-                        VC_W(i,j) <= VC_Distance(i,j);
+                        VC_W(i_a,j_a) <= VC_Distance(i_a,j_a);
                     }
                 }
                 Constraint CL_McCormick_envolopes_2 {
-                    IndexDomain: (i,j) | (i,j) in SD_Neighbors;
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors;
                     Definition: {
-                        VC_W(i,j) <= VC_Y(i,j);
+                        VC_W(i_a,j_a) <= VC_Y(i_a,j_a);
                     }
                 }
                 Constraint CL_McCormick_envolopes_3 {
-                    IndexDomain: (i,j) | (i,j) in SD_Neighbors;
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors;
                     Definition: {
-                        VC_W(i,j) >= VC_Distance(i,j) + VC_Y(i,j) - 1;
+                        VC_W(i_a,j_a) >= VC_Distance(i_a,j_a) + VC_Y(i_a,j_a) - 1;
                     }
                 }
             }
             DeclarationSection MILP_Variables {
                 Variable VC_Y {
-                    IndexDomain: (i,j) | (i,j) in SD_Neighbors;
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors;
                     Text: "Weight of dij";
                     Range: binary;
                 }
                 Variable VC_W {
-                    IndexDomain: (i,j) | (i,j) in SD_Neighbors;
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors;
                     Text: "Weighted dij";
                     Range: nonnegative;
                     Default: 0;
                 }
                 Variable VC_Z {
-                    IndexDomain: i;
+                    IndexDomain: i_a;
                     Text: "Define if point i is an Outlier";
                     Range: binary;
                 }
@@ -628,7 +629,97 @@ Model Main_Adaptive_Distance_Metric_Selection {
                 Parameter PD_Rho {
                     Text: "Penalty Parameter";
                     Default: 0;
-                    Definition: 0.1;
+                    Definition: 0.02;
+                }
+            }
+        }
+        Section KNN {
+            DeclarationSection KNN_Parameters {
+                Parameter PD_Pho_KNN {
+                    InitialData: 0.001;
+                }
+                Parameter PD_W {
+                    Text: "W=(NK/2)^-1";
+                }
+                Parameter PD_epsil {
+                    InitialData: 0.000001;
+                }
+                Parameter PD_K;
+            }
+            DeclarationSection KNN_Constraints {
+                Constraint CL_delta_condition_1 {
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors_and_Non;
+                    Definition: {
+                        VC_Distance(i_a,j_a)<= VC_Delta(i_a) + 1 - VC_u(i_a,j_a);
+                    }
+                }
+                Constraint CL_delta_condition_2 {
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors_and_Non;
+                    Definition: {
+                        VC_Distance(i_a,j_a)>= VC_Delta(i_a) + PD_epsil - VC_u(i_a,j_a) - VC_Z_KNN(i_a)- VC_Z_KNN(j_a);
+                    }
+                }
+                Constraint CL_u_condition_1 {
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors_and_Non;
+                    Definition: {
+                        VC_u(i_a,j_a) <= 1 - VC_Z_KNN(i_a);
+                    }
+                }
+                Constraint CL_u_condition_2 {
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors_and_Non;
+                    Definition: {
+                        VC_u(i_a,j_a) <= 1 - VC_Z_KNN(j_a);
+                    }
+                }
+                Constraint CL_K_condition {
+                    IndexDomain: i_a;
+                    Definition: {
+                        sum[ j_a | (i_a,j_a) in SD_Neighbors_and_Non , VC_u(i_a,j_a) ]<= PD_K;
+                    }
+                }
+                Constraint CL_kk_condition {
+                    IndexDomain: i_a;
+                    Definition: {
+                        sum[ j_a | (i_a,j_a) in SD_Neighbors , VC_u(i_a,j_a) ]>= VC_kk;
+                    }
+                }
+            }
+            DeclarationSection KNN_Variables {
+                Variable VC_Z_KNN {
+                    IndexDomain: i_a;
+                    Range: binary;
+                }
+                Variable VC_Delta {
+                    IndexDomain: i_a;
+                    Range: nonnegative;
+                }
+                Variable VC_kk {
+                    Range: nonnegative;
+                }
+                Variable VC_u {
+                    IndexDomain: (i_a,j_a) | (i_a,j_a) in SD_Neighbors_and_Non;
+                    Range: binary;
+                }
+            }
+            DeclarationSection KNN_Problem {
+                MathematicalProgram KNN_Problem_solve {
+                    Objective: VC_KNN_OBJ;
+                    Direction: maximize;
+                    Constraints: SD_KNN_Problem_Constraints;
+                    Variables: SD_KNN_Problem_Variables;
+                    Type: Automatic;
+                }
+                Variable VC_KNN_OBJ {
+                    Range: free;
+                    Definition: VC_kk+ PD_W * sum[i_a , sum[ j_a | (i_a,j_a) in SD_Neighbors , VC_u(i_a,j_a) ] ] - PD_Pho_KNN * sum[i_a , VC_Z_KNN(i_a)];
+                }
+                Set SD_KNN_Problem_Variables {
+                    SubsetOf: AllVariables;
+                    Definition: AllVariables * (COMMON + KNN);
+                }
+                Set SD_KNN_Problem_Constraints {
+                    SubsetOf: AllConstraints;
+                    Definition: AllConstraints * (COMMON + KNN);
                 }
             }
         }
@@ -775,6 +866,21 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
     }
     Section HEURISTICS {
+        Procedure Solve_KNN {
+            Body: {
+                SI_Points_Active:=SI_Points;
+                PI_Countnum_o:=0;
+                for i_a do
+                	PI_Countnum_o:=PI_Countnum_o+1;
+                endfor;
+                PD_K:=5;
+                PD_Pho_KNN:=0.01;
+                PD_epsil:=0.0000001;
+                PD_W:=1/(PI_Countnum_o * PD_K / 2 );
+                solve KNN_Problem_solve where
+                 time_limit = 60;
+            }
+        }
         Procedure Set_IK {
             Body: {
                 SD_Neighbors_minus_O:={ (i,j_N_O) | i <> j_N_O and PE_Class(i) = PE_Class(j_N_O) };
@@ -1054,8 +1160,9 @@ Model Main_Adaptive_Distance_Metric_Selection {
         }
         Procedure Solve_MILP_Problem {
             Body: {
+                SI_Points_Active:=SI_Points;
                 solve MILP_Problem_solve where
-                 time_limit = 10;
+                 time_limit = 100;
             }
         }
         Procedure Solve_Max_Epsilon_LP {
