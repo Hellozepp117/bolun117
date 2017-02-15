@@ -81,8 +81,8 @@ class OutlierDetection:
                 self.labels+=[ int(data[0]) ]
                 self.features+=[  [float(xi) for xi in data[1].split() ]              ]
                 i=i+1
-                if i > 100:
-                    break
+               # if i > 8000:
+                #    break
             f.close()
             
             #normalizeData
@@ -335,15 +335,13 @@ class OutlierDetection:
         while canInsert:
             canInsert = False
             for sample in currentOultiers:
+
                 val =   self.sorter.computeRi(sample)
                 if val>1:
                     canInsert = True
                     currentOultiers.remove(sample)
                     self.sorter.removeOutlier(sample)
                     wasDoneSomeChange = True
-                    
-                    
-                    MUSIM SKONTOLROCAT CI TOTO NEPOSERE UZ BODY CO SU TAM!!!
                     
         return currentOultiers,wasDoneSomeChange
 
