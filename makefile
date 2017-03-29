@@ -1,0 +1,3 @@
+ARCH=x86-64_linux
+
+ROOT=homesoftwareCPLEX_Studio127
