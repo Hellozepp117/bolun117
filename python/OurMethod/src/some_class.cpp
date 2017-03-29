@@ -36,7 +36,7 @@ double MySorter::computeRi(int sample){
     double inClassDistance=100000;
     double OutClassDistance=100000;
     for (int to=0; to<this->n; to++){
-        if(!this->isOutlier[to]){
+        if(!this->isOutlier[to] && to != sample){
             
             double distance =  this->computeDistanceBetweenTwoPoint(sample, to);           
             if (this->labels[sample] ==  this->labels[to]){
@@ -50,7 +50,8 @@ double MySorter::computeRi(int sample){
             }
         }
     }
-    return OutClassDistance / (inClassDistance);
+//     std::cout <<OutClassDistance<<" "<<inClassDistance<<std::endl;
+    return (OutClassDistance ) / (inClassDistance+0.00 );
 } 
  
  
