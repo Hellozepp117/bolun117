@@ -1,0 +1,17 @@
+#RESET
+reset;
+
+#LOAD THE MODEL
+model TP.mod;
+
+#Input Data
+data TP.dat;
+
+#Solver Change
+option solver cplex;
+
+
+option presolve 0;
+solve;
+
+

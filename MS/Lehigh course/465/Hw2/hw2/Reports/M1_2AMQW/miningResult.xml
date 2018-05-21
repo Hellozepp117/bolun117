@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  WorkspaceName="EMWS1" UUID="" EMVersion="13.2" ScoreCodeType="Data Step" MiningFunction="Prediction"
+ MiningAlgorithm="Regression" MiningAlgorithmNode="Reg" NodeAlgorithm="Regression"
+ NodeId="Reg" NodeDescription="Regression" Time="09MAR2016:10:45:36" RawLastTimeRun=""
+ LastTimeRun="" Userid="box215" DataSource="Written by SAS" Library="HW2" Table="COUNTIES"
+ Segment="" SamplingRate="." UseExternalData="" NTarget="1" NSegment="0">
+<TARGETS >
+<TARGET  Variable="democrat" Level="INTERVAL" Type="N" Format="" Order="" NodeId="Reg"/>
+</TARGETS>
+</_ROOT_>

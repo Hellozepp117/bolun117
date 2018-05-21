@@ -1,0 +1,8 @@
+reset;
+model 3a.mod;
+data 3.dat;
+option solver cplex;
+solve;
+display x,y,cost;
+
+

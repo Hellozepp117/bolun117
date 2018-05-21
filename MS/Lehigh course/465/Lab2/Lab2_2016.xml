@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8"?><_ROOT_ EMVERSION="13.2" ORIENTATION="HORIZONTAL">
+<Workspace>
+<NODES>
+<NODE CLASS="SASHELP.EMMDFY.EMDROP.CLASS" COMPONENT="Drop" ID="Drop" X="799" Y="184" DESCRIPTION="Drop" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODIFY" TOOLPREFIX="Drop">
+<PROPERTIES DropFromTable="N" DropHidden="Y" DropInput="N" DropTarget="N" DropRejected="Y" DropAssess="N" DropPredict="N" DropFreq="N" DropClassification="N" DropResidual="N" DropOther="N" ForceRun="N" RunAction="Train" Component="Drop">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes>
+<DELTA Variable="G_BIN_weight" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="ankle_diam" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="ankle_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="bicep_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="calf_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="chest_diam" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="chest_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="elbow_diam" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="forearm_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="gender" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="hip_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="knee_diam" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="knee_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="pelvic_breadth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="thigh_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="waist_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="wrist_diam" AttributeName="DROP" AttributeValue="Y"/>
+</EmVariableAttributes>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMDFY.EMDROP.CLASS" COMPONENT="Drop" ID="Drop2" X="497" Y="430" DESCRIPTION="Drop (2)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODIFY" TOOLPREFIX="Drop">
+<PROPERTIES DropFromTable="N" DropHidden="Y" DropInput="N" DropTarget="N" DropRejected="Y" DropAssess="N" DropPredict="N" DropFreq="N" DropClassification="N" DropResidual="N" DropOther="N" ForceRun="N" RunAction="Train" Component="Drop">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes>
+<DELTA Variable="BIN_age" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="ankle_diam" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="ankle_diam" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="ankle_diam" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="ankle_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="ankle_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="ankle_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="biacromial" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="biacromial" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="bicep_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="bicep_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="bicep_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="bitrochanteric" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="bitrochanteric" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="calf_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="calf_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="calf_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="chest_depth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="chest_depth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="chest_depth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="chest_diam" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="chest_diam" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="chest_diam" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="chest_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="chest_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="chest_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="elbow_diam" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="elbow_diam" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="elbow_diam" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="forearm_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="forearm_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="forearm_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="gender" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="gender" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="height" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="hip_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="hip_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="hip_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="knee_diam" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="knee_diam" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="knee_diam" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="knee_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="knee_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="knee_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="navel_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="navel_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="navel_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="pelvic_breadth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="pelvic_breadth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="pelvic_breadth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="shoulder_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="shoulder_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="shoulder_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="thigh_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="thigh_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="thigh_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="waist_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="waist_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="waist_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="wrist_diam" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="wrist_diam" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="wrist_diam" AttributeName="FORMATTYPE" AttributeValue=""/>
+<DELTA Variable="wrist_girth" AttributeName="DROP" AttributeValue="Y"/>
+<DELTA Variable="wrist_girth" AttributeName="CREATOR" AttributeValue="FIMPORT"/>
+<DELTA Variable="wrist_girth" AttributeName="FORMATTYPE" AttributeValue=""/>
+</EmVariableAttributes>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EMCODETOOL.CLASS" COMPONENT="SASCode" ID="EMCODE" X="342" Y="345" DESCRIPTION="SAS Code" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="UTILITY" TOOLPREFIX="EMCODE">
+<PROPERTIES UsePriors="Y" ToolType="UTILITY" DataNeeded="N" PublishCode="PUBLISH" ScoreCodeFormat="DATASTEP" MetaAdvisor="BASIC" ForceRun="Y" RunAction="Train" Component="SASCode">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes>
+<DELTA Variable="_dataobs_" AttributeName="LABEL" AttributeValue=""/>
+</EmVariableAttributes>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data><![CDATA[
+proc corr data=&amp;EM_IMPORT_DATA;
+	var %EM_INTERVAL;
+run;
+ 
+ 
+]]>
+</Data>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EMCODETOOL.CLASS" COMPONENT="SASCode" ID="EMCODE2" X="486" Y="613" DESCRIPTION="SAS Code" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="UTILITY" TOOLPREFIX="EMCODE">
+<PROPERTIES UsePriors="Y" ToolType="UTILITY" DataNeeded="N" PublishCode="PUBLISH" ScoreCodeFormat="DATASTEP" MetaAdvisor="BASIC" ForceRun="Y" RunAction="Train" Component="SASCode">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data><![CDATA[
+proc corr data=&amp;EM_IMPORT_DATA;
+	var %EM_INTERVAL;
+run;
+ 
+ 
+ 
+]]>
+</Data>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="FileImport" ID="FIMPORT" X="247" Y="170" DESCRIPTION="File Import" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="FIMPORT">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMSAMP.FIMPORT.SOURCE" ImportType="Local" GuessRows="500" Delimiter="TAB" NameRow="Y" SkipRows="0" MaxRows="1000000" MaxCols="10000" FileType="txt" Role="TRAIN" ForceRun="N" Summarize="N" AdvancedAdvisor="N" RunAction="Train" Component="FileImport" IFileName="\\home12\M-Z\mam205\ClassProjects\Lab2\BodyRegression.txt" AccessTable="NoTableName" UserID="NoUserID" Password="NoPassword">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes>
+<DELTA Variable="gender" AttributeName="LEVEL" AttributeValue="BINARY"/>
+<DELTA Variable="height" AttributeName="ROLE" AttributeValue="TARGET"/>
+</EmVariableAttributes>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<VARIABLESETDELTA Type="EXTERNAL" Extension="txt">
+<Data><![CDATA[
+if NAME=&quot;gender&quot; then do;
+ROLE=&quot;INPUT&quot;;
+LEVEL=&quot;BINARY&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;height&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;INTERVAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+]]>
+</Data>
+</VARIABLESETDELTA>
+<DELTACODE Type="EXTERNAL" Extension="txt">
+<Data><![CDATA[
+if NAME=&quot;gender&quot; then do;
+ROLE=&quot;INPUT&quot;;
+LEVEL=&quot;BINARY&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;height&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;INTERVAL&quot;;
+ORDER=&quot;&quot;;
+end;
+drop DROP;
+]]>
+</Data>
+</DELTACODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="GraphExplore" ID="GrfExpl" X="556" Y="40" DESCRIPTION="Graph Explore" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="GrfExpl">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMEXPL.GRAPHEXPLORE.SOURCE" EmSampleMethod="FIRSTN" EmSampleSize="DEFAULT" EmRandomSeed="12345" Target="Y" GroupByTarget="Y" ForceRun="N" RunAction="Train" Component="GraphExplore" DataSource="SAMPLE" DataNeeded="Y">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="GraphExplore" ID="GrfExpl2" X="837" Y="463" DESCRIPTION="Graph Explore (2)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="GrfExpl">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMEXPL.GRAPHEXPLORE.SOURCE" EmSampleMethod="FIRSTN" EmSampleSize="DEFAULT" EmRandomSeed="12345" Target="Y" GroupByTarget="Y" ForceRun="N" RunAction="Train" Component="GraphExplore" DataSource="SAMPLE" DataNeeded="Y">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="GraphExplore" ID="GrfExpl3" X="1018" Y="275" DESCRIPTION="Graph Explore (3)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="GrfExpl">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMEXPL.GRAPHEXPLORE.SOURCE" EmSampleMethod="FIRSTN" EmSampleSize="DEFAULT" EmRandomSeed="12345" Target="Y" GroupByTarget="Y" ForceRun="N" RunAction="Train" Component="GraphExplore" DataSource="SAMPLE" DataNeeded="Y">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMDFY.PRINCOMPANALYSIS.CLASS" COMPONENT="PrinComp" ID="PRINCOMP" X="396" Y="501" DESCRIPTION="Principal Components" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODIFY" TOOLPREFIX="PRINCOMP">
+<PROPERTIES MaxPrincomp="5" CumEigenCutoff="0.99" EigenIncreCutoff="0.001" EigenSource="CORR" ApplyMaxPrincomp="Y" RejectOriginalInputVariables="Y" PrintEigenSourceMatrix="N" PrincompPrefix="PC" HideOriginalInputVariables="Y" NUserSelectedPrincomp="5" ForceRun="N" RunAction="Train" Component="PrinComp" PrincompLabel="PRINCOMPLABEL">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMSAMP.EMDPART.CLASS" COMPONENT="Partition" ID="Part" X="642" Y="183" DESCRIPTION="Data Partition" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="Part">
+<PROPERTIES Method="RANDOM" TrainPct="70" ValidatePct="30" TestPct="0" RandomSeed="12345" OutputType="DATA" IntervalDistribution="Y" ClassDistribution="Y" ForceRun="N" RunAction="Train" Component="Partition">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMEXPL.MULTIPLOT.CLASS" COMPONENT="MultiPlot" ID="Plot" X="915" Y="89" DESCRIPTION="MultiPlot" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="Plot">
+<PROPERTIES OutputCatalog="WORK.GOUT" TrainCode="" NumericThreshold="20" Orientation="VERTICAL" Statistic="FREQ" ShowValues="Y" IncludeMissing="Y" IntervalTargetChart="MEAN" ChartType="CHART" IntTargetRegression="LINEAR" DisplayRegEquation="N" ConfidenceInterval="Y" ImageFormat="GIF" ForceRun="N" RunAction="Train" Component="MultiPlot">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMODL.REGRESSION.CLASS" COMPONENT="Regression" ID="Reg" X="767" Y="262" DESCRIPTION="Manual Var Selection Regression" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="Reg">
+<PROPERTIES MainEffect="Y" TwoFactor="N" Polynomial="N" PolynomialDegree="2" Terms="N" Error="NORMAL" LinkFunction="LOGIT" SuppressIntercept="N" InputCoding="DEVIATION" MinResourceUse="N" ModelSelection="NONE" SelectionCriterion="DEFAULT" SelectionDefault="Y" Sequential="N" SlEntry="0.05" SlStay="0.05" Start="0" Stop="0" Force="0" Hierarchy="CLASS" Rule="NONE" MaxStep="." StepOutput="N" OptimizationTechnique="DEFAULT" ModelDefaults="Y" MaxIterations="." MaxFunctionCalls="." MaxCPUTime="1 HOUR" ConvDefaults="Y" AbsConvValue="-1.34078E154" AbsFValue="0" AbsFTime="1" AbsGValue="0.00001" AbsGTime="1" AbsXValue="1E-8" AbsXTime="1" FConvValue="0" FConvTimes="1" GConvValue="1E-6" GConvTimes="1" ClParm="N" Covout="N" CovB="N" CorB="N" Simple="N" SuppressOutput="N" Details="N" PrintDesignMatrix="N" SASSPDS="N" Performance="N" ExcludedVariable="REJECT" ForceRun="N" RunAction="Train" Component="Regression" Interactions="">
+<VariableProperties/>
+<EmTargetAttributes>
+<height>
+<DecData Table="EMWS1.Reg_height_DD">
+<Data>
+<Obs HEIGHT="147.2"/>
+<Obs HEIGHT="198.1"/>
+<Obs HEIGHT="170.91661972"/>
+</Data>
+<Metadata>
+<Variable NAME="height" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Reg_height_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" FORMAT="" LEVEL="PROFIT" TYPE="" COST="" USE="N" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="TARGET" VARIABLE="height" LABEL="" FORMAT="BEST12.0" LEVEL="INTERVAL" TYPE="N" COST="" USE="" MIN="147.2" MEAN="170.91661972" MAX="198.1"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_height" LABEL="Predicted: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_height" LABEL="Residual: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="MIN" LABEL="Minimum" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MEAN" LABEL="Mean" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MAX" LABEL="Maximum" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecMeta>
+</height>
+</EmTargetAttributes>
+<EmVariableAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMODL.REGRESSION.CLASS" COMPONENT="Regression" ID="Reg2" X="679" Y="341" DESCRIPTION="MULTICOLLINEARITY PRESENT Stepwise Regression" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="Reg">
+<PROPERTIES MainEffect="Y" TwoFactor="N" Polynomial="N" PolynomialDegree="2" Terms="N" Error="NORMAL" LinkFunction="LOGIT" SuppressIntercept="N" InputCoding="DEVIATION" MinResourceUse="N" ModelSelection="STEPWISE" SelectionCriterion="DEFAULT" SelectionDefault="Y" Sequential="N" SlEntry="0.05" SlStay="0.05" Start="0" Stop="0" Force="0" Hierarchy="CLASS" Rule="NONE" MaxStep="." StepOutput="N" OptimizationTechnique="DEFAULT" ModelDefaults="Y" MaxIterations="." MaxFunctionCalls="." MaxCPUTime="1 HOUR" ConvDefaults="Y" AbsConvValue="-1.34078E154" AbsFValue="0" AbsFTime="1" AbsGValue="0.00001" AbsGTime="1" AbsXValue="1E-8" AbsXTime="1" FConvValue="0" FConvTimes="1" GConvValue="1E-6" GConvTimes="1" ClParm="N" Covout="N" CovB="N" CorB="N" Simple="N" SuppressOutput="N" Details="N" PrintDesignMatrix="N" SASSPDS="N" Performance="N" ExcludedVariable="REJECT" ForceRun="N" RunAction="Train" Component="Regression" Interactions="">
+<VariableProperties/>
+<EmTargetAttributes>
+<height>
+<DecData Table="EMWS1.Reg2_height_DD">
+<Data>
+<Obs HEIGHT="147.2"/>
+<Obs HEIGHT="198.1"/>
+<Obs HEIGHT="170.91661972"/>
+</Data>
+<Metadata>
+<Variable NAME="height" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Reg2_height_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" FORMAT="" LEVEL="PROFIT" TYPE="" COST="" USE="N" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="TARGET" VARIABLE="height" LABEL="" FORMAT="BEST12.0" LEVEL="INTERVAL" TYPE="N" COST="" USE="" MIN="147.2" MEAN="170.91661972" MAX="198.1"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_height" LABEL="Predicted: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_height" LABEL="Residual: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="MIN" LABEL="Minimum" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MEAN" LABEL="Mean" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MAX" LABEL="Maximum" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecMeta>
+</height>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMODL.REGRESSION.CLASS" COMPONENT="Regression" ID="Reg3" X="668" Y="432" DESCRIPTION="New Var Manual Select" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="Reg">
+<PROPERTIES MainEffect="Y" TwoFactor="N" Polynomial="N" PolynomialDegree="2" Terms="N" Error="NORMAL" LinkFunction="LOGIT" SuppressIntercept="N" InputCoding="DEVIATION" MinResourceUse="N" ModelSelection="STEPWISE" SelectionCriterion="DEFAULT" SelectionDefault="Y" Sequential="N" SlEntry="0.05" SlStay="0.05" Start="0" Stop="0" Force="0" Hierarchy="CLASS" Rule="NONE" MaxStep="." StepOutput="N" OptimizationTechnique="DEFAULT" ModelDefaults="Y" MaxIterations="." MaxFunctionCalls="." MaxCPUTime="1 HOUR" ConvDefaults="Y" AbsConvValue="-1.34078E154" AbsFValue="0" AbsFTime="1" AbsGValue="0.00001" AbsGTime="1" AbsXValue="1E-8" AbsXTime="1" FConvValue="0" FConvTimes="1" GConvValue="1E-6" GConvTimes="1" ClParm="N" Covout="N" CovB="N" CorB="N" Simple="N" SuppressOutput="N" Details="N" PrintDesignMatrix="N" SASSPDS="N" Performance="N" ExcludedVariable="REJECT" ForceRun="N" RunAction="Train" Component="Regression" Interactions="">
+<VariableProperties/>
+<EmTargetAttributes>
+<height>
+<DecData Table="EMWS1.Reg3_height_DD">
+<Data>
+<Obs HEIGHT="147.2"/>
+<Obs HEIGHT="198.1"/>
+<Obs HEIGHT="170.91661972"/>
+</Data>
+<Metadata>
+<Variable NAME="height" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Reg3_height_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" FORMAT="" LEVEL="PROFIT" TYPE="" COST="" USE="N" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="TARGET" VARIABLE="height" LABEL="" FORMAT="BEST12.0" LEVEL="INTERVAL" TYPE="N" COST="" USE="" MIN="147.2" MEAN="170.91661972" MAX="198.1"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_height" LABEL="Predicted: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_height" LABEL="Residual: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="MIN" LABEL="Minimum" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MEAN" LABEL="Mean" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MAX" LABEL="Maximum" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecMeta>
+</height>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMODL.REGRESSION.CLASS" COMPONENT="Regression" ID="Reg4" X="572" Y="560" DESCRIPTION="Prin Comp Regression" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="Reg">
+<PROPERTIES MainEffect="Y" TwoFactor="N" Polynomial="N" PolynomialDegree="2" Terms="N" Error="NORMAL" LinkFunction="LOGIT" SuppressIntercept="N" InputCoding="DEVIATION" MinResourceUse="N" ModelSelection="NONE" SelectionCriterion="DEFAULT" SelectionDefault="Y" Sequential="N" SlEntry="0.05" SlStay="0.05" Start="0" Stop="0" Force="0" Hierarchy="CLASS" Rule="NONE" MaxStep="." StepOutput="N" OptimizationTechnique="DEFAULT" ModelDefaults="Y" MaxIterations="." MaxFunctionCalls="." MaxCPUTime="1 HOUR" ConvDefaults="Y" AbsConvValue="-1.34078E154" AbsFValue="0" AbsFTime="1" AbsGValue="0.00001" AbsGTime="1" AbsXValue="1E-8" AbsXTime="1" FConvValue="0" FConvTimes="1" GConvValue="1E-6" GConvTimes="1" ClParm="N" Covout="N" CovB="N" CorB="N" Simple="N" SuppressOutput="N" Details="N" PrintDesignMatrix="N" SASSPDS="N" Performance="N" ExcludedVariable="REJECT" ForceRun="N" RunAction="Train" Component="Regression" Interactions="">
+<VariableProperties/>
+<EmTargetAttributes>
+<height>
+<DecData Table="EMWS1.Reg4_height_DD">
+<Data>
+<Obs HEIGHT="147.2"/>
+<Obs HEIGHT="198.1"/>
+<Obs HEIGHT="170.91661972"/>
+</Data>
+<Metadata>
+<Variable NAME="height" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Reg4_height_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" FORMAT="" LEVEL="PROFIT" TYPE="" COST="" USE="N" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="TARGET" VARIABLE="height" LABEL="" FORMAT="BEST12.0" LEVEL="INTERVAL" TYPE="N" COST="" USE="" MIN="147.2" MEAN="170.91661972" MAX="198.1"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_height" LABEL="Predicted: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_height" LABEL="Residual: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="MIN" LABEL="Minimum" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MEAN" LABEL="Mean" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MAX" LABEL="Maximum" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecMeta>
+</height>
+</EmTargetAttributes>
+<EmVariableAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMODL.REGRESSION.CLASS" COMPONENT="Regression" ID="Reg5" X="938" Y="368" DESCRIPTION="biacromial only regression" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="Reg">
+<PROPERTIES MainEffect="Y" TwoFactor="N" Polynomial="N" PolynomialDegree="2" Terms="N" Error="NORMAL" LinkFunction="LOGIT" SuppressIntercept="N" InputCoding="DEVIATION" MinResourceUse="N" ModelSelection="NONE" SelectionCriterion="DEFAULT" SelectionDefault="Y" Sequential="N" SlEntry="0.05" SlStay="0.05" Start="0" Stop="0" Force="0" Hierarchy="CLASS" Rule="NONE" MaxStep="." StepOutput="N" OptimizationTechnique="DEFAULT" ModelDefaults="Y" MaxIterations="." MaxFunctionCalls="." MaxCPUTime="1 HOUR" ConvDefaults="Y" AbsConvValue="-1.34078E154" AbsFValue="0" AbsFTime="1" AbsGValue="0.00001" AbsGTime="1" AbsXValue="1E-8" AbsXTime="1" FConvValue="0" FConvTimes="1" GConvValue="1E-6" GConvTimes="1" ClParm="N" Covout="N" CovB="N" CorB="N" Simple="N" SuppressOutput="N" Details="N" PrintDesignMatrix="N" SASSPDS="N" Performance="N" ExcludedVariable="REJECT" ForceRun="N" RunAction="Train" Component="Regression" Interactions="">
+<VariableProperties/>
+<EmTargetAttributes>
+<height>
+<DecData Table="EMWS1.Reg5_height_DD">
+<Data>
+<Obs HEIGHT="147.2"/>
+<Obs HEIGHT="198.1"/>
+<Obs HEIGHT="170.91661972"/>
+</Data>
+<Metadata>
+<Variable NAME="height" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Reg5_height_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" FORMAT="" LEVEL="PROFIT" TYPE="" COST="" USE="N" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="TARGET" VARIABLE="height" LABEL="" FORMAT="BEST12.0" LEVEL="INTERVAL" TYPE="N" COST="" USE="" MIN="147.2" MEAN="170.91661972" MAX="198.1"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_height" LABEL="Predicted: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_height" LABEL="Residual: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="MIN" LABEL="Minimum" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MEAN" LABEL="Mean" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MAX" LABEL="Maximum" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecMeta>
+</height>
+</EmTargetAttributes>
+<EmVariableAttributes>
+<DELTA Variable="G_BIN_age" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="biacromial" AttributeName="USE" AttributeValue="Y"/>
+</EmVariableAttributes>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMODL.REGRESSION.CLASS" COMPONENT="Regression" ID="Reg6" X="832" Y="577" DESCRIPTION="Regression (6)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="Reg">
+<PROPERTIES MainEffect="Y" TwoFactor="N" Polynomial="N" PolynomialDegree="2" Terms="N" Error="LOGISTIC" LinkFunction="LOGIT" SuppressIntercept="N" InputCoding="DEVIATION" MinResourceUse="N" ModelSelection="NONE" SelectionCriterion="DEFAULT" SelectionDefault="Y" Sequential="N" SlEntry="0.05" SlStay="0.05" Start="0" Stop="0" Force="0" Hierarchy="CLASS" Rule="NONE" MaxStep="." StepOutput="N" OptimizationTechnique="DEFAULT" ModelDefaults="Y" MaxIterations="." MaxFunctionCalls="." MaxCPUTime="1 HOUR" ConvDefaults="Y" AbsConvValue="-1.34078E154" AbsFValue="0" AbsFTime="1" AbsGValue="0.00001" AbsGTime="1" AbsXValue="1E-8" AbsXTime="1" FConvValue="0" FConvTimes="1" GConvValue="1E-6" GConvTimes="1" ClParm="N" Covout="N" CovB="N" CorB="N" Simple="N" SuppressOutput="N" Details="N" PrintDesignMatrix="N" SASSPDS="N" Performance="N" ExcludedVariable="REJECT" ForceRun="N" RunAction="Train" Component="Regression" Interactions="">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMODL.REGRESSION.CLASS" COMPONENT="Regression" ID="Reg7" X="962" Y="153" DESCRIPTION="Regression (7)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODEL" TOOLPREFIX="Reg">
+<PROPERTIES MainEffect="Y" TwoFactor="N" Polynomial="N" PolynomialDegree="2" Terms="N" Error="NORMAL" LinkFunction="LOGIT" SuppressIntercept="N" InputCoding="DEVIATION" MinResourceUse="N" ModelSelection="NONE" SelectionCriterion="DEFAULT" SelectionDefault="Y" Sequential="N" SlEntry="0.05" SlStay="0.05" Start="0" Stop="0" Force="0" Hierarchy="CLASS" Rule="NONE" MaxStep="." StepOutput="N" OptimizationTechnique="DEFAULT" ModelDefaults="Y" MaxIterations="." MaxFunctionCalls="." MaxCPUTime="1 HOUR" ConvDefaults="Y" AbsConvValue="-1.34078E154" AbsFValue="0" AbsFTime="1" AbsGValue="0.00001" AbsGTime="1" AbsXValue="1E-8" AbsXTime="1" FConvValue="0" FConvTimes="1" GConvValue="1E-6" GConvTimes="1" ClParm="N" Covout="N" CovB="N" CorB="N" Simple="N" SuppressOutput="N" Details="N" PrintDesignMatrix="N" SASSPDS="N" Performance="N" ExcludedVariable="REJECT" ForceRun="N" RunAction="Train" Component="Regression" Interactions="">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA Variable="BIN_age" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="BIN_weight" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="ankle_diam" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="ankle_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="biacromial" AttributeName="USE" AttributeValue="Y"/>
+<DELTA Variable="bicep_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="bitrochanteric" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="calf_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="chest_depth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="chest_diam" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="chest_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="elbow_diam" AttributeName="USE" AttributeValue="Y"/>
+<DELTA Variable="forearm_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="gender" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="hip_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="knee_diam" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="knee_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="navel_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="pelvic_breadth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="shoulder_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="thigh_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="waist_girth" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="wrist_diam" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="wrist_girth" AttributeName="USE" AttributeValue="N"/>
+</EmVariableAttributes>
+<EmTargetAttributes>
+<height>
+<DecData Table="EMWS1.Reg7_height_DD">
+<Data>
+<Obs HEIGHT="147.2"/>
+<Obs HEIGHT="198.1"/>
+<Obs HEIGHT="170.91661972"/>
+</Data>
+<Metadata>
+<Variable NAME="height" LABEL="" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecData>
+<DecMeta Table="EMWS1.Reg7_height_DM">
+<Data>
+<Obs _TYPE_="MATRIX" VARIABLE="" LABEL="" FORMAT="" LEVEL="PROFIT" TYPE="" COST="" USE="N" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="TARGET" VARIABLE="height" LABEL="" FORMAT="BEST12.0" LEVEL="INTERVAL" TYPE="N" COST="" USE="" MIN="147.2" MEAN="170.91661972" MAX="198.1"/>
+<Obs _TYPE_="PREDICTED" VARIABLE="P_height" LABEL="Predicted: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+<Obs _TYPE_="RESIDUAL" VARIABLE="R_height" LABEL="Residual: height" FORMAT="" LEVEL="" TYPE="N" COST="" USE="" MIN="." MEAN="." MAX="."/>
+</Data>
+<Metadata>
+<Variable NAME="_TYPE_" LABEL="Type" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LABEL" LABEL="Label" LENGTH="256" FORMAT="" TYPE="C"/>
+<Variable NAME="FORMAT" LABEL="Format" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Measurement Level" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="COST" LABEL="Cost" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="USE" LABEL="Use" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="MIN" LABEL="Minimum" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MEAN" LABEL="Mean" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="MAX" LABEL="Maximum" LENGTH="8" FORMAT="" TYPE="N"/>
+</Metadata>
+</DecMeta>
+</height>
+</EmTargetAttributes>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMEXPL.STATEXPLORE.CLASS" COMPONENT="StatExplore" ID="Stat" X="377" Y="11" DESCRIPTION="StatExplore" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="Stat">
+<PROPERTIES BySegment="N" Correlation="Y" Spearman="N" Pearson="Y" ChiSquare="Y" ChiSquareInterval="N" ChiSquareIntervalNBins="5" MaximumVars="1000" HideVariable="Y" DropRejected="Y" UseValidate="N" UseTest="N" UseScore="N" NObs="100000" IntervalDistribution="Y" ClassDistribution="Y" LevelSummary="Y" ForceRun="N" RunAction="Train" Component="StatExplore">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<CROSSTAB Type="DATA">
+<Data/>
+<Metadata/>
+</CROSSTAB>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMDFY.EMTRANS.CLASS" COMPONENT="Transform" ID="Trans" X="464" Y="187" DESCRIPTION="Transform Variables" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODIFY" TOOLPREFIX="Trans">
+<PROPERTIES DefaultMethod="NONE" DefaultTargetMethod="NONE" DefaultClassMethod="NONE" DefaultClassTargetMethod="NONE" Offset="1" MinOffset="Y" HideVariable="Y" RejectVariable="Y" GroupCutoff="0.1" GroupMissing="N" EmRandomSeed="12345" EmSampleSize="DEFAULT" EmSampleMethod="FIRSTN" MissingValue="USEINSEARCH" SummaryVariables="TRANSFORMED" SummaryStatistics="Y" UseMetaTransform="Y" MissingAsLevel="N" NumberofBins="VARIABLES" MaxOptimalBins="10" ForceRun="N" RunAction="Train" Component="Transform">
+<VariableProperties/>
+<EmTargetAttributes/>
+<EmVariableAttributes>
+<DELTA Variable="age" AttributeName="METHOD" AttributeValue="BUCKET"/>
+<DELTA Variable="ankle_diam" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="ankle_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="biacromial" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="bicep_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="bitrochanteric" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="calf_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="chest_depth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="chest_diam" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="chest_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="elbow_diam" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="forearm_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="gender" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="height" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="hip_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="knee_diam" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="knee_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="navel_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="pelvic_breadth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="shoulder_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="thigh_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="waist_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="weight" AttributeName="METHOD" AttributeValue="BUCKET"/>
+<DELTA Variable="wrist_diam" AttributeName="METHOD" AttributeValue="NONE"/>
+<DELTA Variable="wrist_girth" AttributeName="METHOD" AttributeValue="NONE"/>
+</EmVariableAttributes>
+<EmFileProperties>
+<INTERACTION Type="DATA">
+<Data/>
+<Metadata/>
+</INTERACTION>
+<FORMULA Type="DATA">
+<Data/>
+<Metadata/>
+</FORMULA>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMEXPL.VARSELECTION.CLASS" COMPONENT="VariableSelection" ID="Varsel" X="739" Y="48" DESCRIPTION="Variable Selection" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="Varsel">
+<PROPERTIES TargetModel="DEFAULT" HideRejectedVars="Y" MaxMissingPercent="50" MaxLevel="100" RejectUnusedInputVars="Y" ByPassVars="NONE" ByPassVarsRole="INPUT" HideUnusedInputVars="Y" UseAov16="N" UseInteractions="N" UseGroups="Y" MinR2="0.005" StopR2="0.0005" MaxRows="3000" Passes="6" ChiSquare="3.84" Bins="50" SASSPDS="Y" PrintOption="DEFAULT" ForceRun="N" RunAction="Train" Component="VariableSelection" VarselLabel="VARSELLABEL" RoleUnusedVars="DEFAULT">
+<VariableProperties/>
+<ManualSelectionVariables/>
+<NameMappings/>
+<EmTargetAttributes/>
+<EmVariableAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="FIMPORT" TO="Trans"/>
+<CONNECTION FROM="Trans" TO="Part"/>
+<CONNECTION FROM="Part" TO="PRINCOMP"/>
+<CONNECTION FROM="Part" TO="Reg2"/>
+<CONNECTION FROM="Part" TO="Drop2"/>
+<CONNECTION FROM="Part" TO="Varsel"/>
+<CONNECTION FROM="Drop" TO="Reg5"/>
+<CONNECTION FROM="Drop" TO="Reg"/>
+<CONNECTION FROM="Varsel" TO="Drop"/>
+<CONNECTION FROM="Drop2" TO="Reg3"/>
+<CONNECTION FROM="Reg2" TO="GrfExpl2"/>
+<CONNECTION FROM="PRINCOMP" TO="Reg4"/>
+<CONNECTION FROM="Reg5" TO="GrfExpl3"/>
+<CONNECTION FROM="PRINCOMP" TO="EMCODE2"/>
+<CONNECTION FROM="Part" TO="GrfExpl"/>
+<CONNECTION FROM="Part" TO="Stat"/>
+<CONNECTION FROM="Part" TO="EMCODE"/>
+<CONNECTION FROM="Part" TO="Plot"/>
+<CONNECTION FROM="Part" TO="Reg7"/>
+</CONNECTIONS>
+<NOTES>
+<DATA><![CDATA[
+
+
+
+]]>
+</DATA>
+</NOTES>
+</Workspace>
+</_ROOT_>

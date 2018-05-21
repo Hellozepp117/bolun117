@@ -1,0 +1,14 @@
+#RESET
+reset;
+
+#LOAD THE MODEL
+model D:\Users\Administrator\Desktop\eg\hw3_1_5.2.mod;
+
+#Solver Change
+option solver cplex;
+
+
+option presolve 0;
+solve;
+
+

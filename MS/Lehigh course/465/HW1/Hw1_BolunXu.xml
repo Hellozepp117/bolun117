@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><_ROOT_ EMVERSION="13.2" ORIENTATION="HORIZONTAL">
+<Workspace>
+<NODES>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="GraphExplore" ID="GrfExpl" X="340" Y="97" DESCRIPTION="Graph Explore" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="GrfExpl">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMEXPL.GRAPHEXPLORE.SOURCE" EmSampleMethod="FIRSTN" EmSampleSize="MAX" EmRandomSeed="12345" Target="Y" GroupByTarget="Y" ForceRun="N" RunAction="Train" Component="GraphExplore" DataSource="SAMPLE" DataNeeded="Y">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMSAMP.IDS.CLASS" COMPONENT="DataSource" ID="Ids" X="139" Y="98" DESCRIPTION="Hw1_6" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="Ids">
+<PROPERTIES DataSource="hw" Scope="LOCAL" Role="RAW" Library="LIBRARY" Table="HW1" NCols="16" NObs="136006" NBytes="16888832" Segment="" DataSourceRole="RAW" OutputType="VIEW" ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC" ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y" MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y" VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="hw" DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="box215" DsCreateDate="1771840252.2" DsModifiedBy="box215" DsModifyDate="1771840253.4" DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT" SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" RunAction="Train" Component="DataSource" Description="Written by SAS">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="Ids" TO="GrfExpl"/>
+</CONNECTIONS>
+<NOTES>
+<DATA><![CDATA[
+
+]]>
+</DATA>
+</NOTES>
+</Workspace>
+</_ROOT_>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DataSource="writtenbysas" Scope="LOCAL" Role="RAW" Library="HW2" Table="COUNTIES"
+ NCols="19" NObs="3141" NBytes="1237504" Segment="" DataSourceRole="RAW" OutputType="VIEW"
+ ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC"
+ ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y"
+ MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y"
+ VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="writtenbysas"
+ DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="box215" DsCreateDate="1773138438.7"
+ DsModifiedBy="box215" DsModifyDate="1773138438.7" DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT"
+ SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" RunAction="Train"
+ Component="DataSource" RawCreateTime="1773138443" CreateTime="09MAR2016:10:27:23"
+ Description="Written by SAS" Data="HW2.COUNTIES" CMeta="WORK.M1X7LQUB" RunId="5949940d-f443-4c6e-acce-1eff756b5c86"
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

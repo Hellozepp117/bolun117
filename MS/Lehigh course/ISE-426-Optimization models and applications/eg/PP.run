@@ -1,0 +1,17 @@
+#RESET
+reset;
+
+#LOAD THE MODEL
+model PP.mod;
+
+#Input Data
+data PP.dat;
+
+#Solver Change
+option solver cplex;
+
+
+option presolve 0;
+solve;
+
+

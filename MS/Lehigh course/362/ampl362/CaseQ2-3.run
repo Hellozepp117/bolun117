@@ -1,0 +1,15 @@
+#RESET
+reset;
+
+#LOAD THE MODEL
+model E:\Users\Bolun\Desktop\ampl362\CaseQ2-3.mod;
+
+#Input Data
+data E:\Users\Bolun\Desktop\ampl362\CaseQ2-3.dat;
+
+#Solver Change
+option solver cplex;
+
+
+option presolve 0;
+solve;
