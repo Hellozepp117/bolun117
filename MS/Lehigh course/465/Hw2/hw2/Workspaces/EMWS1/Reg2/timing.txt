@@ -1,1 +1,0 @@
-Start: 1773157856.5 Time: 7.4730000496 StartFmt: 09MAR2016:15:50:56 EndFmt: 09MAR2016:15:51:04 TimeFmt: 0 Hr. 0 Min. 7.47 Sec.

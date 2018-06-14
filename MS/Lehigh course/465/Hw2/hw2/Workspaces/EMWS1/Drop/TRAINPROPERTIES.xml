@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DropFromTable="Y" DropHidden="Y" DropInput="N" DropTarget="N" DropRejected="Y" DropAssess="N"
- DropPredict="N" DropFreq="N" DropClassification="N" DropResidual="N" DropOther="N"
- ForceRun="N" RunAction="Train" Component="Drop" RawCreateTime="1773139047.8" CreateTime="09MAR2016:10:37:28"
- RunId="33af8d8f-fa55-425a-be5e-98611af13e4d" RawLastTimeRun="1773144170.3" RawRunTime="2.1840000153"
- LastTimeRun="09MAR2016:12:02:50" RunTime="0 Hr. 0 Min. 2.18 Sec.">
-<VARIABLEPROPERTIES/>
-<FILEPROPERTIES/>
-</_ROOT_>
